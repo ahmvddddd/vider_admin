@@ -1,0 +1,76 @@
+import 'package:flutter/material.dart';
+import 'package:iconsax/iconsax.dart';
+import '../../../utils/constants/custom_colors.dart';
+import '../../../utils/constants/routes.dart';
+import '../../../utils/constants/sizes.dart';
+import 'sidebar_widget.dart';
+
+class CustomSideBar extends StatelessWidget {
+  const CustomSideBar({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Drawer(
+      shape: BeveledRectangleBorder(),
+      child: Container(
+        decoration: BoxDecoration(
+          border: Border(
+            right: BorderSide(color: CustomColors.darkGrey, width: 1),
+          ),
+        ),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              const SizedBox(height: Sizes.sm),
+              CircleAvatar(
+                radius: 20,
+                child: Icon(Iconsax.user),
+              ),
+
+              const SizedBox(height: Sizes.spaceBtwItems),
+              Padding(
+                padding: const EdgeInsets.all(Sizes.sm),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 8.0),
+                      child: Text(
+                        'MENU',
+                        style: Theme.of(
+                          context,
+                        ).textTheme.bodySmall!.apply(letterSpacingDelta: 1.2),
+                      ),
+                    ),
+
+                    const SizedBox(height: Sizes.md),
+                    SideBarWidget(
+                      title: 'Dashboard',
+                      icon: Iconsax.activity,
+                      route: Routes.splash,
+                    ),
+
+                    const SizedBox(height: Sizes.md),
+                    SideBarWidget(
+                      title: 'Users',
+                      icon: Iconsax.user,
+                      route: Routes.splash,
+                    ),
+
+                    const SizedBox(height: Sizes.md),
+                    SideBarWidget(
+                      title: 'Users',
+                      icon: Icons.cases_rounded,
+                      route: Routes.splash,
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
