@@ -3,6 +3,7 @@ import 'package:iconsax/iconsax.dart';
 import '../../../utils/constants/custom_colors.dart';
 import '../../../utils/constants/routes.dart';
 import '../../../utils/constants/sizes.dart';
+import '../../../utils/helpers/helper_function.dart';
 import 'sidebar_widget.dart';
 
 class CustomSideBar extends StatelessWidget {
@@ -10,10 +11,12 @@ class CustomSideBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final dark = HelperFunction.isDarkMode(context);
     return Drawer(
       shape: BeveledRectangleBorder(),
       child: Container(
         decoration: BoxDecoration(
+          color: dark ? Colors.black : Colors.white,
           border: Border(
             right: BorderSide(color: CustomColors.darkGrey, width: 1),
           ),
@@ -22,14 +25,11 @@ class CustomSideBar extends StatelessWidget {
           child: Column(
             children: [
               const SizedBox(height: Sizes.sm),
-              CircleAvatar(
-                radius: 20,
-                child: Icon(Iconsax.user),
-              ),
+              CircleAvatar(radius: 20, child: Icon(Iconsax.user)),
 
               const SizedBox(height: Sizes.spaceBtwItems),
               Padding(
-                padding: const EdgeInsets.all(Sizes.sm),
+                padding: const EdgeInsets.all(Sizes.spaceBtwItems),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisSize: MainAxisSize.min,
@@ -55,14 +55,14 @@ class CustomSideBar extends StatelessWidget {
                     SideBarWidget(
                       title: 'Users',
                       icon: Iconsax.user,
-                      route: Routes.splash,
+                      route: '',
                     ),
 
                     const SizedBox(height: Sizes.md),
                     SideBarWidget(
                       title: 'Users',
                       icon: Icons.cases_rounded,
-                      route: Routes.splash,
+                      route: '',
                     ),
                   ],
                 ),
