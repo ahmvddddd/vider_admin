@@ -54,11 +54,11 @@ class JobsByCountryPieChart extends StatelessWidget {
                 explodeIndex: 0, // highlight the top country
                 pointColorMapper: (CountryJobData data, int index) {
                   final colors = [
-                    Colors.blue,
-                    Colors.orange,
-                    Colors.green,
-                    Colors.purple,
-                    Colors.red,
+                    Color(0xFFA0BCE8),
+                    Color(0xFF6BE6D3),
+                    Color(0xFFADADFB),
+                    Color(0xFF7DBBFF),
+                    Color(0xFF71DD8C),
                   ];
                   return colors[index % colors.length];
                 },

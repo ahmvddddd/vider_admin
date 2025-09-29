@@ -48,9 +48,8 @@ class CustomHeader extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: Sizes.sm, vertical: Sizes.sm),
       decoration: BoxDecoration(
-        border: Border(bottom: BorderSide(color: CustomColors.darkGrey, width: 1))
+        border: Border(bottom: BorderSide(color: CustomColors.darkGrey, width: 0.5))
       ),
       child: AppBar(
         leading: !DeviceUtils.isDeskTopScreen(context) ? IconButton(onPressed: () {}, icon: Icon(Iconsax.menu, color: Colors.red, size: Sizes.iconM,)) : null,
@@ -68,16 +67,8 @@ class CustomHeader extends StatelessWidget implements PreferredSizeWidget {
 
               const SizedBox(width: Sizes.xs,),
               if (!DeviceUtils.isMobileScreen(context))
-              Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text('Admin001',
-                  style: Theme.of(context).textTheme.labelMedium,),
-                  Text('ab001',
-                  style: Theme.of(context).textTheme.labelSmall,)
-                ],
-              )
+              Text('Admin001',
+              style: Theme.of(context).textTheme.labelMedium,)
             ],
           ),
         ],

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import '../../common/widgets/custom_shapes/containers/rounded_container.dart';
-import '../../utils/constants/custom_colors.dart';
+import '../../utils/constants/responsive_sizes.dart';
 import '../../utils/constants/sizes.dart';
 import '../reponsive/responsive_appbar.dart';
 import '../reponsive/responsive_scaffold.dart';
+import 'widgets/dashboard_overview.dart';
 import 'widgets/jobs_chart.dart';
 import 'widgets/jobs_pie_chart.dart';
 
@@ -13,16 +13,135 @@ class DashboardScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ResponsiveScaffold(
-      mobileBody: Column(
-        children: [
-          Text('Mobile'),
-        ],
-      ),
-      tabletBody: Column(
-        children: [
+      mobileBody: SingleChildScrollView(
+        child: Column(
+          children: [
+            Padding(
+                padding: const EdgeInsets.all(Sizes.spaceBtwItems),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text('Overview',
+                    style: Theme.of(context).textTheme.bodySmall,),
+        
+                    SizedBox(height: responsiveSize(context, Sizes.spaceBtwItems)),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        DashboardOverview(
+                          backgroundColor: Color(0xFF7DBBFF),
+                          title: 'Clients',
+                          amount: '100,525,000',
+                        ),
+          
+                        DashboardOverview(
+                          backgroundColor: Color(0xFFB899EB),
+                          title: 'Providers',
+                          amount: '75,605,230',
+                        ),
+                      ],
+                    ),
+        
+                    SizedBox(height: responsiveSize(context, Sizes.spaceBtwItems)),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        DashboardOverview(
+                          backgroundColor: Color(0xFFADADFB),
+                          title: 'Total Jobs',
+                          amount: '700,102,793',
+                        ),
+        
+                        DashboardOverview(
+                          backgroundColor: Color(0xFF71DD8C),
+                          title: 'Total Transactions',
+                          amount: '\$1,989,102,793',
+                        ),
+                      ],
+                    ),
+        
+                    SizedBox(height: responsiveSize(context, Sizes.spaceBtwItems)),
+                    
+                    JobsPerMonthChart(),
 
-          Text('Tablet'),
-        ],
+                    SizedBox(height: responsiveSize(context, Sizes.spaceBtwItems)),
+                    Row(
+                      children: [
+                        Expanded(child: JobsByCountryPieChart()),
+                        SizedBox(width: responsiveSize(context, Sizes.sm)),
+                        Expanded(child: JobsByCountryPieChart())
+                      ],
+                    )
+                    ],
+                ),
+                )
+          ],
+        ),
+      ),
+      tabletBody: SingleChildScrollView(
+        child: Column(
+          children: [
+            Padding(
+                padding: const EdgeInsets.all(Sizes.spaceBtwItems),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text('Overview',
+                    style: Theme.of(context).textTheme.bodySmall,),
+        
+                    SizedBox(height: responsiveSize(context, Sizes.spaceBtwItems)),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        DashboardOverview(
+                          backgroundColor: Color(0xFF7DBBFF),
+                          title: 'Clients',
+                          amount: '100,525,000',
+                        ),
+          
+                        DashboardOverview(
+                          backgroundColor: Color(0xFFB899EB),
+                          title: 'Providers',
+                          amount: '75,605,230',
+                        ),
+                      ],
+                    ),
+        
+                    SizedBox(height: responsiveSize(context, Sizes.spaceBtwItems)),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        DashboardOverview(
+                          backgroundColor: Color(0xFFADADFB),
+                          title: 'Total Jobs',
+                          amount: '700,102,793',
+                        ),
+        
+                        DashboardOverview(
+                          backgroundColor: Color(0xFF71DD8C),
+                          title: 'Total Transactions',
+                          amount: '\$1,989,102,793',
+                        ),
+                      ],
+                    ),
+        
+                    SizedBox(height: responsiveSize(context, Sizes.spaceBtwItems)),
+                    
+                    JobsPerMonthChart(),
+
+                    SizedBox(height: responsiveSize(context, Sizes.spaceBtwItems)),
+                    Row(
+                      children: [
+                        Expanded(child: JobsByCountryPieChart()),
+                        SizedBox(width: responsiveSize(context, Sizes.sm)),
+                        Expanded(child: JobsByCountryPieChart())
+                      ],
+                    )
+                    ],
+                ),
+                )
+          ],
+        ),
       ),
       desktopBody: SingleChildScrollView(
         child: Column(
@@ -31,86 +150,49 @@ class DashboardScreen extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(Sizes.spaceBtwItems),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  Text('Overview',
+                  style: Theme.of(context).textTheme.bodySmall,),
+
+                  const SizedBox(height: Sizes.spaceBtwItems,),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
         
-                      Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: Sizes.sm),
-                          child: RoundedContainer(
-                            height: 100,
-                            padding: const EdgeInsets.all(Sizes.spaceBtwItems),
-                            backgroundColor: CustomColors.accent,
-                            radius: Sizes.cardRadiusLg,
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text('Clients',
-                                style: Theme.of(context).textTheme.bodySmall!.copyWith(color: Colors.black),),
-                          
-                                const SizedBox(height: Sizes.spaceBtwItems,),
-                                Text('100,525,000',
-                                style: Theme.of(context).textTheme.headlineSmall!.copyWith(color: Colors.black, fontFamily: 'JosefinSans').apply(letterSpacingDelta: 1.2),)
-                              ],
-                            ),
-                          ),
-                        ),
+                      DashboardOverview(
+                        backgroundColor: Color(0xFF7DBBFF),
+                        title: 'Clients',
+                        amount: '100,525,000',
                       ),
         
-                      Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: Sizes.sm),
-                          child: RoundedContainer(
-                            height: 100,
-                            padding: const EdgeInsets.all(Sizes.spaceBtwItems),
-                            backgroundColor: CustomColors.textSecondary,
-                            radius: Sizes.cardRadiusLg,
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text('Providers',
-                                style: Theme.of(context).textTheme.bodySmall!.copyWith(color: Colors.black, ),),
-                          
-                                const SizedBox(height: Sizes.spaceBtwItems,),
-                                Text('75,605,230',
-                                style: Theme.of(context).textTheme.headlineSmall!.copyWith(color: Colors.black, fontFamily: 'JosefinSans').apply(letterSpacingDelta: 1.2),)
-                              ],
-                            ),
-                          ),
-                        ),
+                      DashboardOverview(
+                        backgroundColor: Color(0xFFB899EB),
+                        title: 'Providers',
+                        amount: '75,605,230',
                       ),
-        
-                      Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: Sizes.spaceBtwItems),
-                          child: RoundedContainer(
-                            height: 100,
-                            padding: const EdgeInsets.all(Sizes.spaceBtwItems),
-                            backgroundColor: CustomColors.alternate,
-                            radius: Sizes.cardRadiusLg,
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text('Total Jobs',
-                                style: Theme.of(context).textTheme.bodySmall!.copyWith(color: Colors.black),),
-                          
-                                const SizedBox(height: Sizes.spaceBtwItems,),
-                                Text('700,102,793',
-                                style: Theme.of(context).textTheme.headlineSmall!.copyWith(color: Colors.black, fontFamily: 'JosefinSans').apply(letterSpacingDelta: 1.2),)
-                              ],
-                            ),
-                          ),
-                        ),
+
+                      DashboardOverview(
+                        backgroundColor: Color(0xFF71DD8C),
+                        title: 'Total Jobs',
+                        amount: '700,102,793',
+                      ),
+
+                      DashboardOverview(
+                        backgroundColor: Color(0xFFADADFB),
+                        title: 'Total Transactions',
+                        amount: '\$1,989,102,793',
                       ),
                     ]
                   ),
         
                   const SizedBox(height: Sizes.spaceBtwSections,),
+                  JobsPerMonthChart(),
+
+                  const SizedBox(height: Sizes.spaceBtwSections,),
                   Row(
                     children: [
-                      JobsPerMonthChart(),
+                      Expanded(child: JobsByCountryPieChart()),
                       const SizedBox(width: Sizes.sm,),
                       Expanded(child: JobsByCountryPieChart())
                     ],
@@ -124,4 +206,3 @@ class DashboardScreen extends StatelessWidget {
     );
   }
 }
-
