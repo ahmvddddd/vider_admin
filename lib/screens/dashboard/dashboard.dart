@@ -30,12 +30,14 @@ class DashboardScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         DashboardOverview(
+                          width: responsiveSize(context, 170),
                           backgroundColor: Color(0xFF7DBBFF),
                           title: 'Clients',
                           amount: '100,525,000',
                         ),
           
                         DashboardOverview(
+                          width: responsiveSize(context, 170),
                           backgroundColor: Color(0xFFB899EB),
                           title: 'Providers',
                           amount: '75,605,230',
@@ -48,12 +50,14 @@ class DashboardScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         DashboardOverview(
+                          width: responsiveSize(context, 170),
                           backgroundColor: Color(0xFFADADFB),
                           title: 'Total Jobs',
                           amount: '700,102,793',
                         ),
         
                         DashboardOverview(
+                          width: responsiveSize(context, 170),
                           backgroundColor: Color(0xFF71DD8C),
                           title: 'Total Transactions',
                           amount: '\$1,989,102,793',
@@ -66,13 +70,10 @@ class DashboardScreen extends StatelessWidget {
                     JobsPerMonthChart(),
 
                     SizedBox(height: responsiveSize(context, Sizes.spaceBtwItems)),
-                    Row(
-                      children: [
-                        Expanded(child: JobsByCountryPieChart()),
-                        SizedBox(width: responsiveSize(context, Sizes.sm)),
-                        Expanded(child: JobsPerWeekChart())
-                      ],
-                    )
+                    JobsByCountryPieChart(
+                    ),
+                    SizedBox(height: responsiveSize(context, Sizes.spaceBtwItems)),
+                    JobsPerWeekChart()
                     ],
                 ),
                 )
@@ -95,12 +96,14 @@ class DashboardScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         DashboardOverview(
+                          width: responsiveSize(context, 176),
                           backgroundColor: Color(0xFF7DBBFF),
                           title: 'Clients',
                           amount: '100,525,000',
                         ),
           
                         DashboardOverview(
+                          width: responsiveSize(context, 176),
                           backgroundColor: Color(0xFFB899EB),
                           title: 'Providers',
                           amount: '75,605,230',
@@ -113,6 +116,7 @@ class DashboardScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         DashboardOverview(
+                          width: responsiveSize(context, 176),
                           backgroundColor: Color(0xFFADADFB),
                           title: 'Total Jobs',
                           amount: '700,102,793',
@@ -133,7 +137,9 @@ class DashboardScreen extends StatelessWidget {
                     SizedBox(height: responsiveSize(context, Sizes.spaceBtwItems)),
                     Row(
                       children: [
-                        Expanded(child: JobsByCountryPieChart()),
+                        JobsByCountryPieChart(
+                          width: 300,
+                        ),
                         SizedBox(width: responsiveSize(context, Sizes.sm)),
                         Expanded(child: JobsPerWeekChart())
                       ],
@@ -162,24 +168,28 @@ class DashboardScreen extends StatelessWidget {
                     children: [
         
                       DashboardOverview(
+                        width: 200,
                         backgroundColor: Color(0xFF7DBBFF),
                         title: 'Clients',
                         amount: '100,525,000',
                       ),
         
                       DashboardOverview(
+                        width: 200,
                         backgroundColor: Color(0xFFB899EB),
                         title: 'Providers',
                         amount: '75,605,230',
                       ),
 
                       DashboardOverview(
+                        width: 200,
                         backgroundColor: Color(0xFF71DD8C),
                         title: 'Total Jobs',
                         amount: '700,102,793',
                       ),
 
                       DashboardOverview(
+                        width: 200,
                         backgroundColor: Color(0xFFADADFB),
                         title: 'Total Transactions',
                         amount: '\$1,989,102,793',
@@ -193,9 +203,13 @@ class DashboardScreen extends StatelessWidget {
                   const SizedBox(height: Sizes.spaceBtwSections,),
                   Row(
                     children: [
-                      Expanded(child: JobsByCountryPieChart()),
+                      Expanded(child: JobsByCountryPieChart(
+                        width: 430,
+                      )),
                       const SizedBox(width: Sizes.sm,),
-                      Expanded(child: JobsPerWeekChart())
+                      Expanded(child: JobsPerWeekChart(
+                        width: 430,
+                      ))
                     ],
                   )
                 ],

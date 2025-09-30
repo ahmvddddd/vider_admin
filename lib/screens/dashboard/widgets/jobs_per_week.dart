@@ -5,6 +5,7 @@ import '../../../utils/constants/sizes.dart';
 import '../../../utils/helpers/helper_function.dart';
 
 class JobsPerWeekChart extends StatelessWidget {
+  final double? width;
   final List<JobData> jobsData = [
     JobData('Sun', 12),
     JobData('Mon', 18),
@@ -15,13 +16,16 @@ class JobsPerWeekChart extends StatelessWidget {
     JobData('Sat', 30),
   ];
 
-  JobsPerWeekChart({super.key});
+  JobsPerWeekChart({
+    super.key,
+    this.width
+    });
 
   @override
   Widget build(BuildContext context) {
     final dark = HelperFunction.isDarkMode(context);
     return RoundedContainer(
-      width: 600,
+      width: width,
       padding: const EdgeInsets.all(Sizes.spaceBtwItems),
       backgroundColor: dark ? Colors.white.withValues(alpha: 0.1) : Colors.black.withValues(alpha: 0.1),
       child: Column(
@@ -38,7 +42,7 @@ class JobsPerWeekChart extends StatelessWidget {
             primaryXAxis: CategoryAxis(
               majorGridLines: const MajorGridLines(width: 0),
               labelStyle: Theme.of(context).textTheme.labelSmall,
-              interval: 1,
+              interval: 2,
               majorTickLines: const MajorTickLines(size: 0),
               axisLine: AxisLine(width: 0),
             ),

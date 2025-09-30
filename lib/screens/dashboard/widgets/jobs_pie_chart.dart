@@ -6,6 +6,7 @@ import '../../../utils/constants/sizes.dart';
 import '../../../utils/helpers/helper_function.dart';
 
 class JobsByCountryPieChart extends StatelessWidget {
+  final double? width;
   final List<CountryJobData> countryData = [
     CountryJobData('China', 120),
     CountryJobData('Nigeria', 95),
@@ -14,12 +15,16 @@ class JobsByCountryPieChart extends StatelessWidget {
     CountryJobData('UK', 65),
   ];
 
-  JobsByCountryPieChart({super.key});
+  JobsByCountryPieChart({
+    super.key,
+    this.width
+    });
 
   @override
   Widget build(BuildContext context) {
     final dark = HelperFunction.isDarkMode(context);
     return RoundedContainer(
+      width: width,
       padding: const EdgeInsets.all(Sizes.spaceBtwItems),
       backgroundColor: dark
           ? Colors.white.withValues(alpha: 0.1)
@@ -28,10 +33,12 @@ class JobsByCountryPieChart extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('Top 5 Countries with Highest Job Executions',
-          style: Theme.of(context).textTheme.labelMedium,),
+          Text(
+            'Top 5 Countries with Highest Job Executions',
+            style: Theme.of(context).textTheme.labelMedium,
+          ),
 
-          const SizedBox(height: Sizes.spaceBtwSections,),
+          const SizedBox(height: Sizes.spaceBtwSections),
           SfCircularChart(
             legend: Legend(
               isVisible: true,
@@ -39,7 +46,7 @@ class JobsByCountryPieChart extends StatelessWidget {
               iconWidth: 10,
               overflowMode: LegendItemOverflowMode.wrap,
               position: LegendPosition.bottom,
-              textStyle: Theme.of(context).textTheme.labelSmall
+              textStyle: Theme.of(context).textTheme.labelSmall,
             ),
             tooltipBehavior: TooltipBehavior(enable: true),
             series: <CircularSeries>[
@@ -47,9 +54,7 @@ class JobsByCountryPieChart extends StatelessWidget {
                 dataSource: countryData,
                 xValueMapper: (CountryJobData data, _) => data.country,
                 yValueMapper: (CountryJobData data, _) => data.jobs,
-                dataLabelSettings: const DataLabelSettings(
-                  isVisible: false,
-                ),
+                dataLabelSettings: const DataLabelSettings(isVisible: false),
                 explode: true, // makes one slice pop out
                 explodeIndex: 0, // highlight the top country
                 pointColorMapper: (CountryJobData data, int index) {
