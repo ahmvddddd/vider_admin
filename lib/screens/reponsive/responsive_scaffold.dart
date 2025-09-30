@@ -6,8 +6,9 @@ class ResponsiveScaffold extends StatelessWidget {
   final Widget mobileBody;
   final Widget tabletBody;
   final Widget desktopBody;
+  final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey();
 
-  const ResponsiveScaffold({
+  ResponsiveScaffold({
     super.key,
     required this.mobileBody,
     required this.tabletBody,
@@ -21,7 +22,10 @@ class ResponsiveScaffold extends StatelessWidget {
         // Mobile < 600px
         if (constraints.maxWidth < 600) {
           return Scaffold(
-            appBar: CustomHeader(),
+            key: scaffoldKey,
+            appBar: CustomHeader(
+              scaffoldKey: scaffoldKey,
+            ),
             drawer: _buildDrawer(context), // show drawer on small screens
             body: mobileBody,
           );
@@ -52,6 +56,7 @@ class ResponsiveScaffold extends StatelessWidget {
   /// Drawer for mobile + tablet
   Widget _buildDrawer(BuildContext context) {
     return Drawer(
+      shape: BeveledRectangleBorder(),
       child: ListView(
         children: [
           DrawerHeader(child: Text("Menu", style: TextStyle(fontSize: 20))),

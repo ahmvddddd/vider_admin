@@ -38,13 +38,13 @@ class DashboardOverview extends StatelessWidget {
               const SizedBox(height: Sizes.sm),
               Text(
                 amount,
-                style: Theme.of(context).textTheme.headlineSmall!
+                style: Theme.of(context).textTheme.bodySmall!
                     .copyWith(
                       color: Colors.black,
                       fontFamily: 'JosefinSans',
                       fontWeight: FontWeight.bold,
                     )
-                    .apply(letterSpacingDelta: 0.5),
+                    .apply(letterSpacingDelta: 0.2),
               ),
             ],
           ),

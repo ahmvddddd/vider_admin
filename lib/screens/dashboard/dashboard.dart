@@ -5,6 +5,7 @@ import '../reponsive/responsive_appbar.dart';
 import '../reponsive/responsive_scaffold.dart';
 import 'widgets/dashboard_overview.dart';
 import 'widgets/jobs_chart.dart';
+import 'widgets/jobs_per_week.dart';
 import 'widgets/jobs_pie_chart.dart';
 
 class DashboardScreen extends StatelessWidget {
@@ -69,7 +70,7 @@ class DashboardScreen extends StatelessWidget {
                       children: [
                         Expanded(child: JobsByCountryPieChart()),
                         SizedBox(width: responsiveSize(context, Sizes.sm)),
-                        Expanded(child: JobsByCountryPieChart())
+                        Expanded(child: JobsPerWeekChart())
                       ],
                     )
                     ],
@@ -134,7 +135,7 @@ class DashboardScreen extends StatelessWidget {
                       children: [
                         Expanded(child: JobsByCountryPieChart()),
                         SizedBox(width: responsiveSize(context, Sizes.sm)),
-                        Expanded(child: JobsByCountryPieChart())
+                        Expanded(child: JobsPerWeekChart())
                       ],
                     )
                     ],
@@ -194,7 +195,7 @@ class DashboardScreen extends StatelessWidget {
                     children: [
                       Expanded(child: JobsByCountryPieChart()),
                       const SizedBox(width: Sizes.sm,),
-                      Expanded(child: JobsByCountryPieChart())
+                      Expanded(child: JobsPerWeekChart())
                     ],
                   )
                 ],

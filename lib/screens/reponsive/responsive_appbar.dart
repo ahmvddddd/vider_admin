@@ -27,7 +27,11 @@ class ResponsiveAppBar extends StatelessWidget implements PreferredSizeWidget {
           return AppBar(
             title: const Text("m"),
             leading: IconButton(
-              icon: const Icon(Icons.menu, color: Colors.red, size: Sizes.iconM),
+              icon: const Icon(
+                Icons.menu,
+                color: Colors.red,
+                size: Sizes.iconM,
+              ),
               onPressed: () {
                 Scaffold.of(context).openDrawer();
               },
@@ -43,32 +47,49 @@ class ResponsiveAppBar extends StatelessWidget implements PreferredSizeWidget {
 }
 
 class CustomHeader extends StatelessWidget implements PreferredSizeWidget {
-  const CustomHeader({super.key});
+  
+    final GlobalKey<ScaffoldState>? scaffoldKey;
+  const CustomHeader({super.key, this.scaffoldKey});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        border: Border(bottom: BorderSide(color: CustomColors.darkGrey, width: 0.5))
+        border: Border(
+          bottom: BorderSide(color: CustomColors.darkGrey, width: 0.5),
+        ),
       ),
       child: AppBar(
-        leading: !DeviceUtils.isDeskTopScreen(context) ? IconButton(onPressed: () {}, icon: Icon(Iconsax.menu, color: Colors.red, size: Sizes.iconM,)) : null,
-        title: Text('title', 
-        style: Theme.of(context).textTheme.headlineSmall,),
+        leading: !DeviceUtils.isDeskTopScreen(context)
+            ? IconButton(
+                onPressed: () {
+                  scaffoldKey?.currentState!.openDrawer();
+                },
+                icon: Icon(Iconsax.menu, color: Colors.red, size: Sizes.iconM),
+              )
+            : null,
+        title: Text('title', style: Theme.of(context).textTheme.headlineSmall),
         actions: [
-          IconButton(onPressed: () {}, icon: Icon(Icons.notifications, size: Sizes.iconM)),
+          IconButton(
+            onPressed: () {},
+            icon: Icon(Icons.notifications, size: Sizes.iconM),
+          ),
 
-          const SizedBox(width: Sizes.sm,),
+          const SizedBox(width: Sizes.sm),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              CircleAvatar(radius: 13,
-              child: Icon(Iconsax.user, size: Sizes.iconM,)),
+              CircleAvatar(
+                radius: 13,
+                child: Icon(Iconsax.user, size: Sizes.iconM),
+              ),
 
-              const SizedBox(width: Sizes.xs,),
+              const SizedBox(width: Sizes.xs),
               if (!DeviceUtils.isMobileScreen(context))
-              Text('Admin001',
-              style: Theme.of(context).textTheme.labelMedium,)
+                Text(
+                  'Admin001',
+                  style: Theme.of(context).textTheme.labelMedium,
+                ),
             ],
           ),
         ],
