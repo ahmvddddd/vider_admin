@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../controllers/sidebar_controller.dart';
 import '../../../utils/constants/custom_colors.dart';
-import '../../../utils/constants/routes.dart';
 import '../../../utils/constants/sizes.dart';
 import '../../../utils/helpers/helper_function.dart';
 import '../custom_shapes/containers/rounded_container.dart';
@@ -24,8 +23,8 @@ class SideBarWidget extends ConsumerWidget {
     final state = ref.watch(sidebarControllerProvider);
     final controller = ref.read(sidebarControllerProvider.notifier);
 
-    final isActive = state.activeItem == Routes.splash;
-    final isHovering = state.hoverItem == Routes.splash;
+    final isActive = state.activeItem == route;
+    final isHovering = state.hoverItem == route;
 
     return InkWell(
       onHover: (hovering) => hovering ? controller.changeHoverItem(route) : controller.changeActiveItem(''),
@@ -36,7 +35,7 @@ class SideBarWidget extends ConsumerWidget {
             : dark ? Colors.white.withValues(alpha: 0.1)
                   : Colors.black.withValues(alpha: 0.1),
         radius: Sizes.cardRadiusMd,
-        padding: const EdgeInsets.all(Sizes.md),
+        padding: const EdgeInsets.all(Sizes.sm),
         child: Row(
           children: [
             Icon(
@@ -54,7 +53,7 @@ class SideBarWidget extends ConsumerWidget {
               Flexible(
                 child: Text(
                   title,
-                  style: Theme.of(context).textTheme.labelMedium!.apply(
+                  style: Theme.of(context).textTheme.bodySmall!.apply(
                     color: isActive || isHovering
                         ? Colors.white
                         : dark

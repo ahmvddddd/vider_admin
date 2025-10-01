@@ -48,21 +48,21 @@ class CustomSideBar extends StatelessWidget {
                     SideBarWidget(
                       title: 'Dashboard',
                       icon: Iconsax.activity,
-                      route: Routes.splash,
+                      route: Routes.dashboard,
                     ),
 
                     const SizedBox(height: Sizes.md),
                     SideBarWidget(
                       title: 'Users',
                       icon: Iconsax.user,
-                      route: '',
+                      route: Routes.login,
                     ),
 
                     const SizedBox(height: Sizes.md),
                     SideBarWidget(
                       title: 'Users',
                       icon: Icons.cases_rounded,
-                      route: '',
+                      route: Routes.register,
                     ),
                   ],
                 ),

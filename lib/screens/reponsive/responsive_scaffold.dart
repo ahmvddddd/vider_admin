@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../common/widgets/sidebar/custom_sidebar.dart';
+import '../../utils/device/device_utility.dart';
 import 'responsive_appbar.dart';
 
 class ResponsiveScaffold extends StatelessWidget {
@@ -20,7 +21,7 @@ class ResponsiveScaffold extends StatelessWidget {
     return LayoutBuilder(
       builder: (context, constraints) {
         // Mobile < 600px
-        if (constraints.maxWidth < 600) {
+        if (DeviceUtils.isMobileScreen(context)) {
           return Scaffold(
             key: scaffoldKey,
             appBar: CustomHeader(
@@ -31,7 +32,7 @@ class ResponsiveScaffold extends StatelessWidget {
           );
         }
         // Tablet < 1024px
-        else if (constraints.maxWidth < 1024) {
+        else if (DeviceUtils.isTabletScreen(context)) {
           return Scaffold(
             appBar: CustomHeader(),
             drawer: _buildDrawer(context), // still use drawer
@@ -39,7 +40,7 @@ class ResponsiveScaffold extends StatelessWidget {
           );
         }
         // Desktop >= 1024px
-        else {
+        else if (DeviceUtils.isDeskTopScreen(context)) {
           return Scaffold(
             body: Row(
               children: [
@@ -48,7 +49,9 @@ class ResponsiveScaffold extends StatelessWidget {
               ],
             ),
           );
-        }
+        } else {
+      return Scaffold(body: mobileBody);
+    }
       },
     );
   }
