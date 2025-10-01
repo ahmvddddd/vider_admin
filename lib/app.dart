@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'screens/dashboard/dashboard.dart';
+import 'package:vider_admin/screens/users/users.dart';
 import 'utils/theme/theme.dart';
 
 class App extends StatefulWidget {
@@ -24,7 +24,7 @@ class _AppState extends State<App> {
       theme: TAppTheme.lightTheme,
       darkTheme: TAppTheme.darkTheme,
       home: Scaffold( // Show splash/loader while checking
-        body: Center(child: DashboardScreen()
+        body: Center(child: UsersScreen()
       ),)
     );
   }

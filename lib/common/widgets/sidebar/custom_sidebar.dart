@@ -55,7 +55,7 @@ class CustomSideBar extends StatelessWidget {
                     SideBarWidget(
                       title: 'Users',
                       icon: Iconsax.user,
-                      route: Routes.login,
+                      route: Routes.users,
                     ),
 
                     const SizedBox(height: Sizes.md),

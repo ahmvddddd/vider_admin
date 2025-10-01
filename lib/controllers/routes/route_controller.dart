@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../screens/dashboard/dashboard.dart';
+import '../../screens/users/users.dart';
 import '../../utils/constants/routes.dart';
 
 class RouterNotifier extends ChangeNotifier {
@@ -36,6 +37,7 @@ final routerProvider = Provider<GoRouter>((ref) {
     },
     routes: [
       GoRoute(path: Routes.dashboard, builder: (context, state) => const DashboardScreen()),
+      GoRoute(path: Routes.users, builder: (context, state) => UsersScreen()),
       // GoRoute(path: '/login', builder: (context, state) => const LoginScreen()),
       // GoRoute(path: '/profile', builder: (context, state) => const ProfileScreen()),
     ],
