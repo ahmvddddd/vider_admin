@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../controllers/sidebar_controller.dart';
-import '../../../utils/constants/custom_colors.dart';
 import '../../../utils/constants/sizes.dart';
 import '../../../utils/helpers/helper_function.dart';
 import '../custom_shapes/containers/rounded_container.dart';
@@ -30,13 +29,13 @@ class SideBarWidget extends ConsumerWidget {
       onHover: (hovering) => hovering ? controller.changeHoverItem(route) : controller.changeActiveItem(''),
       onTap: () => controller.menuOnTap(context, route),
       child: RoundedContainer(
-        width: 300,
+        width: 230,
         backgroundColor: isActive || isHovering
-        ? CustomColors.primary
-            : dark ? Colors.white.withValues(alpha: 0.1)
-                  : Colors.black.withValues(alpha: 0.1),
+         ? dark ? Colors.white.withValues(alpha: 0.1)
+                  : Colors.black.withValues(alpha: 0.1)
+                  : Colors.transparent,
         radius: Sizes.cardRadiusMd,
-        padding: const EdgeInsets.all(Sizes.md),
+        padding: const EdgeInsets.all(12),
         child: Padding(
           padding: const EdgeInsets.only(left: 8.0),
           child: Row(

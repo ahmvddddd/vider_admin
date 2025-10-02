@@ -13,6 +13,7 @@ class CustomSideBar extends StatelessWidget {
   Widget build(BuildContext context) {
     final dark = HelperFunction.isDarkMode(context);
     return Drawer(
+      width: 250,
       shape: BeveledRectangleBorder(),
       child: Container(
         decoration: BoxDecoration(
@@ -24,27 +25,18 @@ class CustomSideBar extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              const SizedBox(height: Sizes.sm),
-              CircleAvatar(radius: 20, child: Icon(Iconsax.user)),
+              // const SizedBox(height: Sizes.sm),
+              // CircleAvatar(radius: 20, child: Icon(Iconsax.user)),
 
-              const SizedBox(height: Sizes.spaceBtwItems),
+              const SizedBox(height: Sizes.spaceBtwSections),
               Padding(
-                padding: const EdgeInsets.all(Sizes.spaceBtwItems),
+                padding: const EdgeInsets.all(Sizes.sm),
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 8.0),
-                      child: Text(
-                        'MENU',
-                        style: Theme.of(
-                          context,
-                        ).textTheme.bodySmall!.apply(letterSpacingDelta: 1.2),
-                      ),
-                    ),
 
-                    const SizedBox(height: Sizes.md),
+                    const SizedBox(height: Sizes.spaceBtwSections),
                     SideBarWidget(
                       title: 'Dashboard',
                       icon: Iconsax.activity,
@@ -60,9 +52,16 @@ class CustomSideBar extends StatelessWidget {
 
                     const SizedBox(height: Sizes.md),
                     SideBarWidget(
-                      title: 'Users',
+                      title: 'Jobs',
                       icon: Icons.cases_rounded,
                       route: Routes.register,
+                    ),
+
+                    const SizedBox(height: Sizes.md),
+                    SideBarWidget(
+                      title: 'Transactions',
+                      icon: Iconsax.bank,
+                      route: Routes.users,
                     ),
                   ],
                 ),

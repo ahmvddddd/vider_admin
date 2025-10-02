@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:vider_admin/screens/users/users.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'controllers/routes/route_controller.dart';
 import 'utils/theme/theme.dart';
 
-class App extends StatefulWidget {
+class App extends ConsumerStatefulWidget {
   const App({super.key});
 
   @override
-  State<App> createState() => _AppState();
+  ConsumerState<App> createState() => _AppState();
 }
 
-class _AppState extends State<App> {
+class _AppState extends ConsumerState<App> {
 
   @override
   void initState() {
@@ -18,14 +19,13 @@ class _AppState extends State<App> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    final router = ref.watch(routerProvider);
+    return MaterialApp.router(
+      routerConfig: router,
       debugShowCheckedModeBanner: false,
       themeMode: ThemeMode.system,
       theme: TAppTheme.lightTheme,
       darkTheme: TAppTheme.darkTheme,
-      home: Scaffold( // Show splash/loader while checking
-        body: Center(child: UsersScreen()
-      ),)
     );
   }
 }
