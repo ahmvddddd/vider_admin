@@ -38,6 +38,8 @@ class JobsTable extends StatelessWidget {
                             style: Theme.of(context).textTheme.labelSmall,)),
                       DataColumn(label: Text("Duration",
                             style: Theme.of(context).textTheme.labelSmall,)),
+                      DataColumn(label: Text("Date",
+                            style: Theme.of(context).textTheme.labelSmall,)),
                     ],
                     rows: List<DataRow>.generate(
                       jobs.length,
@@ -63,9 +65,18 @@ class JobsTable extends StatelessWidget {
                             DataCell(Text(job["pay"].toString(),
                             style: Theme.of(context).textTheme.labelSmall,
                             )),
-                            DataCell(Text(job["status"].toString(),
-                            style: Theme.of(context).textTheme.labelSmall,)),
+                            DataCell(
+                              Text(job["status"].toString(),
+                            style: Theme.of(context).textTheme.labelSmall!.copyWith(
+                              color: (job["status"] == "completed")
+                             ? Colors.green
+                              :  (job["status"] == "pending")
+                              ?  Colors.amber
+                              : Colors.red
+                            ),)),
                             DataCell(Text(job["duration"].toString(),
+                            style: Theme.of(context).textTheme.labelSmall,)),
+                            DataCell(Text(job["startTime"].toString(),
                             style: Theme.of(context).textTheme.labelSmall,)),
                           ],
                         );

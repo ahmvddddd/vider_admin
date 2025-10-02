@@ -76,21 +76,9 @@ class CustomHeader extends StatelessWidget implements PreferredSizeWidget {
           ),
 
           const SizedBox(width: Sizes.sm),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              CircleAvatar(
-                radius: 13,
-                child: Icon(Iconsax.user, size: Sizes.iconM),
-              ),
-
-              const SizedBox(width: Sizes.xs),
-              if (!DeviceUtils.isMobileScreen(context))
-                Text(
-                  'Admin001',
-                  style: Theme.of(context).textTheme.labelMedium,
-                ),
-            ],
+          CircleAvatar(
+            radius: 13,
+            child: Icon(Iconsax.user, size: Sizes.iconM),
           ),
         ],
       ),

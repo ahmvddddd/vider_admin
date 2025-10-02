@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import '../../common/widgets/sidebar/custom_sidebar.dart';
+import '../../utils/constants/custom_colors.dart';
+import '../../utils/constants/responsive_sizes.dart';
+import '../../utils/constants/sizes.dart';
 import '../../utils/device/device_utility.dart';
+import '../../utils/helpers/helper_function.dart';
 import 'responsive_appbar.dart';
 
 class ResponsiveScaffold extends StatelessWidget {
@@ -24,9 +28,7 @@ class ResponsiveScaffold extends StatelessWidget {
         if (DeviceUtils.isMobileScreen(context)) {
           return Scaffold(
             key: scaffoldKey,
-            appBar: CustomHeader(
-              scaffoldKey: scaffoldKey,
-            ),
+            appBar: CustomHeader(scaffoldKey: scaffoldKey),
             drawer: _buildDrawer(context), // show drawer on small screens
             body: mobileBody,
           );
@@ -50,35 +52,45 @@ class ResponsiveScaffold extends StatelessWidget {
             ),
           );
         } else {
-      return Scaffold(body: mobileBody);
-    }
+          return Scaffold(body: mobileBody);
+        }
       },
     );
   }
 
   /// Drawer for mobile + tablet
   Widget _buildDrawer(BuildContext context) {
-    return Drawer(
-      shape: BeveledRectangleBorder(),
-      child: ListView(
-        children: [
-          DrawerHeader(child: Text("Menu", style: TextStyle(fontSize: 20))),
-          ListTile(
-            title: Text("Home", style: Theme.of(context).textTheme.labelMedium),
-          ),
-          ListTile(
-            title: Text(
-              "Profile",
-              style: Theme.of(context).textTheme.labelMedium,
+    final dark = HelperFunction.isDarkMode(context);
+    return Container(
+      decoration: BoxDecoration(
+        border: Border(
+          right: BorderSide(color: CustomColors.darkGrey, width: 0.3)
+        )
+      ),
+      child: Drawer(
+        width: responsiveSize(context, 300),
+        backgroundColor: dark ? Colors.black : Colors.white,
+        shape: BeveledRectangleBorder(),
+        child: ListView(
+          children: [
+            SizedBox(height: responsiveSize(context, Sizes.spaceBtwSections),),
+            ListTile(
+              title: Text("Home", style: Theme.of(context).textTheme.labelSmall),
             ),
-          ),
-          ListTile(
-            title: Text(
-              "Settings",
-              style: Theme.of(context).textTheme.labelMedium,
+            ListTile(
+              title: Text(
+                "Profile",
+                style: Theme.of(context).textTheme.labelSmall,
+              ),
             ),
-          ),
-        ],
+            ListTile(
+              title: Text(
+                "Settings",
+                style: Theme.of(context).textTheme.labelSmall,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

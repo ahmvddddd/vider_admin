@@ -55,7 +55,7 @@ class SideBarWidget extends ConsumerWidget {
                 Flexible(
                   child: Text(
                     title,
-                    style: Theme.of(context).textTheme.bodySmall!.apply(
+                    style: Theme.of(context).textTheme.labelSmall!.apply(
                       color: isActive || isHovering
                           ? Colors.white
                           : dark
@@ -68,7 +68,7 @@ class SideBarWidget extends ConsumerWidget {
                 Flexible(
                   child: Text(
                     title,
-                    style: Theme.of(context).textTheme.labelMedium!.apply(
+                    style: Theme.of(context).textTheme.labelSmall!.apply(
                       color: isActive || isHovering
                           ? Colors.white
                           : dark

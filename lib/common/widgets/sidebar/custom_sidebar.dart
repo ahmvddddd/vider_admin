@@ -19,14 +19,12 @@ class CustomSideBar extends StatelessWidget {
         decoration: BoxDecoration(
           color: dark ? Colors.black : Colors.white,
           border: Border(
-            right: BorderSide(color: CustomColors.darkGrey, width: 1),
+            right: BorderSide(color: CustomColors.darkGrey, width: 0.3),
           ),
         ),
         child: SingleChildScrollView(
           child: Column(
             children: [
-              // const SizedBox(height: Sizes.sm),
-              // CircleAvatar(radius: 20, child: Icon(Iconsax.user)),
 
               const SizedBox(height: Sizes.spaceBtwSections),
               Padding(
@@ -61,7 +59,7 @@ class CustomSideBar extends StatelessWidget {
                     SideBarWidget(
                       title: 'Transactions',
                       icon: Iconsax.bank,
-                      route: Routes.users,
+                      route: '/transactions',
                     ),
                   ],
                 ),

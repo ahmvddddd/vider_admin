@@ -14,7 +14,8 @@ class JobsScreen extends StatelessWidget {
       "jobTitle": "johndoe",
       "pay": "\$75.00",
       "status": "completed",
-      "duration": "1 hour"
+      "duration": "1 hour",
+      "startTime": DateTime.now()
     },
     {
       "_id": "002",
@@ -24,7 +25,8 @@ class JobsScreen extends StatelessWidget {
       "jobTitle": "janesmith",
       "pay": "\$50.00",
       "status": "completed",
-      "duration": "1 hour"
+      "duration": "1 hour",
+      "startTime": DateTime.now()
     },
     {
       "_id": "003",
@@ -34,7 +36,8 @@ class JobsScreen extends StatelessWidget {
       "jobTitle": "mikeb",
       "pay": "\$100.00",
       "status": "pending",
-      "duration": "2 hours"
+      "duration": "2 hours",
+      "startTime": DateTime.now()
     },
   ];
 
