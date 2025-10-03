@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
+import '../../../utils/constants/custom_colors.dart';
 import '../../../utils/constants/sizes.dart';
+import '../../../utils/helpers/helper_function.dart';
 
-class JobsTable extends StatelessWidget {
-  final List<Map<String, dynamic>> jobs;
-  const JobsTable({super.key, required this.jobs});
+class TransactionsTable extends StatelessWidget {
+  final List<Map<String, dynamic>> transactions;
+  const TransactionsTable({super.key, required this.transactions});
 
   @override
   Widget build(BuildContext context) {
+    final dark = HelperFunction.isDarkMode(context);
     return SingleChildScrollView(
       scrollDirection: Axis.vertical,
       child: SingleChildScrollView(
@@ -15,7 +18,7 @@ class JobsTable extends StatelessWidget {
           padding: const EdgeInsets.all(Sizes.spaceBtwSections),
           child: DataTable(
             columnSpacing: 30,
-            border:  TableBorder.all(color: Colors.transparent),
+            border: TableBorder.all(color: Colors.transparent),
             columns: [
               DataColumn(
                 label: Text(
@@ -31,31 +34,13 @@ class JobsTable extends StatelessWidget {
               ),
               DataColumn(
                 label: Text(
-                  "Profile Image",
+                  "Transaction Type",
                   style: Theme.of(context).textTheme.labelSmall,
                 ),
               ),
               DataColumn(
                 label: Text(
-                  "Provider",
-                  style: Theme.of(context).textTheme.labelSmall,
-                ),
-              ),
-              DataColumn(
-                label: Text(
-                  "Employer",
-                  style: Theme.of(context).textTheme.labelSmall,
-                ),
-              ),
-              DataColumn(
-                label: Text(
-                  "Job",
-                  style: Theme.of(context).textTheme.labelSmall,
-                ),
-              ),
-              DataColumn(
-                label: Text(
-                  "Pay",
+                  "Amount",
                   style: Theme.of(context).textTheme.labelSmall,
                 ),
               ),
@@ -67,7 +52,13 @@ class JobsTable extends StatelessWidget {
               ),
               DataColumn(
                 label: Text(
-                  "Duration",
+                  "Description",
+                  style: Theme.of(context).textTheme.labelSmall,
+                ),
+              ),
+              DataColumn(
+                label: Text(
+                  "Reference",
                   style: Theme.of(context).textTheme.labelSmall,
                 ),
               ),
@@ -78,8 +69,8 @@ class JobsTable extends StatelessWidget {
                 ),
               ),
             ],
-            rows: List<DataRow>.generate(jobs.length, (index) {
-              final job = jobs[index];
+            rows: List<DataRow>.generate(transactions.length, (index) {
+              final user = transactions[index];
               return DataRow(
                 cells: [
                   DataCell(
@@ -90,66 +81,53 @@ class JobsTable extends StatelessWidget {
                   ), // index on Y axis
                   DataCell(
                     Text(
-                      job["_id"].toString(),
-                      style: Theme.of(context).textTheme.labelSmall,
-                    ),
-                  ),
-                  DataCell(
-                    CircleAvatar(
-                      radius: 10,
-                      backgroundColor: Colors.grey,
-                      child: Icon(
-                        job["profileImage"],
-                        color: Colors.white,
-                        size: Sizes.iconSm,
-                      ),
-                    ),
-                  ),
-                  DataCell(
-                    Text(
-                      job["providerName"].toString(),
+                      user["id"].toString(),
                       style: Theme.of(context).textTheme.labelSmall,
                     ),
                   ),
                   DataCell(
                     Text(
-                      job["employerName"].toString(),
-                      style: Theme.of(context).textTheme.labelSmall,
-                    ),
-                  ),
-                  DataCell(
-                    Text(
-                      job["jobTitle"].toString(),
-                      style: Theme.of(context).textTheme.labelSmall,
-                    ),
-                  ),
-                  DataCell(
-                    Text(
-                      job["pay"].toString(),
-                      style: Theme.of(context).textTheme.labelSmall,
-                    ),
-                  ),
-                  DataCell(
-                    Text(
-                      job["status"].toString(),
+                      user["transactionType"].toString(),
                       style: Theme.of(context).textTheme.labelSmall!.copyWith(
-                        color: (job["status"] == "completed")
-                            ? Colors.green
-                            : (job["status"] == "pending")
-                            ? Colors.amber
-                            : Colors.red,
+                        color: user['transactionType'] == 'Transfer'
+                            ? dark
+                                  ? CustomColors.alternate
+                                  : CustomColors.primary
+                            : user['transactionType'] == 'Withdrawal'
+                            ? CustomColors.error
+                            : user['transactionType'] == 'Deposit'
+                            ? CustomColors.success
+                            : Colors.transparent,
                       ),
                     ),
                   ),
                   DataCell(
                     Text(
-                      job["duration"].toString(),
+                      user["amount"].toString(),
                       style: Theme.of(context).textTheme.labelSmall,
                     ),
                   ),
                   DataCell(
                     Text(
-                      job["startTime"].toString(),
+                      user["transactionStatus"].toString(),
+                      style: Theme.of(context).textTheme.labelSmall,
+                    ),
+                  ),
+                  DataCell(
+                    Text(
+                      user["description"].toString(),
+                      style: Theme.of(context).textTheme.labelSmall,
+                    ),
+                  ),
+                  DataCell(
+                    Text(
+                      user["reference"].toString(),
+                      style: Theme.of(context).textTheme.labelSmall,
+                    ),
+                  ),
+                  DataCell(
+                    Text(
+                      user["date"].toString(),
                       style: Theme.of(context).textTheme.labelSmall,
                     ),
                   ),

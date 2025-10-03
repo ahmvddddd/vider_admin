@@ -5,4 +5,5 @@ class Routes {
   static const String dashboard = '/dashboard';
   static const String users = '/users';
   static const String jobs = '/jobs';
+  static const String transactions = '/transactions';
 }

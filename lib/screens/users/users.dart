@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
+import '../../utils/constants/responsive_sizes.dart';
+import '../../utils/constants/sizes.dart';
+import '../dashboard/widgets/dashboard_overview.dart';
 import '../reponsive/responsive_appbar.dart';
 import '../reponsive/responsive_scaffold.dart';
 import 'widgets/users_table.dart';
@@ -43,29 +46,100 @@ class UsersScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ResponsiveScaffold(
-      mobileBody: Column(
-        children: [
-          UsersTable(
-          users: users,
-        ),
-        ],
-      ),
-      tabletBody: Column(
-        children: [
-          UsersTable(
-          users: users,
-        ),
-        ],
-      ),
-      desktopBody: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-            CustomHeader(),
-            
-          UsersTable(
+      mobileBody: SingleChildScrollView(
+        child: Column(
+          children: [
+        
+            Padding(
+                padding: const EdgeInsets.all(Sizes.spaceBtwSections),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    DashboardOverview(
+                            width: responsiveSize(context, 170),
+                          backgroundColor: Color(0xFF7DBBFF),
+                          title: 'Clients',
+                          amount: 100525000,
+                        ),
+          
+                        DashboardOverview(
+                            width: responsiveSize(context, 170),
+                          backgroundColor: Color(0xFFB899EB),
+                          title: 'Providers',
+                          amount: 75605230,
+                        ),
+                  ],
+                ),),
+        
+            UsersTable(
             users: users,
           ),
-        ],
+          ],
+        ),
+      ),
+      tabletBody: SingleChildScrollView(
+        child: Column(
+          children: [
+        
+            Padding(
+                padding: const EdgeInsets.all(Sizes.spaceBtwSections),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    DashboardOverview(
+                            width: responsiveSize(context, 176),
+                          backgroundColor: Color(0xFF7DBBFF),
+                          title: 'Clients',
+                          amount: 100525000,
+                        ),
+          
+                        DashboardOverview(
+                            width: responsiveSize(context, 176),
+                          backgroundColor: Color(0xFFB899EB),
+                          title: 'Providers',
+                          amount: 75605230,
+                        ),
+                  ],
+                ),),
+        
+            UsersTable(
+            users: users,
+          ),
+          ],
+        ),
+      ),
+      desktopBody: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+              CustomHeader(),
+              
+              Padding(
+                padding: const EdgeInsets.all(Sizes.spaceBtwSections),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    DashboardOverview(
+                          width: 200,
+                          backgroundColor: Color(0xFF7DBBFF),
+                          title: 'Clients',
+                          amount: 100525000,
+                        ),
+          
+                        DashboardOverview(
+                          width: 200,
+                          backgroundColor: Color(0xFFB899EB),
+                          title: 'Providers',
+                          amount: 75605230,
+                        ),
+                  ],
+                ),),
+              
+            UsersTable(
+              users: users,
+            ),
+          ],
+        ),
       ),
     );
   }

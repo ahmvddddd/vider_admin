@@ -33,14 +33,14 @@ class DashboardScreen extends StatelessWidget {
                           width: responsiveSize(context, 170),
                           backgroundColor: Color(0xFF7DBBFF),
                           title: 'Clients',
-                          amount: '100,525,000',
+                          amount: 100525000,
                         ),
           
                         DashboardOverview(
                           width: responsiveSize(context, 170),
                           backgroundColor: Color(0xFFB899EB),
                           title: 'Providers',
-                          amount: '75,605,230',
+                          amount: 75605230,
                         ),
                       ],
                     ),
@@ -53,14 +53,14 @@ class DashboardScreen extends StatelessWidget {
                           width: responsiveSize(context, 170),
                           backgroundColor: Color(0xFFADADFB),
                           title: 'Total Jobs',
-                          amount: '700,102,793',
+                          amount: 700102793,
                         ),
         
                         DashboardOverview(
                           width: responsiveSize(context, 170),
                           backgroundColor: Color(0xFF71DD8C),
                           title: 'Total Transactions',
-                          amount: '\$1,989,102,793',
+                          amount: 189702793,
                         ),
                       ],
                     ),
@@ -99,14 +99,14 @@ class DashboardScreen extends StatelessWidget {
                           width: responsiveSize(context, 176),
                           backgroundColor: Color(0xFF7DBBFF),
                           title: 'Clients',
-                          amount: '100,525,000',
+                          amount: 100525000,
                         ),
           
                         DashboardOverview(
                           width: responsiveSize(context, 176),
                           backgroundColor: Color(0xFFB899EB),
                           title: 'Providers',
-                          amount: '75,605,230',
+                          amount: 75605230,
                         ),
                       ],
                     ),
@@ -119,13 +119,13 @@ class DashboardScreen extends StatelessWidget {
                           width: responsiveSize(context, 176),
                           backgroundColor: Color(0xFFADADFB),
                           title: 'Total Jobs',
-                          amount: '700,102,793',
+                          amount: 700102793,
                         ),
         
                         DashboardOverview(
                           backgroundColor: Color(0xFF71DD8C),
                           title: 'Total Transactions',
-                          amount: '\$1,989,102,793',
+                          amount: 189702793,
                         ),
                       ],
                     ),
@@ -171,28 +171,28 @@ class DashboardScreen extends StatelessWidget {
                         width: 200,
                         backgroundColor: Color(0xFF7DBBFF),
                         title: 'Clients',
-                        amount: '100,525,000',
+                        amount: 100525000,
                       ),
         
                       DashboardOverview(
                         width: 200,
                         backgroundColor: Color(0xFFB899EB),
                         title: 'Providers',
-                        amount: '75,605,230',
+                        amount: 75605230,
                       ),
 
                       DashboardOverview(
                         width: 200,
                         backgroundColor: Color(0xFF71DD8C),
                         title: 'Total Jobs',
-                        amount: '700,102,793',
+                        amount: 700102793,
                       ),
 
                       DashboardOverview(
                         width: 200,
                         backgroundColor: Color(0xFFADADFB),
                         title: 'Total Transactions',
-                        amount: '\$1,989,102,793',
+                        amount: 189702793,
                       ),
                     ]
                   ),
