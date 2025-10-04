@@ -52,13 +52,14 @@ class TransactionsScreen extends StatelessWidget {
             child: SizedBox(
               height: screenHeight * 0.30,
               child: ListView(
+  physics: const BouncingScrollPhysics(),
                 scrollDirection: Axis.horizontal,
                 shrinkWrap: true,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.all(8.0),
+                      padding: EdgeInsets.all(responsiveSize(context, 4)),
                     child: DashboardOverview(
-                      width: screenWidth * 0.90,
+                      width: screenWidth * 0.70,
                       backgroundColor: Color(0xFF7DBBFF),
                       title: 'Deposits',
                       amount: 100525000,
@@ -66,9 +67,9 @@ class TransactionsScreen extends StatelessWidget {
                   ),
                       
                     Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: EdgeInsets.all(responsiveSize(context, 4)),
                       child: DashboardOverview(
-                      width: screenWidth * 0.90,
+                      width: screenWidth * 0.70,
                         backgroundColor: Color(0xFFB899EB),
                         title: 'Withdrawals',
                         amount: 75605230,
@@ -76,9 +77,9 @@ class TransactionsScreen extends StatelessWidget {
                     ),
               
                     Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: EdgeInsets.all(responsiveSize(context, 4)),
                       child: DashboardOverview(
-                      width: screenWidth * 0.90,
+                      width: screenWidth * 0.70,
                                   backgroundColor: Color(0xFF7DBBFF),
                                   title: 'Transfer',
                                   amount: 100525000,
@@ -98,39 +99,47 @@ class TransactionsScreen extends StatelessWidget {
       tabletBody: SingleChildScrollView(
         child: Column(
           children: [
-            Padding(
-              padding: const EdgeInsets.all(Sizes.spaceBtwSections),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            Padding(padding: EdgeInsets.all(responsiveSize(context, Sizes.spaceBtwItems)),
+            child: SizedBox(
+              height: screenHeight * 0.30,
+              child: ListView(
+  physics: const BouncingScrollPhysics(),
+                scrollDirection: Axis.horizontal,
+                shrinkWrap: true,
                 children: [
-                  DashboardOverview(
-                    width: responsiveSize(context, 170),
-                    backgroundColor: Color(0xFF7DBBFF),
-                    title: 'Deposit',
-                    amount: 100525000,
+                  Padding(
+                      padding: EdgeInsets.all(responsiveSize(context, 4)),
+                    child: DashboardOverview(
+                      width: screenWidth * 0.30,
+                      backgroundColor: Color(0xFF7DBBFF),
+                      title: 'Deposits',
+                      amount: 100525000,
+                    ),
                   ),
-        
-                  DashboardOverview(
-                    width: responsiveSize(context, 170),
-                    backgroundColor: Color(0xFFB899EB),
-                    title: 'Withdrawals',
-                    amount: 75605230,
-                  ),
+                      
+                    Padding(
+                      padding: EdgeInsets.all(responsiveSize(context, 4)),
+                      child: DashboardOverview(
+                      width: screenWidth * 0.30,
+                        backgroundColor: Color(0xFFB899EB),
+                        title: 'Withdrawals',
+                        amount: 75605230,
+                      ),
+                    ),
+              
+                    Padding(
+                      padding: EdgeInsets.all(responsiveSize(context, 4)),
+                      child: DashboardOverview(
+                      width: screenWidth * 0.30,
+                                  backgroundColor: Color(0xFF7DBBFF),
+                                  title: 'Transfer',
+                                  amount: 100525000,
+                                ),
+                    ),
                 ],
               ),
+            )
             ),
-        
-            SizedBox(height: responsiveSize(context, Sizes.spaceBtwItems)),
-                      Row(
-                        children: [
-                          DashboardOverview(
-                            width: responsiveSize(context, 170),
-                            backgroundColor: Color(0xFF7DBBFF),
-                            title: 'Transfers',
-                            amount: 100525000,
-                          ),
-                        ],
-                      ),
         
             SizedBox(height: responsiveSize(context, Sizes.spaceBtwItems)),
             TransactionsTable(transactions: transactions),
@@ -148,26 +157,32 @@ class TransactionsScreen extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  DashboardOverview(
-                    width: 200,
-                    backgroundColor: Color(0xFF7DBBFF),
-                    title: 'Deposits',
-                    amount: 100525000,
+                  Expanded(
+                    child: DashboardOverview(
+                      width: 200,
+                      backgroundColor: Color(0xFF7DBBFF),
+                      title: 'Deposits',
+                      amount: 100525000,
+                    ),
                   ),
         
-                  DashboardOverview(
-                    width: 200,
-                    backgroundColor: Color(0xFFB899EB),
-                    title: 'Withdrawals',
-                    amount: 75605230,
+                  Expanded(
+                    child: DashboardOverview(
+                      width: 200,
+                      backgroundColor: Color(0xFFB899EB),
+                      title: 'Withdrawals',
+                      amount: 75605230,
+                    ),
                   ),
         
-                  DashboardOverview(
-                            width: responsiveSize(context, 170),
-                            backgroundColor: Color(0xFF7DBBFF),
-                            title: 'Transfers',
-                            amount: 100525000,
-                          ),
+                  Expanded(
+                    child: DashboardOverview(
+                              width: responsiveSize(context, 200),
+                              backgroundColor: Color(0xFF7DBBFF),
+                              title: 'Transfers',
+                              amount: 100525000,
+                            ),
+                  ),
                 ],
               ),
             ),
