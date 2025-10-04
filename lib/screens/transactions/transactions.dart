@@ -41,43 +41,54 @@ class TransactionsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.of(context).size.width;
+
     return ResponsiveScaffold(
       mobileBody: SingleChildScrollView(
         child: Column(
           children: [
-            Padding(
-              padding: const EdgeInsets.all(Sizes.spaceBtwSections),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            Padding(padding: EdgeInsets.all(responsiveSize(context, Sizes.spaceBtwItems)),
+            child: SizedBox(
+              height: screenHeight * 0.30,
+              child: ListView(
+                scrollDirection: Axis.horizontal,
+                shrinkWrap: true,
                 children: [
-                  DashboardOverview(
-                    width: responsiveSize(context, 170),
-                    backgroundColor: Color(0xFF7DBBFF),
-                    title: 'Deposits',
-                    amount: 100525000,
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: DashboardOverview(
+                      width: screenWidth * 0.90,
+                      backgroundColor: Color(0xFF7DBBFF),
+                      title: 'Deposits',
+                      amount: 100525000,
+                    ),
                   ),
-        
-                  DashboardOverview(
-                    width: responsiveSize(context, 170),
-                    backgroundColor: Color(0xFFB899EB),
-                    title: 'Withdrawals',
-                    amount: 75605230,
-                  ),
+                      
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: DashboardOverview(
+                      width: screenWidth * 0.90,
+                        backgroundColor: Color(0xFFB899EB),
+                        title: 'Withdrawals',
+                        amount: 75605230,
+                      ),
+                    ),
+              
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: DashboardOverview(
+                      width: screenWidth * 0.90,
+                                  backgroundColor: Color(0xFF7DBBFF),
+                                  title: 'Transfer',
+                                  amount: 100525000,
+                                ),
+                    ),
                 ],
               ),
+            )
             ),
-        
-            SizedBox(height: responsiveSize(context, Sizes.spaceBtwItems)),
-                      Row(
-                        children: [
-                          DashboardOverview(
-                            width: responsiveSize(context, 170),
-                            backgroundColor: Color(0xFF7DBBFF),
-                            title: 'Transfer',
-                            amount: 100525000,
-                          ),
-                        ],
-                      ),
+            
         
             SizedBox(height: responsiveSize(context, Sizes.spaceBtwItems)),
             TransactionsTable(transactions: transactions),
