@@ -48,49 +48,51 @@ class TransactionsScreen extends StatelessWidget {
       mobileBody: SingleChildScrollView(
         child: Column(
           children: [
-            Padding(padding: EdgeInsets.all(responsiveSize(context, Sizes.spaceBtwItems)),
-            child: SizedBox(
-              height: screenHeight * 0.30,
-              child: ListView(
-  physics: const BouncingScrollPhysics(),
-                scrollDirection: Axis.horizontal,
-                shrinkWrap: true,
-                children: [
-                  Padding(
-                      padding: EdgeInsets.all(responsiveSize(context, 4)),
-                    child: DashboardOverview(
-                      width: screenWidth * 0.70,
-                      backgroundColor: Color(0xFF7DBBFF),
-                      title: 'Deposits',
-                      amount: 100525000,
-                    ),
-                  ),
-                      
+            Padding(
+              padding: EdgeInsets.all(
+                responsiveSize(context, Sizes.spaceBtwItems),
+              ),
+              child: SizedBox(
+                height: screenHeight * 0.15,
+                child: ListView(
+                  physics: const BouncingScrollPhysics(),
+                  scrollDirection: Axis.horizontal,
+                  shrinkWrap: true,
+                  children: [
                     Padding(
                       padding: EdgeInsets.all(responsiveSize(context, 4)),
                       child: DashboardOverview(
-                      width: screenWidth * 0.70,
+                        width: screenWidth * 0.70,
+                        backgroundColor: Color(0xFF7DBBFF),
+                        title: 'Deposits',
+                        amount: 100525000,
+                      ),
+                    ),
+
+                    Padding(
+                      padding: EdgeInsets.all(responsiveSize(context, 4)),
+                      child: DashboardOverview(
+                        width: screenWidth * 0.70,
                         backgroundColor: Color(0xFFB899EB),
                         title: 'Withdrawals',
                         amount: 75605230,
                       ),
                     ),
-              
+
                     Padding(
                       padding: EdgeInsets.all(responsiveSize(context, 4)),
                       child: DashboardOverview(
-                      width: screenWidth * 0.70,
-                                  backgroundColor: Color(0xFF7DBBFF),
-                                  title: 'Transfer',
-                                  amount: 100525000,
-                                ),
+                        width: screenWidth * 0.70,
+                        backgroundColor: Color(0xFF7DBBFF),
+                        title: 'Transfer',
+                        amount: 100525000,
+                      ),
                     ),
-                ],
+                  ],
+                ),
               ),
-            )
             ),
-            
-        
+
             SizedBox(height: responsiveSize(context, Sizes.spaceBtwItems)),
             TransactionsTable(transactions: transactions),
           ],
@@ -99,48 +101,51 @@ class TransactionsScreen extends StatelessWidget {
       tabletBody: SingleChildScrollView(
         child: Column(
           children: [
-            Padding(padding: EdgeInsets.all(responsiveSize(context, Sizes.spaceBtwItems)),
-            child: SizedBox(
-              height: screenHeight * 0.30,
-              child: ListView(
-  physics: const BouncingScrollPhysics(),
-                scrollDirection: Axis.horizontal,
-                shrinkWrap: true,
-                children: [
-                  Padding(
-                      padding: EdgeInsets.all(responsiveSize(context, 4)),
-                    child: DashboardOverview(
-                      width: screenWidth * 0.30,
-                      backgroundColor: Color(0xFF7DBBFF),
-                      title: 'Deposits',
-                      amount: 100525000,
-                    ),
-                  ),
-                      
+            Padding(
+              padding: EdgeInsets.all(
+                responsiveSize(context, Sizes.spaceBtwItems),
+              ),
+              child: SizedBox(
+                height: responsiveSize(context, 100),
+                child: ListView(
+                  physics: const BouncingScrollPhysics(),
+                  scrollDirection: Axis.horizontal,
+                  shrinkWrap: true,
+                  children: [
                     Padding(
                       padding: EdgeInsets.all(responsiveSize(context, 4)),
                       child: DashboardOverview(
-                      width: screenWidth * 0.30,
+                        width: screenWidth * 0.30,
+                        backgroundColor: Color(0xFF7DBBFF),
+                        title: 'Deposits',
+                        amount: 100525000,
+                      ),
+                    ),
+
+                    Padding(
+                      padding: EdgeInsets.all(responsiveSize(context, 4)),
+                      child: DashboardOverview(
+                        width: screenWidth * 0.30,
                         backgroundColor: Color(0xFFB899EB),
                         title: 'Withdrawals',
                         amount: 75605230,
                       ),
                     ),
-              
+
                     Padding(
                       padding: EdgeInsets.all(responsiveSize(context, 4)),
                       child: DashboardOverview(
-                      width: screenWidth * 0.30,
-                                  backgroundColor: Color(0xFF7DBBFF),
-                                  title: 'Transfer',
-                                  amount: 100525000,
-                                ),
+                        width: screenWidth * 0.30,
+                        backgroundColor: Color(0xFF7DBBFF),
+                        title: 'Transfer',
+                        amount: 100525000,
+                      ),
                     ),
-                ],
+                  ],
+                ),
               ),
-            )
             ),
-        
+
             SizedBox(height: responsiveSize(context, Sizes.spaceBtwItems)),
             TransactionsTable(transactions: transactions),
           ],
@@ -151,7 +156,7 @@ class TransactionsScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             CustomHeader(),
-        
+
             Padding(
               padding: const EdgeInsets.all(Sizes.spaceBtwSections),
               child: Row(
@@ -165,7 +170,7 @@ class TransactionsScreen extends StatelessWidget {
                       amount: 100525000,
                     ),
                   ),
-        
+
                   Expanded(
                     child: DashboardOverview(
                       width: 200,
@@ -174,19 +179,19 @@ class TransactionsScreen extends StatelessWidget {
                       amount: 75605230,
                     ),
                   ),
-        
+
                   Expanded(
                     child: DashboardOverview(
-                              width: responsiveSize(context, 200),
-                              backgroundColor: Color(0xFF7DBBFF),
-                              title: 'Transfers',
-                              amount: 100525000,
-                            ),
+                      width: responsiveSize(context, 200),
+                      backgroundColor: Color(0xFF7DBBFF),
+                      title: 'Transfers',
+                      amount: 100525000,
+                    ),
                   ),
                 ],
               ),
             ),
-        
+
             TransactionsTable(transactions: transactions),
           ],
         ),
