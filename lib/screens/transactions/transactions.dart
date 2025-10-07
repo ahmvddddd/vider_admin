@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:iconsax/iconsax.dart';
+import '../../common/widgets/custom_shapes/containers/rounded_container.dart';
 import '../../utils/constants/responsive_sizes.dart';
 import '../../utils/constants/sizes.dart';
+import '../../utils/helpers/helper_function.dart';
 import '../dashboard/widgets/dashboard_overview.dart';
 import '../reponsive/responsive_appbar.dart';
 import '../reponsive/responsive_scaffold.dart';
@@ -12,7 +15,7 @@ class TransactionsScreen extends StatelessWidget {
       "id": "001",
       "transactionType": "Transfer",
       "amount": "\$100.00",
-      "transactionStatus": "successfull",
+      "transactionStatus": "successful",
       "description": "Job payment",
       "reference": "000111absjjsyuuxx",
       "date": DateTime.now(),
@@ -21,7 +24,7 @@ class TransactionsScreen extends StatelessWidget {
       "id": "002",
       "transactionType": "Withdrawal",
       "amount": "\$100.00",
-      "transactionStatus": "successfull",
+      "transactionStatus": "successful",
       "description": "Job pament",
       "reference": "000111absjjsyuuxx",
       "date": DateTime.now(),
@@ -30,7 +33,7 @@ class TransactionsScreen extends StatelessWidget {
       "id": "003",
       "transactionType": "Deposit",
       "amount": "\$100.00",
-      "transactionStatus": "successfull",
+      "transactionStatus": "successful",
       "description": "Job payment",
       "reference": "000111absjjsyuuxx",
       "date": DateTime.now(),
@@ -43,6 +46,7 @@ class TransactionsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
     double screenWidth = MediaQuery.of(context).size.width;
+    final dark = HelperFunction.isDarkMode(context);
 
     return ResponsiveScaffold(
       mobileBody: SingleChildScrollView(
@@ -53,7 +57,7 @@ class TransactionsScreen extends StatelessWidget {
                 responsiveSize(context, Sizes.spaceBtwItems),
               ),
               child: SizedBox(
-                height: screenHeight * 0.15,
+                height: screenHeight * 0.18,
                 child: ListView(
                   physics: const BouncingScrollPhysics(),
                   scrollDirection: Axis.horizontal,
@@ -94,7 +98,16 @@ class TransactionsScreen extends StatelessWidget {
             ),
 
             SizedBox(height: responsiveSize(context, Sizes.spaceBtwItems)),
-            TransactionsTable(transactions: transactions),
+            Padding(
+              padding: const EdgeInsets.all(Sizes.spaceBtwItems),
+              child: RoundedContainer(
+                padding: const EdgeInsets.all(Sizes.sm),
+                backgroundColor: Colors.transparent,
+                showBorder: true,
+                borderColor: dark ? Colors.white : Colors.black,
+                child: TransactionsTable(transactions: transactions),
+              ),
+            ),
           ],
         ),
       ),
@@ -106,7 +119,7 @@ class TransactionsScreen extends StatelessWidget {
                 responsiveSize(context, Sizes.spaceBtwItems),
               ),
               child: SizedBox(
-                height: responsiveSize(context, 100),
+                height: responsiveSize(context, 120),
                 child: ListView(
                   physics: const BouncingScrollPhysics(),
                   scrollDirection: Axis.horizontal,
@@ -147,7 +160,16 @@ class TransactionsScreen extends StatelessWidget {
             ),
 
             SizedBox(height: responsiveSize(context, Sizes.spaceBtwItems)),
-            TransactionsTable(transactions: transactions),
+            Padding(
+              padding: const EdgeInsets.all(Sizes.spaceBtwItems),
+              child: RoundedContainer(
+                padding: const EdgeInsets.all(Sizes.sm),
+                backgroundColor: Colors.transparent,
+                showBorder: true,
+                borderColor: dark ? Colors.white : Colors.black,
+                child: TransactionsTable(transactions: transactions),
+              ),
+            ),
           ],
         ),
       ),
@@ -192,9 +214,37 @@ class TransactionsScreen extends StatelessWidget {
               ),
             ),
 
-            TransactionsTable(transactions: transactions),
+            Padding(
+              padding: const EdgeInsets.all(Sizes.spaceBtwSections),
+              child: RoundedContainer(
+                padding: const EdgeInsets.all(Sizes.sm),
+                backgroundColor: Colors.transparent,
+                showBorder: true,
+                borderColor: dark ? Colors.white : Colors.black,
+                child: TransactionsTable(transactions: transactions),
+              ),
+            ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class DesktopHeader extends StatelessWidget {
+  const DesktopHeader({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(Sizes.spaceBtwItems),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text('Page Name', style: Theme.of(context).textTheme.headlineSmall),
+
+          Row(children: [Icon(Icons.notifications), Icon(Iconsax.user)]),
+        ],
       ),
     );
   }

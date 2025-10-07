@@ -52,14 +52,14 @@ class CustomSideBar extends StatelessWidget {
                     SideBarWidget(
                       title: 'Jobs',
                       icon: Icons.cases_rounded,
-                      route: Routes.register,
+                      route: Routes.jobs,
                     ),
 
                     const SizedBox(height: Sizes.md),
                     SideBarWidget(
                       title: 'Transactions',
                       icon: Iconsax.bank,
-                      route: '/transactions',
+                      route: Routes.transactions,
                     ),
                   ],
                 ),

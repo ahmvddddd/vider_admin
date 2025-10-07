@@ -29,18 +29,22 @@ class DashboardScreen extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        DashboardOverview(
-                          width: responsiveSize(context, 170),
-                          backgroundColor: Color(0xFF7DBBFF),
-                          title: 'Clients',
-                          amount: 100525000,
+                        Expanded(
+                          child: DashboardOverview(
+                            width: responsiveSize(context, 150),
+                            backgroundColor: Color(0xFF7DBBFF),
+                            title: 'Clients',
+                            amount: 100525000,
+                          ),
                         ),
           
-                        DashboardOverview(
-                          width: responsiveSize(context, 170),
-                          backgroundColor: Color(0xFFB899EB),
-                          title: 'Providers',
-                          amount: 75605230,
+                        Expanded(
+                          child: DashboardOverview(
+                            width: responsiveSize(context, 150),
+                            backgroundColor: Color(0xFFB899EB),
+                            title: 'Providers',
+                            amount: 75605230,
+                          ),
                         ),
                       ],
                     ),
@@ -49,18 +53,22 @@ class DashboardScreen extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        DashboardOverview(
-                          width: responsiveSize(context, 170),
-                          backgroundColor: Color(0xFFADADFB),
-                          title: 'Total Jobs',
-                          amount: 700102793,
+                        Expanded(
+                          child: DashboardOverview(
+                            width: responsiveSize(context, 150),
+                            backgroundColor: Color(0xFFADADFB),
+                            title: 'Total Jobs',
+                            amount: 700102793,
+                          ),
                         ),
         
-                        DashboardOverview(
-                          width: responsiveSize(context, 170),
-                          backgroundColor: Color(0xFF71DD8C),
-                          title: 'Total Transactions',
-                          amount: 189702793,
+                        Expanded(
+                          child: DashboardOverview(
+                            width: responsiveSize(context, 150),
+                            backgroundColor: Color(0xFF71DD8C),
+                            title: 'Transactions',
+                            amount: 189702793,
+                          ),
                         ),
                       ],
                     ),
@@ -95,18 +103,22 @@ class DashboardScreen extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        DashboardOverview(
-                          width: responsiveSize(context, 176),
-                          backgroundColor: Color(0xFF7DBBFF),
-                          title: 'Clients',
-                          amount: 100525000,
+                        Expanded(
+                          child: DashboardOverview(
+                            width: responsiveSize(context, 176),
+                            backgroundColor: Color(0xFF7DBBFF),
+                            title: 'Clients',
+                            amount: 100525000,
+                          ),
                         ),
           
-                        DashboardOverview(
-                          width: responsiveSize(context, 176),
-                          backgroundColor: Color(0xFFB899EB),
-                          title: 'Providers',
-                          amount: 75605230,
+                        Expanded(
+                          child: DashboardOverview(
+                            width: responsiveSize(context, 176),
+                            backgroundColor: Color(0xFFB899EB),
+                            title: 'Providers',
+                            amount: 75605230,
+                          ),
                         ),
                       ],
                     ),
@@ -115,17 +127,21 @@ class DashboardScreen extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        DashboardOverview(
-                          width: responsiveSize(context, 176),
-                          backgroundColor: Color(0xFFADADFB),
-                          title: 'Total Jobs',
-                          amount: 700102793,
+                        Expanded(
+                          child: DashboardOverview(
+                            width: responsiveSize(context, 176),
+                            backgroundColor: Color(0xFFADADFB),
+                            title: 'Total Jobs',
+                            amount: 700102793,
+                          ),
                         ),
         
-                        DashboardOverview(
-                          backgroundColor: Color(0xFF71DD8C),
-                          title: 'Total Transactions',
-                          amount: 189702793,
+                        Expanded(
+                          child: DashboardOverview(
+                            backgroundColor: Color(0xFF71DD8C),
+                            title: 'Total Transactions',
+                            amount: 189702793,
+                          ),
                         ),
                       ],
                     ),
@@ -167,32 +183,40 @@ class DashboardScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
         
-                      DashboardOverview(
-                        width: 200,
-                        backgroundColor: Color(0xFF7DBBFF),
-                        title: 'Clients',
-                        amount: 100525000,
+                      Expanded(
+                        child: DashboardOverview(
+                          width: 200,
+                          backgroundColor: Color(0xFF7DBBFF),
+                          title: 'Clients',
+                          amount: 100525000,
+                        ),
                       ),
         
-                      DashboardOverview(
-                        width: 200,
-                        backgroundColor: Color(0xFFB899EB),
-                        title: 'Providers',
-                        amount: 75605230,
+                      Expanded(
+                        child: DashboardOverview(
+                          width: 200,
+                          backgroundColor: Color(0xFFB899EB),
+                          title: 'Providers',
+                          amount: 75605230,
+                        ),
                       ),
 
-                      DashboardOverview(
-                        width: 200,
-                        backgroundColor: Color(0xFF71DD8C),
-                        title: 'Total Jobs',
-                        amount: 700102793,
+                      Expanded(
+                        child: DashboardOverview(
+                          width: 200,
+                          backgroundColor: Color(0xFF71DD8C),
+                          title: 'Total Jobs',
+                          amount: 700102793,
+                        ),
                       ),
 
-                      DashboardOverview(
-                        width: 200,
-                        backgroundColor: Color(0xFFADADFB),
-                        title: 'Total Transactions',
-                        amount: 189702793,
+                      Expanded(
+                        child: DashboardOverview(
+                          width: 200,
+                          backgroundColor: Color(0xFFADADFB),
+                          title: 'Total Transactions',
+                          amount: 189702793,
+                        ),
                       ),
                     ]
                   ),

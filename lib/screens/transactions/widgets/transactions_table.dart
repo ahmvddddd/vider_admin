@@ -15,7 +15,7 @@ class TransactionsTable extends StatelessWidget {
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         child: Padding(
-          padding: const EdgeInsets.all(Sizes.spaceBtwSections),
+          padding: const EdgeInsets.all(Sizes.sm),
           child: DataTable(
             columnSpacing: 30,
             border: TableBorder.all(color: Colors.transparent),
@@ -23,49 +23,49 @@ class TransactionsTable extends StatelessWidget {
               DataColumn(
                 label: Text(
                   "Index",
-                  style: Theme.of(context).textTheme.labelSmall,
+                  style: Theme.of(context).textTheme.labelLarge,
                 ),
               ),
               DataColumn(
                 label: Text(
                   "ID",
-                  style: Theme.of(context).textTheme.labelSmall,
+                  style: Theme.of(context).textTheme.labelLarge,
                 ),
               ),
               DataColumn(
                 label: Text(
                   "Transaction Type",
-                  style: Theme.of(context).textTheme.labelSmall,
+                  style: Theme.of(context).textTheme.labelLarge,
                 ),
               ),
               DataColumn(
                 label: Text(
                   "Amount",
-                  style: Theme.of(context).textTheme.labelSmall,
+                  style: Theme.of(context).textTheme.labelLarge,
                 ),
               ),
               DataColumn(
                 label: Text(
                   "Status",
-                  style: Theme.of(context).textTheme.labelSmall,
+                  style: Theme.of(context).textTheme.labelLarge,
                 ),
               ),
               DataColumn(
                 label: Text(
                   "Description",
-                  style: Theme.of(context).textTheme.labelSmall,
+                  style: Theme.of(context).textTheme.labelLarge,
                 ),
               ),
               DataColumn(
                 label: Text(
                   "Reference",
-                  style: Theme.of(context).textTheme.labelSmall,
+                  style: Theme.of(context).textTheme.labelLarge,
                 ),
               ),
               DataColumn(
                 label: Text(
                   "Date",
-                  style: Theme.of(context).textTheme.labelSmall,
+                  style: Theme.of(context).textTheme.labelLarge,
                 ),
               ),
             ],
@@ -76,27 +76,28 @@ class TransactionsTable extends StatelessWidget {
                   DataCell(
                     Text(
                       (index + 1).toString(),
-                      style: Theme.of(context).textTheme.labelSmall,
+                      style: Theme.of(context).textTheme.bodyLarge!.copyWith(fontWeight: FontWeight.bold),
                     ),
                   ), // index on Y axis
                   DataCell(
                     Text(
                       user["id"].toString(),
-                      style: Theme.of(context).textTheme.labelSmall,
+                      style: Theme.of(context).textTheme.labelSmall!.copyWith(fontWeight: FontWeight.bold),
                     ),
                   ),
                   DataCell(
                     Text(
                       user["transactionType"].toString(),
                       style: Theme.of(context).textTheme.labelSmall!.copyWith(
+                        fontWeight: FontWeight.bold,
                         color: user['transactionType'] == 'Transfer'
                             ? dark
                                   ? CustomColors.alternate
                                   : CustomColors.primary
                             : user['transactionType'] == 'Withdrawal'
-                            ? CustomColors.error
+                            ? Colors.red
                             : user['transactionType'] == 'Deposit'
-                            ? CustomColors.success
+                            ? Colors.green
                             : Colors.transparent,
                       ),
                     ),
@@ -104,31 +105,31 @@ class TransactionsTable extends StatelessWidget {
                   DataCell(
                     Text(
                       user["amount"].toString(),
-                      style: Theme.of(context).textTheme.labelSmall,
+                      style: Theme.of(context).textTheme.labelSmall!.copyWith(fontWeight: FontWeight.bold),
                     ),
                   ),
                   DataCell(
                     Text(
                       user["transactionStatus"].toString(),
-                      style: Theme.of(context).textTheme.labelSmall,
+                      style: Theme.of(context).textTheme.labelSmall!.copyWith(fontWeight: FontWeight.bold),
                     ),
                   ),
                   DataCell(
                     Text(
                       user["description"].toString(),
-                      style: Theme.of(context).textTheme.labelSmall,
+                      style: Theme.of(context).textTheme.labelSmall!.copyWith(fontWeight: FontWeight.bold),
                     ),
                   ),
                   DataCell(
                     Text(
                       user["reference"].toString(),
-                      style: Theme.of(context).textTheme.labelSmall,
+                      style: Theme.of(context).textTheme.labelSmall!.copyWith(fontWeight: FontWeight.bold),
                     ),
                   ),
                   DataCell(
                     Text(
                       user["date"].toString(),
-                      style: Theme.of(context).textTheme.labelSmall,
+                      style: Theme.of(context).textTheme.labelSmall!.copyWith(fontWeight: FontWeight.bold),
                     ),
                   ),
                 ],

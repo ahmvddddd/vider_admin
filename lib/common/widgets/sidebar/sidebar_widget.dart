@@ -44,7 +44,9 @@ class SideBarWidget extends ConsumerWidget {
                 icon,
                 size: Sizes.iconSm,
                 color: isActive || isHovering
-                    ? Colors.white
+                    ? dark
+                          ? Colors.white
+                          : Colors.black
                     : dark
                     ? Colors.white
                     : Colors.black,
@@ -57,7 +59,9 @@ class SideBarWidget extends ConsumerWidget {
                     title,
                     style: Theme.of(context).textTheme.labelSmall!.apply(
                       color: isActive || isHovering
+                          ? dark
                           ? Colors.white
+                          : Colors.black
                           : dark
                           ? Colors.white
                           : Colors.black,
@@ -70,7 +74,9 @@ class SideBarWidget extends ConsumerWidget {
                     title,
                     style: Theme.of(context).textTheme.labelSmall!.apply(
                       color: isActive || isHovering
+                          ? dark
                           ? Colors.white
+                          : Colors.black
                           : dark
                           ? Colors.white
                           : Colors.black,

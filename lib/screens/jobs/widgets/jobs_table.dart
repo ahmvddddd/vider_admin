@@ -12,7 +12,7 @@ class JobsTable extends StatelessWidget {
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         child: Padding(
-          padding: const EdgeInsets.all(Sizes.spaceBtwSections),
+          padding: const EdgeInsets.all(Sizes.sm),
           child: DataTable(
             columnSpacing: 30,
             border:  TableBorder.all(color: Colors.transparent),
@@ -20,61 +20,61 @@ class JobsTable extends StatelessWidget {
               DataColumn(
                 label: Text(
                   "Index",
-                  style: Theme.of(context).textTheme.labelSmall,
+                  style: Theme.of(context).textTheme.labelLarge,
                 ),
               ),
               DataColumn(
                 label: Text(
                   "ID",
-                  style: Theme.of(context).textTheme.labelSmall,
+                  style: Theme.of(context).textTheme.labelLarge,
                 ),
               ),
               DataColumn(
                 label: Text(
                   "Profile Image",
-                  style: Theme.of(context).textTheme.labelSmall,
+                  style: Theme.of(context).textTheme.labelLarge,
                 ),
               ),
               DataColumn(
                 label: Text(
                   "Provider",
-                  style: Theme.of(context).textTheme.labelSmall,
+                  style: Theme.of(context).textTheme.labelLarge,
                 ),
               ),
               DataColumn(
                 label: Text(
                   "Employer",
-                  style: Theme.of(context).textTheme.labelSmall,
+                  style: Theme.of(context).textTheme.labelLarge,
                 ),
               ),
               DataColumn(
                 label: Text(
                   "Job",
-                  style: Theme.of(context).textTheme.labelSmall,
+                  style: Theme.of(context).textTheme.labelLarge,
                 ),
               ),
               DataColumn(
                 label: Text(
                   "Pay",
-                  style: Theme.of(context).textTheme.labelSmall,
+                  style: Theme.of(context).textTheme.labelLarge,
                 ),
               ),
               DataColumn(
                 label: Text(
                   "Status",
-                  style: Theme.of(context).textTheme.labelSmall,
+                  style: Theme.of(context).textTheme.labelLarge,
                 ),
               ),
               DataColumn(
                 label: Text(
                   "Duration",
-                  style: Theme.of(context).textTheme.labelSmall,
+                  style: Theme.of(context).textTheme.labelLarge,
                 ),
               ),
               DataColumn(
                 label: Text(
                   "Date",
-                  style: Theme.of(context).textTheme.labelSmall,
+                  style: Theme.of(context).textTheme.labelLarge,
                 ),
               ),
             ],
@@ -91,7 +91,7 @@ class JobsTable extends StatelessWidget {
                   DataCell(
                     Text(
                       job["_id"].toString(),
-                      style: Theme.of(context).textTheme.labelSmall,
+                      style: Theme.of(context).textTheme.labelSmall!.copyWith(fontWeight: FontWeight.bold),
                     ),
                   ),
                   DataCell(
@@ -108,31 +108,32 @@ class JobsTable extends StatelessWidget {
                   DataCell(
                     Text(
                       job["providerName"].toString(),
-                      style: Theme.of(context).textTheme.labelSmall,
+                      style: Theme.of(context).textTheme.labelSmall!.copyWith(fontWeight: FontWeight.bold),
                     ),
                   ),
                   DataCell(
                     Text(
                       job["employerName"].toString(),
-                      style: Theme.of(context).textTheme.labelSmall,
+                      style: Theme.of(context).textTheme.labelSmall!.copyWith(fontWeight: FontWeight.bold),
                     ),
                   ),
                   DataCell(
                     Text(
                       job["jobTitle"].toString(),
-                      style: Theme.of(context).textTheme.labelSmall,
+                      style: Theme.of(context).textTheme.labelSmall!.copyWith(fontWeight: FontWeight.bold),
                     ),
                   ),
                   DataCell(
                     Text(
                       job["pay"].toString(),
-                      style: Theme.of(context).textTheme.labelSmall,
+                      style: Theme.of(context).textTheme.labelSmall!.copyWith(fontWeight: FontWeight.bold),
                     ),
                   ),
                   DataCell(
                     Text(
                       job["status"].toString(),
                       style: Theme.of(context).textTheme.labelSmall!.copyWith(
+                        fontWeight: FontWeight.bold,
                         color: (job["status"] == "completed")
                             ? Colors.green
                             : (job["status"] == "pending")
@@ -144,13 +145,13 @@ class JobsTable extends StatelessWidget {
                   DataCell(
                     Text(
                       job["duration"].toString(),
-                      style: Theme.of(context).textTheme.labelSmall,
+                      style: Theme.of(context).textTheme.labelSmall!.copyWith(fontWeight: FontWeight.bold),
                     ),
                   ),
                   DataCell(
                     Text(
                       job["startTime"].toString(),
-                      style: Theme.of(context).textTheme.labelSmall,
+                      style: Theme.of(context).textTheme.labelSmall!.copyWith(fontWeight: FontWeight.bold),
                     ),
                   ),
                 ],
