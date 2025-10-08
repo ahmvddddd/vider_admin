@@ -43,12 +43,12 @@ final routerProvider = Provider<GoRouter>((ref) {
         path: Routes.dashboard,
         builder: (context, state) => const DashboardScreen(),
       ),
-      GoRoute(
-        path: Routes.users,
-        builder: (context, state) => UsersScreen(),
-      ),
+      GoRoute(path: Routes.users, builder: (context, state) => UsersScreen()),
       GoRoute(path: Routes.jobs, builder: (context, state) => JobsScreen()),
-      GoRoute(path: Routes.transactions, builder: (context, state) => TransactionsScreen()),
+      GoRoute(
+        path: Routes.transactions,
+        builder: (context, state) => TransactionsScreen(),
+      ),
     ],
   );
 });
