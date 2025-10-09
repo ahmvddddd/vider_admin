@@ -168,25 +168,34 @@ class UsersScreen extends StatelessWidget {
 
             Padding(
               padding: const EdgeInsets.all(Sizes.spaceBtwSections),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Expanded(
-                    child: DashboardOverview(
-                      width: responsiveSize(context, 200),
-                      backgroundColor: Color(0xFF7DBBFF),
-                      title: 'Clients',
-                      amount: 100525000,
-                    ),
-                  ),
-
-                  Expanded(
-                    child: DashboardOverview(
-                      width: responsiveSize(context, 200),
-                      backgroundColor: Color(0xFFB899EB),
-                      title: 'Providers',
-                      amount: 75605230,
-                    ),
+                  Text('Users',
+                  style: Theme.of(context).textTheme.bodySmall,),
+                  
+                  const SizedBox(height: Sizes.spaceBtwItems,),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Expanded(
+                        child: DashboardOverview(
+                          width: responsiveSize(context, 200),
+                          backgroundColor: Color(0xFF7DBBFF),
+                          title: 'Clients',
+                          amount: 100525000,
+                        ),
+                      ),
+                  
+                      Expanded(
+                        child: DashboardOverview(
+                          width: responsiveSize(context, 200),
+                          backgroundColor: Color(0xFFB899EB),
+                          title: 'Providers',
+                          amount: 75605230,
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),

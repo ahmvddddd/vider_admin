@@ -158,48 +158,59 @@ class JobsScreen extends StatelessWidget {
           ),
         ],
       ),
-      desktopBody: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          CustomHeader(),
-
-          Padding(
-            padding: const EdgeInsets.all(Sizes.spaceBtwSections),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Expanded(
-                  child: DashboardOverview(
-                    width: 200,
-                    backgroundColor: Color(0xFF7DBBFF),
-                    title: 'Completed Jobs',
-                    amount: 100525000,
+      desktopBody: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            CustomHeader(),
+        
+            Padding(
+              padding: const EdgeInsets.all(Sizes.spaceBtwSections),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                   Text('Jobs',
+                  style: Theme.of(context).textTheme.bodySmall,),
+                  
+                  const SizedBox(height: Sizes.spaceBtwItems,),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Expanded(
+                        child: DashboardOverview(
+                          width: 200,
+                          backgroundColor: Color(0xFF7DBBFF),
+                          title: 'Completed Jobs',
+                          amount: 100525000,
+                        ),
+                      ),
+                          
+                      Expanded(
+                        child: DashboardOverview(
+                          width: 200,
+                          backgroundColor: Color(0xFFB899EB),
+                          title: 'Pending Jobs',
+                          amount: 75605230,
+                        ),
+                      ),
+                    ],
                   ),
-                ),
-
-                Expanded(
-                  child: DashboardOverview(
-                    width: 200,
-                    backgroundColor: Color(0xFFB899EB),
-                    title: 'Pending Jobs',
-                    amount: 75605230,
-                  ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-
-          Padding(
-            padding: const EdgeInsets.all(Sizes.spaceBtwSections),
-            child: RoundedContainer(
-              padding: const EdgeInsets.all(Sizes.sm),
-              backgroundColor: Colors.transparent,
-              showBorder: true,
-              borderColor: dark ? Colors.white : Colors.black,
-              child: JobsTable(jobs: jobs),
+        
+            Padding(
+              padding: const EdgeInsets.all(Sizes.spaceBtwSections),
+              child: RoundedContainer(
+                padding: const EdgeInsets.all(Sizes.sm),
+                backgroundColor: Colors.transparent,
+                showBorder: true,
+                borderColor: dark ? Colors.white : Colors.black,
+                child: JobsTable(jobs: jobs),
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
