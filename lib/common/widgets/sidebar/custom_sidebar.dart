@@ -13,7 +13,7 @@ class CustomSideBar extends StatelessWidget {
   Widget build(BuildContext context) {
     final dark = HelperFunction.isDarkMode(context);
     return Drawer(
-      width: 250,
+      width: 200,
       shape: BeveledRectangleBorder(),
       child: Container(
         decoration: BoxDecoration(
@@ -66,7 +66,7 @@ class CustomSideBar extends StatelessWidget {
                     SideBarWidget(
                       title: 'Approvals',
                       icon: Iconsax.check,
-                      route: '/',
+                      route: Routes.approvals,
                     ),
                   ],
                 ),

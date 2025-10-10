@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import '../../screens/approvals/approvals.dart';
 import '../../screens/transactions/transactions.dart';
 import '../../screens/users/users.dart';
 import '../../screens/dashboard/dashboard.dart';
@@ -29,7 +30,7 @@ final routerProvider = Provider<GoRouter>((ref) {
       if (!loggedIn && !loggingIn) {
         // 🚨 Middleware: if not logged in, force login
         // return '/login';
-        return Routes.dashboard;
+        return Routes.approvals;
       }
       if (loggedIn && loggingIn) {
         // 🚨 Middleware: if already logged in, go home
@@ -43,6 +44,7 @@ final routerProvider = Provider<GoRouter>((ref) {
         path: Routes.dashboard,
         builder: (context, state) => const DashboardScreen(),
       ),
+      GoRoute(path: Routes.approvals, builder: (context, state) => ApprovalScreen()),
       GoRoute(path: Routes.users, builder: (context, state) => UsersScreen()),
       GoRoute(path: Routes.jobs, builder: (context, state) => JobsScreen()),
       GoRoute(
