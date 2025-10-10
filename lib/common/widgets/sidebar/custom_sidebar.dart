@@ -30,11 +30,13 @@ class CustomSideBar extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(Sizes.sm),
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisSize: MainAxisSize.min,
                   children: [
 
-                    const SizedBox(height: Sizes.spaceBtwSections),
+                   Column(
+                    children:[ const SizedBox(height: Sizes.spaceBtwSections),
                     SideBarWidget(
                       title: 'Dashboard',
                       icon: Iconsax.activity,
@@ -67,7 +69,7 @@ class CustomSideBar extends StatelessWidget {
                       title: 'Approvals',
                       icon: Iconsax.check,
                       route: Routes.approvals,
-                    ),
+                    ),])
                   ],
                 ),
               ),
