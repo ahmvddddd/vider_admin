@@ -69,7 +69,15 @@ class CustomSideBar extends StatelessWidget {
                       title: 'Approvals',
                       icon: Iconsax.check,
                       route: Routes.approvals,
-                    ),])
+                    ),
+                    
+                    const SizedBox(height: Sizes.md),
+                    SideBarWidget(
+                      title: 'Notifications',
+                      icon: Iconsax.notification,
+                      route: Routes.notifications,
+                    ),
+                    ])
                   ],
                 ),
               ),
