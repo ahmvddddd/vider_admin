@@ -22,10 +22,11 @@ class NotificationsScreen extends StatelessWidget {
             Padding(
                 padding: const EdgeInsets.all(Sizes.spaceBtwSections),
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
                       children: [
                       Text('Create Notification',
                       style: Theme.of(context).textTheme.bodySmall),
