@@ -1,20 +1,17 @@
 import 'package:flutter/material.dart';
-import '../../../screens/notifications/widgets/notifications_tablet.dart';
-import '../../common/widgets/custom_shapes/containers/rounded_container.dart';
-import '../../screens/reponsive/responsive_scaffold.dart';
-import '../../utils/constants/sizes.dart';
-import '../../utils/helpers/helper_function.dart';
-import '../reponsive/responsive_appbar.dart';
-import 'widgets/notifications_mobile.dart';
+import '../../../utils/helpers/helper_function.dart';
+import '../../../common/widgets/custom_shapes/containers/rounded_container.dart';
+import '../../../utils/constants/sizes.dart';
 
-class NotificationsScreen extends StatefulWidget {
-  const NotificationsScreen({super.key});
+class NotificationsMobile extends StatefulWidget {
+
+  const NotificationsMobile({super.key});
 
   @override
-  State<NotificationsScreen> createState() => _NotificationsScreenState();
+  State<NotificationsMobile> createState() => _NotificationsMobileState();
 }
 
-class _NotificationsScreenState extends State<NotificationsScreen> {
+class _NotificationsMobileState extends State<NotificationsMobile> {
   final TextEditingController _titleController = TextEditingController(
     text: 'Limited Time Offer: [Discount]% Off',
   );
@@ -22,20 +19,17 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
     text:
         'For a Limited Time, Enjoy [Discount]% Off On [Product/Service]. Use Code [CODE] At Checkout. Offer Valid Until [End Date].',
   );
-
   bool acceleratorUsers = true;
   bool subscribersOnly = false;
   bool allUsers = false;
   bool customSelection = false;
-
   bool scheduleForLater = true;
   DateTime scheduledDate = DateTime(2026, 4, 17, 12, 0);
+    String imageUrl =
+      'https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?auto=format&fit=crop&w=1200&q=60';
   TimeOfDay scheduledTime = const TimeOfDay(hour: 12, minute: 0);
 
-  String imageUrl =
-      'https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?auto=format&fit=crop&w=1200&q=60';
-
-  void _pickDate() async {
+      void _pickDate() async {
     final DateTime? picked = await showDatePicker(
       context: context,
       initialDate: scheduledDate,
@@ -77,33 +71,16 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
   @override
   Widget build(BuildContext context) {
     final dark = HelperFunction.isDarkMode(context);
-    return ResponsiveScaffold(
-      mobileBody: NotificationsMobile(),
-      tabletBody: NotificationsTablet(),
-      desktopBody: SingleChildScrollView(
+    return SingleChildScrollView(
+      child: Padding(
+        padding: const EdgeInsets.all(Sizes.spaceBtwItems),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            CustomHeader(),
-
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                // Main content
-                Expanded(
-                  flex: 3,
-                  child: SingleChildScrollView(
-                    padding: const EdgeInsets.all(24),
-                    child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    // Main content
+                    Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        // const Text('Create Notification',
-                        //     style: TextStyle(
-                        //         fontSize: 28, fontWeight: FontWeight.bold)),
-                        // const SizedBox(height: 12),
-
-                        // Notification Details Card
                         RoundedContainer(
                           radius: 8,
                           backgroundColor: dark
@@ -120,7 +97,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                                 ).textTheme.headlineSmall,
                               ),
                               const SizedBox(height: Sizes.spaceBtwItems),
-
+                                    
                               Text(
                                 'Notification Title',
                                 style: Theme.of(context).textTheme.bodyMedium,
@@ -135,7 +112,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                                 ),
                               ),
                               const SizedBox(height: Sizes.spaceBtwItems),
-
+                                    
                               Text(
                                 'Notification Message',
                                 style: Theme.of(context).textTheme.bodyMedium,
@@ -151,7 +128,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                                 ),
                               ),
                               const SizedBox(height: Sizes.spaceBtwItems),
-
+                                    
                               Text(
                                 'Image (Optional)',
                                 style: Theme.of(context).textTheme.bodyMedium,
@@ -190,9 +167,9 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                             ],
                           ),
                         ),
-
+                                    
                         const SizedBox(height: Sizes.spaceBtwSections),
-
+                                    
                         // Recipients Card
                         RoundedContainer(
                           radius: 8,
@@ -296,7 +273,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                                   });
                                 },
                               ),
-
+                                    
                               const SizedBox(height: Sizes.spaceBtwItems),
                               Align(
                                 alignment: Alignment.centerRight,
@@ -314,9 +291,9 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                             ],
                           ),
                         ),
-
+                                    
                         const SizedBox(height: Sizes.spaceBtwItems),
-
+                                    
                         // Delivery Options
                         RoundedContainer(
                           radius: 8,
@@ -344,7 +321,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                                   });
                                 },
                               ),
-
+                                    
                               if (scheduleForLater) ...[
                                 Row(
                                   children: [
@@ -392,15 +369,9 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                         const SizedBox(height: Sizes.spaceBtwSections),
                       ],
                     ),
-                  ),
-                ),
-
-                // Right Sidebar - Summary & Preview
-                Expanded(
-                  flex: 1,
-                  child: SingleChildScrollView(
-                    padding: const EdgeInsets.all(Sizes.spaceBtwItems),
-                    child: Column(
+        
+                    // Right Sidebar - Summary & Preview
+                    Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
                         RoundedContainer(
@@ -459,9 +430,9 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                             ],
                           ),
                         ),
-
+                        
                         const SizedBox(height: Sizes.spaceBtwSections),
-
+                        
                         RoundedContainer(
                           radius: 8,
                           backgroundColor: dark
@@ -478,7 +449,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                                 ).textTheme.bodyMedium,
                               ),
                               const SizedBox(height: Sizes.spaceBtwItems),
-
+                        
                               ListTile(
                                 leading: CircleAvatar(
                                   backgroundColor: Colors.blue[50],
@@ -498,9 +469,9 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                                   ).textTheme.labelMedium,
                                 ),
                               ),
-
+                        
                               const SizedBox(height: Sizes.sm),
-
+                        
                               ListTile(
                                 leading: CircleAvatar(
                                   backgroundColor: Colors.grey[50],
@@ -525,12 +496,8 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                         ),
                       ],
                     ),
-                  ),
+                  ],
                 ),
-              ],
-            ),
-          ],
-        ),
       ),
     );
   }
