@@ -7,6 +7,7 @@ import '../../utils/helpers/helper_function.dart';
 import '../dashboard/widgets/dashboard_overview.dart';
 import '../reponsive/responsive_appbar.dart';
 import '../reponsive/responsive_scaffold.dart';
+import 'user_management.dart';
 import 'widgets/users_table.dart';
 
 class UsersScreen extends StatelessWidget {
@@ -160,60 +161,7 @@ class UsersScreen extends StatelessWidget {
           ],
         ),
       ),
-      desktopBody: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            CustomHeader(),
-
-            Padding(
-              padding: const EdgeInsets.all(Sizes.spaceBtwSections),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text('Users',
-                  style: Theme.of(context).textTheme.bodySmall,),
-                  
-                  const SizedBox(height: Sizes.spaceBtwItems,),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Expanded(
-                        child: DashboardOverview(
-                          width: responsiveSize(context, 200),
-                          backgroundColor: Color(0xFF7DBBFF),
-                          title: 'Clients',
-                          amount: 100525000,
-                        ),
-                      ),
-                  
-                      Expanded(
-                        child: DashboardOverview(
-                          width: responsiveSize(context, 200),
-                          backgroundColor: Color(0xFFB899EB),
-                          title: 'Providers',
-                          amount: 75605230,
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-
-            Padding(
-              padding: const EdgeInsets.all(Sizes.spaceBtwSections),
-              child: RoundedContainer(
-                padding: const EdgeInsets.all(Sizes.sm),
-                backgroundColor: Colors.transparent,
-                showBorder: true,
-                borderColor: dark ? Colors.white : Colors.black,
-                child: UsersTable(users: users),
-              ),
-            ),
-          ],
-        ),
-      ),
+      desktopBody: UsersDesktop(),
     );
   }
 }

@@ -352,8 +352,9 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                                       child: InkWell(
                                         onTap: _pickDate,
                                         child: InputDecorator(
-                                          decoration: const InputDecoration(
+                                          decoration: InputDecoration(
                                             labelText: 'Date',
+                                            labelStyle: Theme.of(context).textTheme.labelSmall,
                                             border: OutlineInputBorder(),
                                           ),
                                           child: Text(
@@ -370,8 +371,9 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                                       child: InkWell(
                                         onTap: _pickTime,
                                         child: InputDecorator(
-                                          decoration: const InputDecoration(
+                                          decoration: InputDecoration(
                                             labelText: 'Time',
+                                            labelStyle: Theme.of(context).textTheme.labelSmall!.copyWith(color: Colors.white),
                                             border: OutlineInputBorder(),
                                           ),
                                           child: Text(

@@ -31,7 +31,7 @@ final routerProvider = Provider<GoRouter>((ref) {
       if (!loggedIn && !loggingIn) {
         // 🚨 Middleware: if not logged in, force login
         // return '/login';
-        return Routes.notifications;
+        return Routes.users;
       }
       if (loggedIn && loggingIn) {
         // 🚨 Middleware: if already logged in, go home

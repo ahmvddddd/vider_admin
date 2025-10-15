@@ -329,8 +329,9 @@ class _NotificationsMobileState extends State<NotificationsMobile> {
                                       child: InkWell(
                                         onTap: _pickDate,
                                         child: InputDecorator(
-                                          decoration: const InputDecoration(
+                                          decoration: InputDecoration(
                                             labelText: 'Date',
+                                            labelStyle: Theme.of(context).textTheme.labelSmall,
                                             border: OutlineInputBorder(),
                                           ),
                                           child: Text(
@@ -347,8 +348,9 @@ class _NotificationsMobileState extends State<NotificationsMobile> {
                                       child: InkWell(
                                         onTap: _pickTime,
                                         child: InputDecorator(
-                                          decoration: const InputDecoration(
+                                          decoration: InputDecoration(
                                             labelText: 'Time',
+                                            labelStyle: Theme.of(context).textTheme.labelSmall,
                                             border: OutlineInputBorder(),
                                           ),
                                           child: Text(
