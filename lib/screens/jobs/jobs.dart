@@ -163,34 +163,37 @@ class JobsScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             CustomHeader(),
-        
+
             Padding(
               padding: const EdgeInsets.all(Sizes.spaceBtwSections),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                   Text('Jobs',
-                  style: Theme.of(context).textTheme.bodySmall,),
-                  
-                  const SizedBox(height: Sizes.spaceBtwItems,),
+                  Text('Jobs', style: Theme.of(context).textTheme.bodySmall),
+
+                  const SizedBox(height: Sizes.spaceBtwItems),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Expanded(
-                        child: DashboardOverview(
-                          width: 200,
-                          backgroundColor: Color(0xFF7DBBFF),
-                          title: 'Completed Jobs',
-                          amount: 100525000,
+                        child: Padding(
+                          padding: const EdgeInsets.all(Sizes.sm),
+                          child: JobsInfoCard(
+                            title: 'Completed Jobs',
+                            subtitle: '',
+                            value: '100525000',
+                          ),
                         ),
                       ),
-                          
+
                       Expanded(
-                        child: DashboardOverview(
-                          width: 200,
-                          backgroundColor: Color(0xFFB899EB),
-                          title: 'Pending Jobs',
-                          amount: 75605230,
+                        child: Padding(
+                          padding: const EdgeInsets.all(Sizes.sm),
+                          child: JobsInfoCard(
+                            title: 'Pending Jobs',
+                            subtitle: '',
+                            value: '75605230',
+                          ),
                         ),
                       ),
                     ],
@@ -198,7 +201,7 @@ class JobsScreen extends StatelessWidget {
                 ],
               ),
             ),
-        
+
             Padding(
               padding: const EdgeInsets.all(Sizes.spaceBtwSections),
               child: RoundedContainer(
@@ -211,6 +214,63 @@ class JobsScreen extends StatelessWidget {
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class JobsInfoCard extends StatelessWidget {
+  final String title;
+  final String subtitle;
+  final String value;
+
+  const JobsInfoCard({super.key,
+  required this.title,
+  required this.subtitle,
+  required this.value
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final dark = HelperFunction.isDarkMode(context);
+    return RoundedContainer(
+      padding: const EdgeInsets.all(Sizes.spaceBtwItems),
+      backgroundColor: dark
+          ? Colors.white.withValues(alpha: 0.1)
+          : Colors.black.withValues(alpha: 0.1),
+      radius: 12,
+      boxShadow: const [BoxShadow(color: Colors.black12, blurRadius: 4)],
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              Container(
+                padding: const EdgeInsets.all(8),
+                decoration: const BoxDecoration(
+                  color: Color(0xFFE3F2FD),
+                  shape: BoxShape.circle,
+                ),
+                child: const Icon(Icons.people, color: Colors.blue),
+              ),
+              const SizedBox(width: 8),
+              Text(
+                title,
+                style: const TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 16),
+          Text(
+            value,
+            style: const TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
+          ),
+          const SizedBox(height: 8),
+          Text(subtitle, style: const TextStyle(color: Colors.grey)),
+        ],
       ),
     );
   }
