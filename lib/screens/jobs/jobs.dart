@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import '../../common/widgets/custom_shapes/containers/rounded_container.dart';
+import '../../utils/constants/custom_colors.dart';
 import '../../utils/constants/responsive_sizes.dart';
 import '../../utils/constants/sizes.dart';
 import '../../utils/helpers/helper_function.dart';
-import '../dashboard/widgets/dashboard_overview.dart';
 import '../reponsive/responsive_appbar.dart';
 import '../reponsive/responsive_scaffold.dart';
 import 'widgets/jobs_table.dart';
@@ -50,113 +50,119 @@ class JobsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double screenHeight = MediaQuery.of(context).size.height;
-    double screenWidth = MediaQuery.of(context).size.width;
     final dark = HelperFunction.isDarkMode(context);
     return ResponsiveScaffold(
-      mobileBody: Column(
-        children: [
-          Padding(
-            padding: EdgeInsets.all(
-              responsiveSize(context, Sizes.spaceBtwItems),
+      mobileBody: SingleChildScrollView(
+        child: Column(
+          children: [
+            Padding(
+              padding: EdgeInsets.all(
+                responsiveSize(context, Sizes.spaceBtwItems),
+              ),
+              child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.all(Sizes.sm),
+                            child: JobsInfoCard(
+                              color: CustomColors.success,
+                              title: 'Completed Jobs',
+                              subtitle: '',
+                              value: '100525000',
+                            ),
+                          ),
+                        ),
+        
+                        Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.all(Sizes.sm),
+                            child: JobsInfoCard(
+                              color: CustomColors.warning,
+                              title: 'Pending Jobs',
+                              subtitle: '',
+                              value: '75605230',
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
             ),
-            child: SizedBox(
-              height: screenHeight * 0.18,
-              child: ListView(
-                physics: const BouncingScrollPhysics(),
-                scrollDirection: Axis.horizontal,
-                shrinkWrap: true,
-                children: [
-                  Padding(
-                    padding: EdgeInsets.all(responsiveSize(context, 4)),
-                    child: DashboardOverview(
-                      width: screenWidth * 0.70,
-                      backgroundColor: Color(0xFF7DBBFF),
-                      title: 'Completed Jobs',
-                      amount: 100525000,
-                    ),
-                  ),
-
-                  Padding(
-                    padding: EdgeInsets.all(responsiveSize(context, 4)),
-                    child: DashboardOverview(
-                      width: screenWidth * 0.70,
-                      backgroundColor: Color(0xFFB899EB),
-                      title: 'Pending Jobs',
-                      amount: 75605230,
-                    ),
-                  ),
-                ],
+        
+            SizedBox(height: responsiveSize(context, Sizes.spaceBtwItems)),
+            Padding(
+              padding: EdgeInsets.all(
+                responsiveSize(context, Sizes.spaceBtwItems),
+              ),
+              child: RoundedContainer(
+                padding: EdgeInsets.all(responsiveSize(context, Sizes.sm)),
+                radius: Sizes.cardRadiusSm,
+      backgroundColor: dark
+          ? Colors.white.withValues(alpha: 0.1)
+          : Colors.black.withValues(alpha: 0.1),
+                showBorder: true,
+                borderColor: dark ? Colors.white : Colors.black,
+                child: JobsTable(jobs: jobs),
               ),
             ),
-          ),
-
-          SizedBox(height: responsiveSize(context, Sizes.spaceBtwItems)),
-          Padding(
-            padding: EdgeInsets.all(
-              responsiveSize(context, Sizes.spaceBtwItems),
-            ),
-            child: RoundedContainer(
-              padding: EdgeInsets.all(responsiveSize(context, Sizes.sm)),
-              backgroundColor: Colors.transparent,
-              showBorder: true,
-              borderColor: dark ? Colors.white : Colors.black,
-              child: JobsTable(jobs: jobs),
-            ),
-          ),
-        ],
+          ],
+        ),
       ),
-      tabletBody: Column(
-        children: [
-          Padding(
-            padding: EdgeInsets.all(
-              responsiveSize(context, Sizes.spaceBtwItems),
+      tabletBody: SingleChildScrollView(
+        child: Column(
+          children: [
+            Padding(
+              padding: EdgeInsets.all(
+                responsiveSize(context, Sizes.spaceBtwItems),
+              ),
+              child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.all(Sizes.sm),
+                            child: JobsInfoCard(
+                              color: CustomColors.success,
+                              title: 'Completed Jobs',
+                              subtitle: '',
+                              value: '100525000',
+                            ),
+                          ),
+                        ),
+        
+                        Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.all(Sizes.sm),
+                            child: JobsInfoCard(
+                              color: CustomColors.warning,
+                              title: 'Pending Jobs',
+                              subtitle: '',
+                              value: '75605230',
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
             ),
-            child: SizedBox(
-              height: responsiveSize(context, 120),
-              child: ListView(
-                physics: const BouncingScrollPhysics(),
-                scrollDirection: Axis.horizontal,
-                shrinkWrap: true,
-                children: [
-                  Padding(
-                    padding: EdgeInsets.all(responsiveSize(context, 4)),
-                    child: DashboardOverview(
-                      width: screenWidth * 0.30,
-                      backgroundColor: Color(0xFF7DBBFF),
-                      title: 'Completed Jobs',
-                      amount: 100525000,
-                    ),
-                  ),
-
-                  Padding(
-                    padding: EdgeInsets.all(responsiveSize(context, 4)),
-                    child: DashboardOverview(
-                      width: screenWidth * 0.30,
-                      backgroundColor: Color(0xFFB899EB),
-                      title: 'Pending Jobs',
-                      amount: 75605230,
-                    ),
-                  ),
-                ],
+        
+            SizedBox(height: responsiveSize(context, Sizes.spaceBtwItems)),
+            Padding(
+              padding: EdgeInsets.all(
+                responsiveSize(context, Sizes.spaceBtwItems),
+              ),
+              child: RoundedContainer(
+                padding: EdgeInsets.all(responsiveSize(context, Sizes.sm)),
+                radius: Sizes.cardRadiusSm,
+      backgroundColor: dark
+          ? Colors.white.withValues(alpha: 0.1)
+          : Colors.black.withValues(alpha: 0.1),
+                showBorder: true,
+                borderColor: dark ? Colors.white : Colors.black,
+                child: JobsTable(jobs: jobs),
               ),
             ),
-          ),
-
-          SizedBox(height: responsiveSize(context, Sizes.spaceBtwItems)),
-          Padding(
-            padding: EdgeInsets.all(
-              responsiveSize(context, Sizes.spaceBtwItems),
-            ),
-            child: RoundedContainer(
-              padding: EdgeInsets.all(responsiveSize(context, Sizes.sm)),
-              backgroundColor: Colors.transparent,
-              showBorder: true,
-              borderColor: dark ? Colors.white : Colors.black,
-              child: JobsTable(jobs: jobs),
-            ),
-          ),
-        ],
+          ],
+        ),
       ),
       desktopBody: SingleChildScrollView(
         child: Column(
@@ -179,6 +185,7 @@ class JobsScreen extends StatelessWidget {
                         child: Padding(
                           padding: const EdgeInsets.all(Sizes.sm),
                           child: JobsInfoCard(
+                            color: CustomColors.success,
                             title: 'Completed Jobs',
                             subtitle: '',
                             value: '100525000',
@@ -190,6 +197,7 @@ class JobsScreen extends StatelessWidget {
                         child: Padding(
                           padding: const EdgeInsets.all(Sizes.sm),
                           child: JobsInfoCard(
+                            color: CustomColors.warning,
                             title: 'Pending Jobs',
                             subtitle: '',
                             value: '75605230',
@@ -206,7 +214,10 @@ class JobsScreen extends StatelessWidget {
               padding: const EdgeInsets.all(Sizes.spaceBtwSections),
               child: RoundedContainer(
                 padding: const EdgeInsets.all(Sizes.sm),
-                backgroundColor: Colors.transparent,
+                radius: Sizes.cardRadiusSm,
+      backgroundColor: dark
+          ? Colors.white.withValues(alpha: 0.1)
+          : Colors.black.withValues(alpha: 0.1),
                 showBorder: true,
                 borderColor: dark ? Colors.white : Colors.black,
                 child: JobsTable(jobs: jobs),
@@ -220,25 +231,31 @@ class JobsScreen extends StatelessWidget {
 }
 
 class JobsInfoCard extends StatelessWidget {
+  final double? width;
+  final Color color;
   final String title;
   final String subtitle;
   final String value;
 
-  const JobsInfoCard({super.key,
-  required this.title,
-  required this.subtitle,
-  required this.value
+  const JobsInfoCard({
+    super.key,
+    this.width,
+    required this.color,
+    required this.title,
+    required this.subtitle,
+    required this.value,
   });
 
   @override
   Widget build(BuildContext context) {
     final dark = HelperFunction.isDarkMode(context);
     return RoundedContainer(
+      width: width,
       padding: const EdgeInsets.all(Sizes.spaceBtwItems),
       backgroundColor: dark
           ? Colors.white.withValues(alpha: 0.1)
           : Colors.black.withValues(alpha: 0.1),
-      radius: 12,
+      radius: Sizes.cardRadiusMd,
       boxShadow: const [BoxShadow(color: Colors.black12, blurRadius: 4)],
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -251,24 +268,21 @@ class JobsInfoCard extends StatelessWidget {
                   color: Color(0xFFE3F2FD),
                   shape: BoxShape.circle,
                 ),
-                child: const Icon(Icons.people, color: Colors.blue),
+                child: Icon(Icons.cases_rounded, color: color),
               ),
-              const SizedBox(width: 8),
+              const SizedBox(width: Sizes.sm),
               Text(
                 title,
-                style: const TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.bold,
-                ),
+                style: Theme.of(context).textTheme.labelMedium
               ),
             ],
           ),
-          const SizedBox(height: 16),
+          const SizedBox(height: Sizes.spaceBtwItems),
           Text(
             value,
-            style: const TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
+            style: Theme.of(context).textTheme.bodyMedium,
           ),
-          const SizedBox(height: 8),
+          const SizedBox(height: Sizes.sm),
           Text(subtitle, style: const TextStyle(color: Colors.grey)),
         ],
       ),
