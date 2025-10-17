@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../../../utils/constants/custom_colors.dart';
 import '../../../utils/constants/sizes.dart';
+import '../../../utils/helpers/helper_function.dart';
 
 class UsersTable extends StatelessWidget {
   final List<Map<String, dynamic>> users;
@@ -11,6 +13,7 @@ class UsersTable extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final dark = HelperFunction.isDarkMode(context);
     return SingleChildScrollView(
               scrollDirection: Axis.vertical,
               child: SingleChildScrollView(
@@ -18,10 +21,12 @@ class UsersTable extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.all(Sizes.sm),
                   child: DataTable(
-                    columnSpacing: 30,
+                    columnSpacing: 100,
                     border: TableBorder.all(color: Colors.transparent),
                     columns: [
                       DataColumn(label: Text("Index",
+                            style: Theme.of(context).textTheme.labelLarge,)),
+                      DataColumn(label: Text("Sign Up",
                             style: Theme.of(context).textTheme.labelLarge,)),
                       DataColumn(label: Text("User ID",
                             style: Theme.of(context).textTheme.labelLarge,)),
@@ -47,7 +52,9 @@ class UsersTable extends StatelessWidget {
                         return DataRow(
                           cells: [
                             DataCell(Text((index + 1).toString(),
-                            style: Theme.of(context).textTheme.labelSmall,)), // index on Y axis
+                            style: Theme.of(context).textTheme.labelSmall,)),
+                            DataCell(Text(user["date"].toString(),
+                            style: Theme.of(context).textTheme.labelSmall!.copyWith(fontWeight: FontWeight.bold),)),
                             DataCell(Text(user["userId"].toString(),
                             style: Theme.of(context).textTheme.labelSmall!.copyWith(fontWeight: FontWeight.bold),)),
                             DataCell(CircleAvatar(

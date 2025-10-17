@@ -12,6 +12,7 @@ import 'widgets/users_table.dart';
 class UsersScreen extends StatelessWidget {
   final List<Map<String, dynamic>> users = [
     {
+      "date": DateTime.now(),
       "userId": "001",
       "profileImage": Iconsax.user,
       "firstName": "John",
@@ -22,6 +23,7 @@ class UsersScreen extends StatelessWidget {
       "userType": "Provider",
     },
     {
+      "date": DateTime.now(),
       "userId": "002",
       "profileImage": Iconsax.user,
       "firstName": "Jane",
@@ -32,6 +34,7 @@ class UsersScreen extends StatelessWidget {
       "userType": "Employer",
     },
     {
+      "date": DateTime.now(),
       "userId": "003",
       "profileImage": Iconsax.user,
       "firstName": "Michael",
