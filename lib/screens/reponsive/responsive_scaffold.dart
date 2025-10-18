@@ -11,6 +11,7 @@ class ResponsiveScaffold extends StatelessWidget {
   final Widget mobileBody;
   final Widget tabletBody;
   final Widget desktopBody;
+  final String title;
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey();
 
   ResponsiveScaffold({
@@ -18,6 +19,7 @@ class ResponsiveScaffold extends StatelessWidget {
     required this.mobileBody,
     required this.tabletBody,
     required this.desktopBody,
+    required this.title
   });
 
   @override
@@ -28,7 +30,7 @@ class ResponsiveScaffold extends StatelessWidget {
         if (DeviceUtils.isMobileScreen(context)) {
           return Scaffold(
             key: scaffoldKey,
-            appBar: CustomHeader(scaffoldKey: scaffoldKey),
+            appBar: CustomHeader(title: title, scaffoldKey: scaffoldKey),
             drawer: _buildDrawer(context), // show drawer on small screens
             body: mobileBody,
           );
@@ -36,7 +38,7 @@ class ResponsiveScaffold extends StatelessWidget {
         // Tablet < 1024px
         else if (DeviceUtils.isTabletScreen(context)) {
           return Scaffold(
-            appBar: CustomHeader(),
+            appBar: CustomHeader(title: title),
             drawer: _buildDrawer(context), // still use drawer
             body: tabletBody,
           );
@@ -64,8 +66,8 @@ class ResponsiveScaffold extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         border: Border(
-          right: BorderSide(color: CustomColors.darkGrey, width: 0.3)
-        )
+          right: BorderSide(color: CustomColors.darkGrey, width: 0.3),
+        ),
       ),
       child: Drawer(
         width: responsiveSize(context, 300),
@@ -73,9 +75,12 @@ class ResponsiveScaffold extends StatelessWidget {
         shape: BeveledRectangleBorder(),
         child: ListView(
           children: [
-            SizedBox(height: responsiveSize(context, Sizes.spaceBtwSections),),
+            SizedBox(height: responsiveSize(context, Sizes.spaceBtwSections)),
             ListTile(
-              title: Text("Home", style: Theme.of(context).textTheme.labelSmall),
+              title: Text(
+                "Home",
+                style: Theme.of(context).textTheme.labelSmall,
+              ),
             ),
             ListTile(
               title: Text(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../common/widgets/custom_shapes/containers/rounded_container.dart';
 import '../../../utils/constants/custom_colors.dart';
 import '../../../utils/constants/sizes.dart';
 import '../../../utils/helpers/helper_function.dart';
@@ -17,55 +18,135 @@ class TransactionsTable extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(Sizes.sm),
           child: DataTable(
-            columnSpacing: 30,
+            columnSpacing: 100,
             border: TableBorder.all(color: Colors.transparent),
             columns: [
               DataColumn(
-                label: Text(
-                  "Index",
-                  style: Theme.of(context).textTheme.labelLarge,
+                label: RoundedContainer(
+                  backgroundColor: dark
+                      ? CustomColors.alternate.withValues(alpha: 0.2)
+                      : CustomColors.primary.withValues(alpha: 0.2),
+                  padding: const EdgeInsets.symmetric(
+                    vertical: Sizes.sm,
+                    horizontal: Sizes.md,
+                  ),
+                  radius: Sizes.cardRadiusSm,
+                  child: Text(
+                    "Index",
+                    style: Theme.of(context).textTheme.labelLarge,
+                  ),
                 ),
               ),
               DataColumn(
-                label: Text(
-                  "ID",
-                  style: Theme.of(context).textTheme.labelLarge,
+                label: RoundedContainer(
+                  backgroundColor: dark
+                      ? CustomColors.alternate.withValues(alpha: 0.2)
+                      : CustomColors.primary.withValues(alpha: 0.2),
+                  padding: const EdgeInsets.symmetric(
+                    vertical: Sizes.sm,
+                    horizontal: Sizes.md,
+                  ),
+                  radius: Sizes.cardRadiusSm,
+                  child: Text(
+                    "ID",
+                    style: Theme.of(context).textTheme.labelLarge,
+                  ),
                 ),
               ),
               DataColumn(
-                label: Text(
-                  "Transaction Type",
-                  style: Theme.of(context).textTheme.labelLarge,
+                label: RoundedContainer(
+                  backgroundColor: dark
+                      ? CustomColors.alternate.withValues(alpha: 0.2)
+                      : CustomColors.primary.withValues(alpha: 0.2),
+                  padding: const EdgeInsets.symmetric(
+                    vertical: Sizes.sm,
+                    horizontal: Sizes.md,
+                  ),
+                  radius: Sizes.cardRadiusSm,
+                  child: Text(
+                    "Transaction Type",
+                    style: Theme.of(context).textTheme.labelLarge,
+                  ),
                 ),
               ),
               DataColumn(
-                label: Text(
-                  "Amount",
-                  style: Theme.of(context).textTheme.labelLarge,
+                label: RoundedContainer(
+                  backgroundColor: dark
+                      ? CustomColors.alternate.withValues(alpha: 0.2)
+                      : CustomColors.primary.withValues(alpha: 0.2),
+                  padding: const EdgeInsets.symmetric(
+                    vertical: Sizes.sm,
+                    horizontal: Sizes.md,
+                  ),
+                  radius: Sizes.cardRadiusSm,
+                  child: Text(
+                    "Amount",
+                    style: Theme.of(context).textTheme.labelLarge,
+                  ),
                 ),
               ),
               DataColumn(
-                label: Text(
-                  "Status",
-                  style: Theme.of(context).textTheme.labelLarge,
+                label: RoundedContainer(
+                  backgroundColor: dark
+                      ? CustomColors.alternate.withValues(alpha: 0.2)
+                      : CustomColors.primary.withValues(alpha: 0.2),
+                  padding: const EdgeInsets.symmetric(
+                    vertical: Sizes.sm,
+                    horizontal: Sizes.md,
+                  ),
+                  radius: Sizes.cardRadiusSm,
+                  child: Text(
+                    "Status",
+                    style: Theme.of(context).textTheme.labelLarge,
+                  ),
                 ),
               ),
               DataColumn(
-                label: Text(
-                  "Description",
-                  style: Theme.of(context).textTheme.labelLarge,
+                label: RoundedContainer(
+                  backgroundColor: dark
+                      ? CustomColors.alternate.withValues(alpha: 0.2)
+                      : CustomColors.primary.withValues(alpha: 0.2),
+                  padding: const EdgeInsets.symmetric(
+                    vertical: Sizes.sm,
+                    horizontal: Sizes.md,
+                  ),
+                  radius: Sizes.cardRadiusSm,
+                  child: Text(
+                    "Description",
+                    style: Theme.of(context).textTheme.labelLarge,
+                  ),
                 ),
               ),
               DataColumn(
-                label: Text(
-                  "Reference",
-                  style: Theme.of(context).textTheme.labelLarge,
+                label: RoundedContainer(
+                  backgroundColor: dark
+                      ? CustomColors.alternate.withValues(alpha: 0.2)
+                      : CustomColors.primary.withValues(alpha: 0.2),
+                  padding: const EdgeInsets.symmetric(
+                    vertical: Sizes.sm,
+                    horizontal: Sizes.md,
+                  ),
+                  radius: Sizes.cardRadiusSm,
+                  child: Text(
+                    "Reference",
+                    style: Theme.of(context).textTheme.labelLarge,
+                  ),
                 ),
               ),
               DataColumn(
-                label: Text(
-                  "Date",
-                  style: Theme.of(context).textTheme.labelLarge,
+                label: RoundedContainer(
+                  backgroundColor: dark
+                      ? CustomColors.alternate.withValues(alpha: 0.2)
+                      : CustomColors.primary.withValues(alpha: 0.2),
+                  padding: const EdgeInsets.symmetric(
+                    vertical: Sizes.sm,
+                    horizontal: Sizes.md,
+                  ),
+                  radius: Sizes.cardRadiusSm,
+                  child: Text(
+                    "Date",
+                    style: Theme.of(context).textTheme.labelLarge,
+                  ),
                 ),
               ),
             ],
@@ -76,13 +157,17 @@ class TransactionsTable extends StatelessWidget {
                   DataCell(
                     Text(
                       (index + 1).toString(),
-                      style: Theme.of(context).textTheme.bodyLarge!.copyWith(fontWeight: FontWeight.bold),
+                      style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ), // index on Y axis
                   DataCell(
                     Text(
                       user["id"].toString(),
-                      style: Theme.of(context).textTheme.labelSmall!.copyWith(fontWeight: FontWeight.bold),
+                      style: Theme.of(context).textTheme.labelSmall!.copyWith(
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                   DataCell(
@@ -105,31 +190,41 @@ class TransactionsTable extends StatelessWidget {
                   DataCell(
                     Text(
                       user["amount"].toString(),
-                      style: Theme.of(context).textTheme.labelSmall!.copyWith(fontWeight: FontWeight.bold),
+                      style: Theme.of(context).textTheme.labelSmall!.copyWith(
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                   DataCell(
                     Text(
                       user["transactionStatus"].toString(),
-                      style: Theme.of(context).textTheme.labelSmall!.copyWith(fontWeight: FontWeight.bold),
+                      style: Theme.of(context).textTheme.labelSmall!.copyWith(
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                   DataCell(
                     Text(
                       user["description"].toString(),
-                      style: Theme.of(context).textTheme.labelSmall!.copyWith(fontWeight: FontWeight.bold),
+                      style: Theme.of(context).textTheme.labelSmall!.copyWith(
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                   DataCell(
                     Text(
                       user["reference"].toString(),
-                      style: Theme.of(context).textTheme.labelSmall!.copyWith(fontWeight: FontWeight.bold),
+                      style: Theme.of(context).textTheme.labelSmall!.copyWith(
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                   DataCell(
                     Text(
                       user["date"].toString(),
-                      style: Theme.of(context).textTheme.labelSmall!.copyWith(fontWeight: FontWeight.bold),
+                      style: Theme.of(context).textTheme.labelSmall!.copyWith(
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ],

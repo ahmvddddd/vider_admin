@@ -54,6 +54,7 @@ class UsersScreen extends StatelessWidget {
     final dark = HelperFunction.isDarkMode(context);
 
     return ResponsiveScaffold(
+              title: 'Users',
       mobileBody: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -159,7 +160,9 @@ class UsersScreen extends StatelessWidget {
       desktopBody: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          CustomHeader(),
+          CustomHeader(
+            title: 'Users',
+          ),
           SingleChildScrollView(
             child: Padding(
               padding: const EdgeInsets.all(

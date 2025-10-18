@@ -15,7 +15,6 @@ class UserManagementPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            CustomHeader(),
             Row(
               children: [
                 // Main Content
@@ -401,7 +400,9 @@ class UsersDesktop extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        CustomHeader(),
+        CustomHeader(
+          title: 'Users'
+        ),
         SingleChildScrollView(
           child: Row(
             children: [

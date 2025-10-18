@@ -53,14 +53,13 @@ class JobsScreen extends StatelessWidget {
     double screenWidth = MediaQuery.of(context).size.height;
     final dark = HelperFunction.isDarkMode(context);
     return ResponsiveScaffold(
+      title: 'Jobs',
       mobileBody: SingleChildScrollView(
-        child: Column(
-          children: [
-            Padding(
-              padding: EdgeInsets.all(
-                responsiveSize(context, Sizes.spaceBtwItems),
-              ),
-              child: Column(
+        child: Padding(
+          padding: EdgeInsets.all(responsiveSize(context, Sizes.spaceBtwItems)),
+          child: Column(
+            children: [
+              Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
@@ -73,7 +72,7 @@ class JobsScreen extends StatelessWidget {
                       value: '100525000',
                     ),
                   ),
-              
+
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: Sizes.sm),
                     child: JobsInfoCard(
@@ -86,14 +85,9 @@ class JobsScreen extends StatelessWidget {
                   ),
                 ],
               ),
-            ),
 
-            SizedBox(height: responsiveSize(context, Sizes.spaceBtwItems)),
-            Padding(
-              padding: EdgeInsets.all(
-                responsiveSize(context, Sizes.spaceBtwItems),
-              ),
-              child: RoundedContainer(
+              SizedBox(height: responsiveSize(context, Sizes.spaceBtwItems)),
+              RoundedContainer(
                 padding: EdgeInsets.all(responsiveSize(context, Sizes.sm)),
                 radius: Sizes.cardRadiusSm,
                 backgroundColor: dark
@@ -103,8 +97,8 @@ class JobsScreen extends StatelessWidget {
                 borderColor: dark ? Colors.white : Colors.black,
                 child: JobsTable(jobs: jobs),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
       tabletBody: SingleChildScrollView(
@@ -166,61 +160,61 @@ class JobsScreen extends StatelessWidget {
       desktopBody: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          CustomHeader(),
-      
-          SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.all(Sizes.spaceBtwSections),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text('Jobs', style: Theme.of(context).textTheme.bodySmall),
-                  
-                  const SizedBox(height: Sizes.spaceBtwItems),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.all(Sizes.sm),
-                          child: JobsInfoCard(
-                            color: CustomColors.success,
-                            title: 'Completed Jobs',
-                            subtitle: '',
-                            value: '100525000',
+          CustomHeader(title: 'Jobs'),
+
+          Expanded(
+            child: SingleChildScrollView(
+              child: Padding(
+                padding: const EdgeInsets.all(Sizes.spaceBtwSections),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text('Jobs', style: Theme.of(context).textTheme.bodySmall),
+
+                    const SizedBox(height: Sizes.spaceBtwItems),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.all(Sizes.sm),
+                            child: JobsInfoCard(
+                              color: CustomColors.success,
+                              title: 'Completed Jobs',
+                              subtitle: '',
+                              value: '100525000',
+                            ),
                           ),
                         ),
-                      ),
-                  
-                      Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.all(Sizes.sm),
-                          child: JobsInfoCard(
-                            color: CustomColors.warning,
-                            title: 'Pending Jobs',
-                            subtitle: '',
-                            value: '75605230',
+
+                        Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.all(Sizes.sm),
+                            child: JobsInfoCard(
+                              color: CustomColors.warning,
+                              title: 'Pending Jobs',
+                              subtitle: '',
+                              value: '75605230',
+                            ),
                           ),
                         ),
-                      ),
-                    ],
-                  ),
-                ],
+                      ],
+                    ),
+
+                    const SizedBox(height: Sizes.spaceBtwSections),
+                    RoundedContainer(
+                      padding: const EdgeInsets.all(Sizes.sm),
+                      radius: Sizes.cardRadiusSm,
+                      backgroundColor: dark
+                          ? Colors.white.withValues(alpha: 0.1)
+                          : Colors.black.withValues(alpha: 0.1),
+                      showBorder: true,
+                      borderColor: dark ? Colors.white : Colors.black,
+                      child: JobsTable(jobs: jobs),
+                    ),
+                  ],
+                ),
               ),
-            ),
-          ),
-      
-          Padding(
-            padding: const EdgeInsets.all(Sizes.spaceBtwSections),
-            child: RoundedContainer(
-              padding: const EdgeInsets.all(Sizes.sm),
-              radius: Sizes.cardRadiusSm,
-              backgroundColor: dark
-                  ? Colors.white.withValues(alpha: 0.1)
-                  : Colors.black.withValues(alpha: 0.1),
-              showBorder: true,
-              borderColor: dark ? Colors.white : Colors.black,
-              child: JobsTable(jobs: jobs),
             ),
           ),
         ],

@@ -78,6 +78,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
   Widget build(BuildContext context) {
     final dark = HelperFunction.isDarkMode(context);
     return ResponsiveScaffold(
+              title: 'Notifications',
       mobileBody: NotificationsMobile(),
       tabletBody: NotificationsTablet(),
       desktopBody: SingleChildScrollView(
@@ -85,7 +86,8 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            CustomHeader(),
+            CustomHeader(
+              title: 'Notifications',),
 
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -98,10 +100,6 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        // const Text('Create Notification',
-                        //     style: TextStyle(
-                        //         fontSize: 28, fontWeight: FontWeight.bold)),
-                        // const SizedBox(height: 12),
 
                         // Notification Details Card
                         RoundedContainer(
