@@ -200,9 +200,10 @@ class UsersScreen extends StatelessWidget {
             ),
             child: RoundedContainer(
               padding: const EdgeInsets.all(Sizes.sm),
-              backgroundColor: Colors.transparent,
-              showBorder: true,
-              borderColor: dark ? Colors.white : Colors.black,
+              radius: Sizes.cardRadiusSm,
+              backgroundColor: dark
+                  ? Colors.white.withValues(alpha: 0.1)
+                  : Colors.black.withValues(alpha: 0.1),
               child: UsersTable(users: users),
             ),
           ),

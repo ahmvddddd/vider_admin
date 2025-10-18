@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import '../../screens/approvals/approvals.dart';
-import '../../screens/jobs/widgets/jobs_desktop.dart';
 import '../../screens/notifications/notifications.dart';
 import '../../screens/transactions/transactions.dart';
 import '../../screens/users/users.dart';

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../common/widgets/custom_shapes/containers/rounded_container.dart';
 import '../../../utils/constants/custom_colors.dart';
 import '../../../utils/constants/sizes.dart';
 import '../../../utils/helpers/helper_function.dart';
@@ -24,26 +25,76 @@ class UsersTable extends StatelessWidget {
                     columnSpacing: 100,
                     border: TableBorder.all(color: Colors.transparent),
                     columns: [
-                      DataColumn(label: Text("Index",
-                            style: Theme.of(context).textTheme.labelLarge,)),
-                      DataColumn(label: Text("Sign Up",
-                            style: Theme.of(context).textTheme.labelLarge,)),
-                      DataColumn(label: Text("User ID",
-                            style: Theme.of(context).textTheme.labelLarge,)),
-                      DataColumn(label: Text("Profile Image",
-                            style: Theme.of(context).textTheme.labelLarge,)),
-                      DataColumn(label: Text("First Name",
-                            style: Theme.of(context).textTheme.labelLarge,)),
-                      DataColumn(label: Text("Last Name",
-                            style: Theme.of(context).textTheme.labelLarge,)),
-                      DataColumn(label: Text("Username",
-                            style: Theme.of(context).textTheme.labelLarge,)),
-                      DataColumn(label: Text("Email",
-                            style: Theme.of(context).textTheme.labelLarge,)),
-                      DataColumn(label: Text("Verified",
-                            style: Theme.of(context).textTheme.labelLarge,)),
-                      DataColumn(label: Text("User Type",
-                            style: Theme.of(context).textTheme.labelLarge,)),
+                      DataColumn(label: RoundedContainer(
+                        backgroundColor: dark ? CustomColors.alternate.withValues(alpha: 0.2) : CustomColors.primary.withValues(alpha: 0.2),
+                        padding: const EdgeInsets.symmetric(vertical: Sizes.sm, horizontal: Sizes.md),
+                        radius: Sizes.cardRadiusSm,
+                        child: Text("Index",
+                              style: Theme.of(context).textTheme.labelLarge!.copyWith(color: dark ? CustomColors.alternate : CustomColors.primary),),
+                      )),
+                      DataColumn(label: RoundedContainer(
+                        backgroundColor: dark ? CustomColors.alternate.withValues(alpha: 0.2) : CustomColors.primary.withValues(alpha: 0.2),
+                        padding: const EdgeInsets.symmetric(vertical: Sizes.sm, horizontal: Sizes.md),
+                        radius: Sizes.cardRadiusSm,
+                        child: Text("Sign Up Date",
+                              style: Theme.of(context).textTheme.labelLarge!.copyWith(color: dark ? CustomColors.alternate : CustomColors.primary),),
+                      )),
+                      DataColumn(label: RoundedContainer(
+                        backgroundColor: dark ? CustomColors.alternate.withValues(alpha: 0.2) : CustomColors.primary.withValues(alpha: 0.2),
+                        padding: const EdgeInsets.symmetric(vertical: Sizes.sm, horizontal: Sizes.md),
+                        radius: Sizes.cardRadiusSm,
+                        child: Text("User ID",
+                              style: Theme.of(context).textTheme.labelLarge!.copyWith(color: dark ? CustomColors.alternate : CustomColors.primary),),
+                      )),
+                      DataColumn(label: RoundedContainer(
+                        backgroundColor: dark ? CustomColors.alternate.withValues(alpha: 0.2) : CustomColors.primary.withValues(alpha: 0.2),
+                        padding: const EdgeInsets.symmetric(vertical: Sizes.sm, horizontal: Sizes.md),
+                        radius: Sizes.cardRadiusSm,
+                        child: Text("Profile Image",
+                              style: Theme.of(context).textTheme.labelLarge!.copyWith(color: dark ? CustomColors.alternate : CustomColors.primary),),
+                      )),
+                      DataColumn(label: RoundedContainer(
+                        backgroundColor: dark ? CustomColors.alternate.withValues(alpha: 0.2) : CustomColors.primary.withValues(alpha: 0.2),
+                        padding: const EdgeInsets.symmetric(vertical: Sizes.sm, horizontal: Sizes.md),
+                        radius: Sizes.cardRadiusSm,
+                        child: Text("First Name",
+                              style: Theme.of(context).textTheme.labelLarge!.copyWith(color: dark ? CustomColors.alternate : CustomColors.primary),),
+                      )),
+                      DataColumn(label: RoundedContainer(
+                        backgroundColor: dark ? CustomColors.alternate.withValues(alpha: 0.2) : CustomColors.primary.withValues(alpha: 0.2),
+                        padding: const EdgeInsets.symmetric(vertical: Sizes.sm, horizontal: Sizes.md),
+                        radius: Sizes.cardRadiusSm,
+                        child: Text("Last Name",
+                              style: Theme.of(context).textTheme.labelLarge!.copyWith(color: dark ? CustomColors.alternate : CustomColors.primary),),
+                      )),
+                      DataColumn(label: RoundedContainer(
+                        backgroundColor: dark ? CustomColors.alternate.withValues(alpha: 0.2) : CustomColors.primary.withValues(alpha: 0.5),
+                        padding: const EdgeInsets.symmetric(vertical: Sizes.sm, horizontal: Sizes.md),
+                        radius: Sizes.cardRadiusSm,
+                        child: Text("Username",
+                              style: Theme.of(context).textTheme.labelLarge!.copyWith(color: dark ? CustomColors.alternate : CustomColors.primary),),
+                      )),
+                      DataColumn(label: RoundedContainer(
+                        backgroundColor: dark ? CustomColors.alternate.withValues(alpha: 0.2) : CustomColors.primary.withValues(alpha: 0.5),
+                        padding: const EdgeInsets.symmetric(vertical: Sizes.sm, horizontal: Sizes.md),
+                        radius: Sizes.cardRadiusSm,
+                        child: Text("Email",
+                              style: Theme.of(context).textTheme.labelLarge!.copyWith(color: dark ? CustomColors.alternate : CustomColors.primary),),
+                      )),
+                      DataColumn(label: RoundedContainer(
+                        backgroundColor: dark ? CustomColors.alternate.withValues(alpha: 0.2) : CustomColors.primary.withValues(alpha: 0.2),
+                        padding: const EdgeInsets.symmetric(vertical: Sizes.sm, horizontal: Sizes.md),
+                        radius: Sizes.cardRadiusSm,
+                        child: Text("Verified",
+                              style: Theme.of(context).textTheme.labelLarge!.copyWith(color: dark ? CustomColors.alternate : CustomColors.primary),),
+                      )),
+                      DataColumn(label: RoundedContainer(
+                        backgroundColor: dark ? CustomColors.alternate.withValues(alpha: 0.2) : CustomColors.primary.withValues(alpha: 0.2),
+                        padding: const EdgeInsets.symmetric(vertical: Sizes.sm, horizontal: Sizes.md),
+                        radius: Sizes.cardRadiusSm,
+                        child: Text("User Type",
+                              style: Theme.of(context).textTheme.labelLarge!.copyWith(color: dark ? CustomColors.alternate : CustomColors.primary),),
+                      )),
                     ],
                     rows: List<DataRow>.generate(
                       users.length,
