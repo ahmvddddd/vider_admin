@@ -36,7 +36,7 @@ class JobsPerMonthChart extends StatelessWidget {
         children: [
           Text(
             'Monthly Job Execution',
-            style: Theme.of(context).textTheme.labelMedium,
+            style: Theme.of(context).textTheme.bodyMedium,
           ),
           const SizedBox(height: Sizes.spaceBtwSections),
           SfCartesianChart(

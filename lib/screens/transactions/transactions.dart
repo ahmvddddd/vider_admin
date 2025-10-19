@@ -106,7 +106,6 @@ class TransactionsScreen extends StatelessWidget {
               backgroundColor: dark
                   ? Colors.white.withValues(alpha: 0.1)
                   : Colors.black.withValues(alpha: 0.1),
-              showBorder: true,
                 child: TransactionsTable(transactions: transactions),
               ),
             ),
@@ -224,12 +223,11 @@ class TransactionsScreen extends StatelessWidget {
 
                     const SizedBox(height: Sizes.spaceBtwSections,),
                     RoundedContainer(
-                      padding: const EdgeInsets.all(Sizes.sm),
-                      radius: Sizes.cardRadiusSm,
-                      backgroundColor: dark
-                          ? Colors.white.withValues(alpha: 0.1)
-                          : Colors.black.withValues(alpha: 0.1),
-                      showBorder: true,
+              padding: const EdgeInsets.all(Sizes.sm),
+              radius: Sizes.cardRadiusSm,
+              backgroundColor: dark
+                  ? Colors.white.withValues(alpha: 0.1)
+                  : Colors.black.withValues(alpha: 0.1),
                       child: TransactionsTable(transactions: transactions),
                     ),
                   ],

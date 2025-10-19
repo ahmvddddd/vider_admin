@@ -94,10 +94,11 @@ class UsersScreen extends StatelessWidget {
                 responsiveSize(context, Sizes.spaceBtwItems),
               ),
               child: RoundedContainer(
-                padding: const EdgeInsets.all(Sizes.sm),
-                backgroundColor: Colors.transparent,
-                showBorder: true,
-                borderColor: dark ? Colors.white : Colors.black,
+              padding: const EdgeInsets.all(Sizes.sm),
+              radius: Sizes.cardRadiusSm,
+              backgroundColor: dark
+                  ? Colors.white.withValues(alpha: 0.1)
+                  : Colors.black.withValues(alpha: 0.1),
                 child: UsersTable(users: users),
               ),
             ),
@@ -150,7 +151,6 @@ class UsersScreen extends StatelessWidget {
               backgroundColor: dark
                   ? Colors.white.withValues(alpha: 0.1)
                   : Colors.black.withValues(alpha: 0.1),
-              showBorder: true,
                 child: UsersTable(users: users),
               ),
             ),

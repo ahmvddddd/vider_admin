@@ -88,13 +88,11 @@ class JobsScreen extends StatelessWidget {
 
               SizedBox(height: responsiveSize(context, Sizes.spaceBtwItems)),
               RoundedContainer(
-                padding: EdgeInsets.all(responsiveSize(context, Sizes.sm)),
+                padding: const EdgeInsets.all(Sizes.sm),
                 radius: Sizes.cardRadiusSm,
                 backgroundColor: dark
                     ? Colors.white.withValues(alpha: 0.1)
                     : Colors.black.withValues(alpha: 0.1),
-                showBorder: true,
-                borderColor: dark ? Colors.white : Colors.black,
                 child: JobsTable(jobs: jobs),
               ),
             ],
@@ -144,13 +142,11 @@ class JobsScreen extends StatelessWidget {
                 responsiveSize(context, Sizes.spaceBtwItems),
               ),
               child: RoundedContainer(
-                padding: EdgeInsets.all(responsiveSize(context, Sizes.sm)),
+                padding: const EdgeInsets.all(Sizes.sm),
                 radius: Sizes.cardRadiusSm,
                 backgroundColor: dark
                     ? Colors.white.withValues(alpha: 0.1)
                     : Colors.black.withValues(alpha: 0.1),
-                showBorder: true,
-                borderColor: dark ? Colors.white : Colors.black,
                 child: JobsTable(jobs: jobs),
               ),
             ),
@@ -169,9 +165,6 @@ class JobsScreen extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('Jobs', style: Theme.of(context).textTheme.bodySmall),
-
-                    const SizedBox(height: Sizes.spaceBtwItems),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -208,7 +201,6 @@ class JobsScreen extends StatelessWidget {
                       backgroundColor: dark
                           ? Colors.white.withValues(alpha: 0.1)
                           : Colors.black.withValues(alpha: 0.1),
-                      showBorder: true,
                       borderColor: dark ? Colors.white : Colors.black,
                       child: JobsTable(jobs: jobs),
                     ),

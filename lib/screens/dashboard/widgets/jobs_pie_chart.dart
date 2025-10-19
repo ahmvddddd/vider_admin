@@ -35,7 +35,7 @@ class JobsByCountryPieChart extends StatelessWidget {
         children: [
           Text(
             'Top 5 Countries with Highest Job Executions',
-            style: Theme.of(context).textTheme.labelMedium,
+            style: Theme.of(context).textTheme.bodyMedium,
           ),
 
           const SizedBox(height: Sizes.spaceBtwSections),
@@ -54,7 +54,8 @@ class JobsByCountryPieChart extends StatelessWidget {
                 dataSource: countryData,
                 xValueMapper: (CountryJobData data, _) => data.country,
                 yValueMapper: (CountryJobData data, _) => data.jobs,
-                dataLabelSettings: const DataLabelSettings(isVisible: false),
+                dataLabelSettings: DataLabelSettings(isVisible: false,
+                textStyle: Theme.of(context).textTheme.labelSmall),
                 explode: true, // makes one slice pop out
                 explodeIndex: 0, // highlight the top country
                 pointColorMapper: (CountryJobData data, int index) {

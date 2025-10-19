@@ -33,7 +33,7 @@ class JobsPerWeekChart extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text('Weekly Job Execution',
-          style: Theme.of(context).textTheme.labelMedium,),
+          style: Theme.of(context).textTheme.bodyMedium,),
 
           const SizedBox(height: Sizes.spaceBtwSections,),
           SfCartesianChart(
@@ -60,11 +60,8 @@ class JobsPerWeekChart extends StatelessWidget {
                 xValueMapper: (JobData job, _) => job.month,
                 yValueMapper: (JobData job, _) => job.count,
                 name: 'Jobs',
-                borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(8),
-                  topRight: Radius.circular(8),
-                ),
-                dataLabelSettings: DataLabelSettings(isVisible: false),
+                dataLabelSettings: DataLabelSettings(isVisible: false,
+                textStyle: Theme.of(context).textTheme.labelSmall),
                 // Nice colorful bars
                 pointColorMapper: (JobData job, int index) {
                   final colors = [
