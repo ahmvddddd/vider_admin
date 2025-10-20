@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import '../../screens/dashboard/widgets/dashboard_overview.dart';
-import '../../utils/constants/responsive_sizes.dart';
-import '../../utils/constants/sizes.dart';
-import '../reponsive/responsive_appbar.dart';
 import '../reponsive/responsive_scaffold.dart';
+import 'widgets/approvals_desktop.dart';
+import 'widgets/approvals_mobile.dart';
+import 'widgets/approvals_tablet.dart';
 
 class ApprovalScreen extends StatelessWidget {
   const ApprovalScreen({super.key});
@@ -14,136 +13,11 @@ class ApprovalScreen extends StatelessWidget {
 
     return ResponsiveScaffold(
       title: 'Approvals',
-      mobileBody: SingleChildScrollView(
-        child: Padding(
-          padding: EdgeInsets.all(responsiveSize(context, Sizes.spaceBtwItems)),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text('Approvals', style: Theme.of(context).textTheme.bodySmall),
+      mobileBody: ApprovalsMobile(screenWidth: screenWidth),
 
-              SizedBox(height: responsiveSize(context, Sizes.spaceBtwItems)),
-              DashboardOverview(
-                width: screenWidth * 0.90,
-                backgroundColor: Colors.redAccent,
-                title: 'Suspended',
-                amount: 100,
-              ),
+      tabletBody: ApprovalsTablet(),
 
-              SizedBox(height: responsiveSize(context, Sizes.sm)),
-              DashboardOverview(
-                width: screenWidth * 0.90,
-                backgroundColor: Colors.amberAccent,
-                title: 'Unverified',
-                amount: 100,
-              ),
-
-              SizedBox(height: responsiveSize(context, Sizes.sm)),
-              DashboardOverview(
-                width: screenWidth * 0.90,
-                backgroundColor: Colors.blueGrey,
-                title: 'Disputes',
-                amount: 100,
-              ),
-            ],
-          ),
-        ),
-      ),
-
-      tabletBody: SingleChildScrollView(
-        child: Padding(
-          padding: EdgeInsets.all(responsiveSize(context, Sizes.spaceBtwItems)),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text('Approvals', style: Theme.of(context).textTheme.bodySmall),
-
-              const SizedBox(height: Sizes.spaceBtwItems),
-              Row(
-                children: [
-                  Expanded(
-                    child: DashboardOverview(
-                      width: 200,
-                      backgroundColor: Colors.redAccent,
-                      title: 'Suspended',
-                      amount: 100,
-                    ),
-                  ),
-                  Expanded(
-                    child: DashboardOverview(
-                      width: 200,
-                      backgroundColor: Colors.amberAccent,
-                      title: 'Unverified',
-                      amount: 100,
-                    ),
-                  ),
-                  Expanded(
-                    child: DashboardOverview(
-                      width: 200,
-                      backgroundColor: Colors.blueGrey,
-                      title: 'Disputes',
-                      amount: 100,
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ),
-      ),
-
-      desktopBody: Column(
-        children: [
-          CustomHeader(title: 'Approvals'),
-
-          Expanded(
-            child: SingleChildScrollView(
-              child: Padding(
-                padding: const EdgeInsets.all(Sizes.spaceBtwSections),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Approvals',
-                      style: Theme.of(context).textTheme.bodySmall,
-                    ),
-
-                    const SizedBox(height: Sizes.spaceBtwItems),
-                    Row(
-                      children: [
-                        Expanded(
-                          child: DashboardOverview(
-                            width: 200,
-                            backgroundColor: Colors.redAccent,
-                            title: 'Suspended',
-                            amount: 100,
-                          ),
-                        ),
-                        Expanded(
-                          child: DashboardOverview(
-                            width: 200,
-                            backgroundColor: Colors.amberAccent,
-                            title: 'Unverified',
-                            amount: 100,
-                          ),
-                        ),
-                        Expanded(
-                          child: DashboardOverview(
-                            width: 200,
-                            backgroundColor: Colors.blueGrey,
-                            title: 'Disputes',
-                            amount: 100,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ),
-        ],
-      ),
+      desktopBody: ApprovalsDesktop(),
     );
   }
 }
