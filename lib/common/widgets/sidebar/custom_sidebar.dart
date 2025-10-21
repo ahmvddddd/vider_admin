@@ -77,7 +77,16 @@ class CustomSideBar extends StatelessWidget {
                       icon: Iconsax.notification,
                       route: Routes.notifications,
                     ),
-                    ])
+                    ]),
+
+                    Padding(
+                      padding: const EdgeInsets.only(top: 100),
+                      child: SideBarWidget(
+                        title: 'Sign Out',
+                        icon: Iconsax.logout_1,
+                        route: Routes.notifications,
+                      ),
+                    ),
                   ],
                 ),
               ),

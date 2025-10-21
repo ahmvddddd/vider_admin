@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:iconsax/iconsax.dart';
+import 'package:vider_admin/common/widgets/sidebar/sidebar_widget.dart';
 import '../../common/widgets/sidebar/custom_sidebar.dart';
 import '../../utils/constants/custom_colors.dart';
 import '../../utils/constants/responsive_sizes.dart';
@@ -76,18 +78,25 @@ class ResponsiveScaffold extends StatelessWidget {
         child: ListView(
           children: [
             SizedBox(height: responsiveSize(context, Sizes.spaceBtwSections)),
-            ListTile(
-              title: Text(
-                "Home",
-                style: Theme.of(context).textTheme.labelSmall,
-              ),
-            ),
-            ListTile(
-              title: Text(
-                "Profile",
-                style: Theme.of(context).textTheme.labelSmall,
-              ),
-            ),
+            SideBarWidget(route: '/', icon: Iconsax.activity, title: 'Dashboard'),
+            
+            SizedBox(height: responsiveSize(context, Sizes.spaceBtwItems)),
+            SideBarWidget(route: '/', icon: Iconsax.user, title: 'Users'),
+
+            SizedBox(height: responsiveSize(context, Sizes.spaceBtwItems)),
+            SideBarWidget(route: '/', icon: Icons.cases_rounded, title: 'Jobs'),
+
+            SizedBox(height: responsiveSize(context, Sizes.spaceBtwItems)),
+            SideBarWidget(route: '/', icon: Iconsax.bank, title: 'Transactions'),
+
+            SizedBox(height: responsiveSize(context, Sizes.spaceBtwItems)),
+            SideBarWidget(route: '/', icon: Iconsax.check, title: 'Approvals'),
+
+            SizedBox(height: responsiveSize(context, Sizes.spaceBtwItems)),
+            SideBarWidget(route: '/', icon: Icons.notifications, title: 'Notifications'),
+
+            SizedBox(height: responsiveSize(context, Sizes.spaceBtwSections)),
+            SideBarWidget(route: '/', icon: Iconsax.logout, title: 'Sign Out'),
             ListTile(
               title: Text(
                 "Settings",
