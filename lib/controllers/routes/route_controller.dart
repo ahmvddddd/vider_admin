@@ -21,24 +21,24 @@ final routerProvider = Provider<GoRouter>((ref) {
   final notifier = RouterNotifier(ref);
 
   return GoRouter(
-    initialLocation: '/login',
+    initialLocation: Routes.dashboard,
     refreshListenable: notifier,
     redirect: (context, state) {
-      final authState = ref.read(authProvider);
-      final loggedIn = authState;
-      final loggingIn = state.matchedLocation == '/login';
+      // final authState = ref.read(authProvider);
+      // final loggedIn = authState;
+      // final loggingIn = state.matchedLocation == '/login';
 
-      if (!loggedIn && !loggingIn) {
-        // 🚨 Middleware: if not logged in, force login
-        // return '/login';
-        return Routes.jobs;
-      }
-      if (loggedIn && loggingIn) {
-        // 🚨 Middleware: if already logged in, go home
-        // return '/';
-        return Routes.dashboard;
-      }
-      return null;
+      // if (!loggedIn && !loggingIn) {
+      //   // 🚨 Middleware: if not logged in, force login
+      //   // return '/login';
+      //   return Routes.jobs;
+      // }
+      // if (loggedIn && loggingIn) {
+      //   // 🚨 Middleware: if already logged in, go home
+      //   // return '/';
+      //   return Routes.dashboard;
+      // }
+      return Routes.dashboard;
     },
     routes: [
       GoRoute(
