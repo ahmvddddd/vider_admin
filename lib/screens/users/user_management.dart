@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../screens/reponsive/responsive_appbar.dart';
+import '../../common/widgets/appbar/appbar.dart';
 import '../../utils/constants/custom_colors.dart';
 import '../../utils/constants/sizes.dart';
 import '../../utils/helpers/helper_function.dart';
@@ -42,22 +42,31 @@ class UserManagementPage extends StatelessWidget {
                                   ),
                                   label: Text(
                                     'Export',
-                                    style: Theme.of(context).textTheme.labelSmall!
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .labelSmall!
                                         .copyWith(color: Colors.white),
                                   ),
                                   style: ElevatedButton.styleFrom(
                                     backgroundColor: CustomColors.primary,
                                     padding: const EdgeInsets.all(Sizes.sm),
-                                    side: const BorderSide(color: Colors.indigo),
+                                    side: const BorderSide(
+                                      color: Colors.indigo,
+                                    ),
                                   ),
                                 ),
                                 const SizedBox(width: Sizes.spaceBtwItems),
                                 ElevatedButton.icon(
                                   onPressed: () {},
-                                  icon: const Icon(Icons.add, color: Colors.white),
+                                  icon: const Icon(
+                                    Icons.add,
+                                    color: Colors.white,
+                                  ),
                                   label: Text(
                                     'Add User',
-                                    style: Theme.of(context).textTheme.labelSmall,
+                                    style: Theme.of(
+                                      context,
+                                    ).textTheme.labelSmall,
                                   ),
                                   style: ElevatedButton.styleFrom(
                                     padding: const EdgeInsets.all(Sizes.sm),
@@ -68,9 +77,9 @@ class UserManagementPage extends StatelessWidget {
                             ),
                           ],
                         ),
-            
+
                         const SizedBox(height: Sizes.spaceBtwItems),
-            
+
                         // Filters
                         Row(
                           children: [
@@ -80,7 +89,9 @@ class UserManagementPage extends StatelessWidget {
                                 decoration: InputDecoration(
                                   prefixIcon: const Icon(Icons.search),
                                   hintText: 'Search Username',
-                                  hintStyle: Theme.of(context).textTheme.labelSmall,
+                                  hintStyle: Theme.of(
+                                    context,
+                                  ).textTheme.labelSmall,
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(8),
                                   ),
@@ -95,21 +106,27 @@ class UserManagementPage extends StatelessWidget {
                                   value: 'All Status',
                                   child: Text(
                                     'All Status',
-                                    style: Theme.of(context).textTheme.labelMedium,
+                                    style: Theme.of(
+                                      context,
+                                    ).textTheme.labelMedium,
                                   ),
                                 ),
                                 DropdownMenuItem(
                                   value: 'Active',
                                   child: Text(
                                     'Active',
-                                    style: Theme.of(context).textTheme.labelMedium,
+                                    style: Theme.of(
+                                      context,
+                                    ).textTheme.labelMedium,
                                   ),
                                 ),
                                 DropdownMenuItem(
                                   value: 'Inactive',
                                   child: Text(
                                     'Inactive',
-                                    style: Theme.of(context).textTheme.labelMedium,
+                                    style: Theme.of(
+                                      context,
+                                    ).textTheme.labelMedium,
                                   ),
                                 ),
                               ],
@@ -117,9 +134,9 @@ class UserManagementPage extends StatelessWidget {
                             ),
                           ],
                         ),
-            
+
                         const SizedBox(height: Sizes.spaceBtwItems),
-            
+
                         // Table
                         Expanded(
                           child: Container(
@@ -138,49 +155,65 @@ class UserManagementPage extends StatelessWidget {
                                   DataColumn(
                                     label: Text(
                                       'Role',
-                                      style: Theme.of(context).textTheme.labelMedium,
+                                      style: Theme.of(
+                                        context,
+                                      ).textTheme.labelMedium,
                                     ),
                                   ),
                                   DataColumn(
                                     label: Text(
                                       'Full Name',
-                                      style: Theme.of(context).textTheme.labelMedium,
+                                      style: Theme.of(
+                                        context,
+                                      ).textTheme.labelMedium,
                                     ),
                                   ),
                                   DataColumn(
                                     label: Text(
                                       'Username',
-                                      style: Theme.of(context).textTheme.labelMedium,
+                                      style: Theme.of(
+                                        context,
+                                      ).textTheme.labelMedium,
                                     ),
                                   ),
                                   DataColumn(
                                     label: Text(
                                       'Email',
-                                      style: Theme.of(context).textTheme.labelMedium,
+                                      style: Theme.of(
+                                        context,
+                                      ).textTheme.labelMedium,
                                     ),
                                   ),
                                   DataColumn(
                                     label: Text(
                                       'Phone Number',
-                                      style: Theme.of(context).textTheme.labelMedium,
+                                      style: Theme.of(
+                                        context,
+                                      ).textTheme.labelMedium,
                                     ),
                                   ),
                                   DataColumn(
                                     label: Text(
                                       'Date Created',
-                                      style: Theme.of(context).textTheme.labelMedium,
+                                      style: Theme.of(
+                                        context,
+                                      ).textTheme.labelMedium,
                                     ),
                                   ),
                                   DataColumn(
                                     label: Text(
                                       'Status',
-                                      style: Theme.of(context).textTheme.labelMedium,
+                                      style: Theme.of(
+                                        context,
+                                      ).textTheme.labelMedium,
                                     ),
                                   ),
                                   DataColumn(
                                     label: Text(
                                       'Actions',
-                                      style: Theme.of(context).textTheme.labelMedium,
+                                      style: Theme.of(
+                                        context,
+                                      ).textTheme.labelMedium,
                                     ),
                                   ),
                                 ],
@@ -241,7 +274,8 @@ class UserManagementPage extends StatelessWidget {
                                               children: [
                                                 Icon(
                                                   Icons.circle,
-                                                  color: user['status'] == 'Active'
+                                                  color:
+                                                      user['status'] == 'Active'
                                                       ? Colors.green
                                                       : Colors.red,
                                                   size: 10,
@@ -390,7 +424,6 @@ final List<Map<String, String>> _userData = [
   },
 ];
 
-
 class UsersDesktop extends StatelessWidget {
   const UsersDesktop({super.key});
 
@@ -400,9 +433,7 @@ class UsersDesktop extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        CustomHeader(
-          title: 'Users'
-        ),
+        CustomAppbar(title: 'Users'),
         SingleChildScrollView(
           child: Row(
             children: [
@@ -456,9 +487,9 @@ class UsersDesktop extends StatelessWidget {
                         ),
                       ],
                     ),
-                          
+
                     const SizedBox(height: Sizes.spaceBtwItems),
-                          
+
                     // Filters
                     Row(
                       children: [
@@ -505,9 +536,9 @@ class UsersDesktop extends StatelessWidget {
                         ),
                       ],
                     ),
-                          
+
                     const SizedBox(height: Sizes.spaceBtwItems),
-                          
+
                     // Table
                     Container(
                       padding: const EdgeInsets.all(Sizes.sm),

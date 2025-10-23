@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:vider_admin/common/widgets/drawer/custom_drawer.dart';
 import '../../common/widgets/sidebar/custom_sidebar.dart';
 import '../../utils/device/device_utility.dart';
-import 'responsive_appbar.dart';
+import '../../common/widgets/appbar/appbar.dart';
 
 class ResponsiveScaffold extends StatelessWidget {
   final Widget mobileBody;
@@ -16,7 +16,7 @@ class ResponsiveScaffold extends StatelessWidget {
     required this.mobileBody,
     required this.tabletBody,
     required this.desktopBody,
-    required this.title
+    required this.title,
   });
 
   @override
@@ -27,7 +27,7 @@ class ResponsiveScaffold extends StatelessWidget {
         if (DeviceUtils.isMobileScreen(context)) {
           return Scaffold(
             key: scaffoldKey,
-            appBar: CustomHeader(title: title, scaffoldKey: scaffoldKey),
+            appBar: CustomAppbar(title: title, scaffoldKey: scaffoldKey),
             drawer: CustomDrawer(), // show drawer on small screens
             body: mobileBody,
           );
@@ -35,7 +35,7 @@ class ResponsiveScaffold extends StatelessWidget {
         // Tablet < 1024px
         else if (DeviceUtils.isTabletScreen(context)) {
           return Scaffold(
-            appBar: CustomHeader(title: title),
+            appBar: CustomAppbar(title: title),
             drawer: CustomDrawer(), // still use drawer
             body: tabletBody,
           );

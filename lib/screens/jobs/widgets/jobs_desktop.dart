@@ -3,15 +3,12 @@ import '../../../common/widgets/custom_shapes/containers/rounded_container.dart'
 import '../../../utils/constants/custom_colors.dart';
 import '../../../utils/constants/sizes.dart';
 import '../../../utils/helpers/helper_function.dart';
-import '../../reponsive/responsive_appbar.dart';
+import '../../../common/widgets/appbar/appbar.dart';
 import 'jobs_info_card.dart';
 import 'jobs_table.dart';
 
 class JobsDesktop extends StatelessWidget {
-  const JobsDesktop({
-    super.key,
-    required this.jobs,
-  });
+  const JobsDesktop({super.key, required this.jobs});
 
   final List<Map<String, dynamic>> jobs;
 
@@ -21,8 +18,8 @@ class JobsDesktop extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        CustomHeader(title: 'Jobs'),
-    
+        CustomAppbar(title: 'Jobs'),
+
         Expanded(
           child: SingleChildScrollView(
             child: Padding(
@@ -44,7 +41,7 @@ class JobsDesktop extends StatelessWidget {
                           ),
                         ),
                       ),
-    
+
                       Expanded(
                         child: Padding(
                           padding: const EdgeInsets.all(Sizes.sm),
@@ -58,7 +55,7 @@ class JobsDesktop extends StatelessWidget {
                       ),
                     ],
                   ),
-    
+
                   const SizedBox(height: Sizes.spaceBtwSections),
                   RoundedContainer(
                     padding: const EdgeInsets.all(Sizes.sm),

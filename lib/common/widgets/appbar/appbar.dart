@@ -1,61 +1,50 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
-import '../../../utils/constants/custom_colors.dart';
 import '../../../utils/constants/sizes.dart';
-import '../../../utils/helpers/helper_function.dart';
+import '../../../utils/device/device_utility.dart';
 
-class TAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const TAppBar({
-    super.key,
-    this.title,
-    this.showBackArrow = false,
-    this.leadingIcon,
-    this.actions,
-    this.leadingOnPressed,
-  });
-
-  final Widget? title;
-  final bool showBackArrow;
-  final IconData? leadingIcon;
-  final List<Widget>? actions;
-  final VoidCallback? leadingOnPressed;
+class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
+  final String title;
+  final GlobalKey<ScaffoldState>? scaffoldKey;
+  const CustomAppbar({super.key, required this.title, this.scaffoldKey});
 
   @override
   Widget build(BuildContext context) {
-    final dark = HelperFunction.isDarkMode(context);
-    return SafeArea( // ✅ Ensure it respects the status bar
-      child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: Sizes.sm),
-        child: AppBar(
-          automaticallyImplyLeading: false,
-          elevation: 0,
-          backgroundColor: Colors.transparent, // Optional: customize
-          leading: showBackArrow
-              ? IconButton(
-                  onPressed: () => Navigator.pop(context),
-                  icon: Icon(
-                    Iconsax.arrow_left,
-                    color: dark ? CustomColors.white : CustomColors.dark,
-                  ),
-                )
-              : leadingIcon != null
-                  ? IconButton(
-                      onPressed: leadingOnPressed,
-                      icon: Icon(
-                        leadingIcon,
-                        color: dark ? CustomColors.white : CustomColors.dark,
-                      ),
-                    )
-                  : null,
-          title: title,
-          actions: actions,
+    return Container(
+      decoration: BoxDecoration(
+        border: Border(
+          bottom: BorderSide(color: Colors.transparent, width: 0.5),
         ),
+      ),
+      child: AppBar(
+        leading: !DeviceUtils.isDeskTopScreen(context)
+            ? IconButton(
+                onPressed: () {
+                  scaffoldKey?.currentState!.openDrawer();
+                },
+                icon: Icon(Iconsax.menu, color: Colors.red, size: Sizes.iconM),
+              )
+            : null,
+        title: Text(title, style: Theme.of(context).textTheme.headlineSmall),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: Icon(Icons.notifications, size: Sizes.iconM),
+          ),
+
+          const SizedBox(width: Sizes.sm),
+          Padding(
+            padding: const EdgeInsets.only(right: 8.0),
+            child: CircleAvatar(
+              radius: 13,
+              child: Icon(Iconsax.user, size: Sizes.iconM),
+            ),
+          ),
+        ],
       ),
     );
   }
 
   @override
-  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
+  Size get preferredSize => Size.fromHeight(DeviceUtils.getAppBarHeight());
 }

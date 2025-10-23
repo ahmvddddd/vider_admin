@@ -4,14 +4,11 @@ import '../../../utils/constants/responsive_sizes.dart';
 import '../../../utils/constants/sizes.dart';
 import '../../../utils/helpers/helper_function.dart';
 import '../../dashboard/widgets/dashboard_overview.dart';
-import '../../reponsive/responsive_appbar.dart';
+import '../../../common/widgets/appbar/appbar.dart';
 import 'transactions_table.dart';
 
 class TransactionsDesktop extends StatelessWidget {
-  const TransactionsDesktop({
-    super.key,
-    required this.transactions,
-  });
+  const TransactionsDesktop({super.key, required this.transactions});
 
   final List<Map<String, dynamic>> transactions;
 
@@ -21,10 +18,8 @@ class TransactionsDesktop extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        CustomHeader(
-          title: 'Transactions',
-        ),
-    
+        CustomAppbar(title: 'Transactions'),
+
         Expanded(
           child: SingleChildScrollView(
             child: Padding(
@@ -42,7 +37,7 @@ class TransactionsDesktop extends StatelessWidget {
                           amount: 100525000,
                         ),
                       ),
-                      
+
                       Expanded(
                         child: DashboardOverview(
                           width: 200,
@@ -51,7 +46,7 @@ class TransactionsDesktop extends StatelessWidget {
                           amount: 75605230,
                         ),
                       ),
-                      
+
                       Expanded(
                         child: DashboardOverview(
                           width: responsiveSize(context, 200),
@@ -62,14 +57,14 @@ class TransactionsDesktop extends StatelessWidget {
                       ),
                     ],
                   ),
-    
-                  const SizedBox(height: Sizes.spaceBtwSections,),
+
+                  const SizedBox(height: Sizes.spaceBtwSections),
                   RoundedContainer(
-            padding: const EdgeInsets.all(Sizes.sm),
-            radius: Sizes.cardRadiusSm,
-            backgroundColor: dark
-                ? Colors.white.withValues(alpha: 0.1)
-                : Colors.black.withValues(alpha: 0.1),
+                    padding: const EdgeInsets.all(Sizes.sm),
+                    radius: Sizes.cardRadiusSm,
+                    backgroundColor: dark
+                        ? Colors.white.withValues(alpha: 0.1)
+                        : Colors.black.withValues(alpha: 0.1),
                     child: TransactionsTable(transactions: transactions),
                   ),
                 ],
@@ -77,8 +72,6 @@ class TransactionsDesktop extends StatelessWidget {
             ),
           ),
         ),
-    
-        
       ],
     );
   }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../utils/constants/sizes.dart';
 import '../../dashboard/widgets/dashboard_overview.dart';
-import '../../reponsive/responsive_appbar.dart';
+import '../../../common/widgets/appbar/appbar.dart';
 
 class ApprovalsDesktop extends StatelessWidget {
   const ApprovalsDesktop({super.key});
@@ -10,7 +10,7 @@ class ApprovalsDesktop extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        CustomHeader(title: 'Approvals'),
+        CustomAppbar(title: 'Approvals'),
 
         Expanded(
           child: SingleChildScrollView(

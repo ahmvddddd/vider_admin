@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:vider_admin/screens/reponsive/responsive_appbar.dart';
+import 'package:vider_admin/common/widgets/appbar/appbar.dart';
 import '../../common/widgets/custom_shapes/containers/rounded_container.dart';
 import '../../utils/constants/responsive_sizes.dart';
 import '../../utils/constants/sizes.dart';
@@ -54,7 +54,7 @@ class UsersScreen extends StatelessWidget {
     final dark = HelperFunction.isDarkMode(context);
 
     return ResponsiveScaffold(
-              title: 'Users',
+      title: 'Users',
       mobileBody: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -66,7 +66,9 @@ class UsersScreen extends StatelessWidget {
               child: Column(
                 children: [
                   Padding(
-                    padding: EdgeInsets.symmetric(vertical: responsiveSize(context, 4)),
+                    padding: EdgeInsets.symmetric(
+                      vertical: responsiveSize(context, 4),
+                    ),
                     child: DashboardOverview(
                       width: screenWidth * 0.90,
                       backgroundColor: Color(0xFF7DBBFF),
@@ -74,9 +76,11 @@ class UsersScreen extends StatelessWidget {
                       amount: 100525000,
                     ),
                   ),
-              
+
                   Padding(
-                    padding: EdgeInsets.symmetric(vertical: responsiveSize(context, 4)),
+                    padding: EdgeInsets.symmetric(
+                      vertical: responsiveSize(context, 4),
+                    ),
                     child: DashboardOverview(
                       width: screenWidth * 0.90,
                       backgroundColor: Color(0xFFB899EB),
@@ -94,11 +98,11 @@ class UsersScreen extends StatelessWidget {
                 responsiveSize(context, Sizes.spaceBtwItems),
               ),
               child: RoundedContainer(
-              padding: const EdgeInsets.all(Sizes.sm),
-              radius: Sizes.cardRadiusSm,
-              backgroundColor: dark
-                  ? Colors.white.withValues(alpha: 0.1)
-                  : Colors.black.withValues(alpha: 0.1),
+                padding: const EdgeInsets.all(Sizes.sm),
+                radius: Sizes.cardRadiusSm,
+                backgroundColor: dark
+                    ? Colors.white.withValues(alpha: 0.1)
+                    : Colors.black.withValues(alpha: 0.1),
                 child: UsersTable(users: users),
               ),
             ),
@@ -125,7 +129,7 @@ class UsersScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-              
+
                   Expanded(
                     child: Padding(
                       padding: EdgeInsets.all(responsiveSize(context, 4)),
@@ -146,11 +150,11 @@ class UsersScreen extends StatelessWidget {
                 responsiveSize(context, Sizes.spaceBtwItems),
               ),
               child: RoundedContainer(
-              padding: const EdgeInsets.all(Sizes.sm),
-              radius: Sizes.cardRadiusSm,
-              backgroundColor: dark
-                  ? Colors.white.withValues(alpha: 0.1)
-                  : Colors.black.withValues(alpha: 0.1),
+                padding: const EdgeInsets.all(Sizes.sm),
+                radius: Sizes.cardRadiusSm,
+                backgroundColor: dark
+                    ? Colors.white.withValues(alpha: 0.1)
+                    : Colors.black.withValues(alpha: 0.1),
                 child: UsersTable(users: users),
               ),
             ),
@@ -160,14 +164,10 @@ class UsersScreen extends StatelessWidget {
       desktopBody: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          CustomHeader(
-            title: 'Users',
-          ),
+          CustomAppbar(title: 'Users'),
           SingleChildScrollView(
             child: Padding(
-              padding: const EdgeInsets.all(
-                Sizes.spaceBtwItems,
-              ),
+              padding: const EdgeInsets.all(Sizes.spaceBtwItems),
               child: Row(
                 children: [
                   Expanded(
@@ -180,7 +180,7 @@ class UsersScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                
+
                   Expanded(
                     child: Padding(
                       padding: EdgeInsets.all(4),
@@ -195,12 +195,10 @@ class UsersScreen extends StatelessWidget {
               ),
             ),
           ),
-      
+
           const SizedBox(height: Sizes.spaceBtwItems),
           Padding(
-            padding: const EdgeInsets.all(
-              Sizes.spaceBtwItems,
-            ),
+            padding: const EdgeInsets.all(Sizes.spaceBtwItems),
             child: RoundedContainer(
               padding: const EdgeInsets.all(Sizes.sm),
               radius: Sizes.cardRadiusSm,

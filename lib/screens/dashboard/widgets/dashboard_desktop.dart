@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../utils/constants/sizes.dart';
-import '../../reponsive/responsive_appbar.dart';
+import '../../../common/widgets/appbar/appbar.dart';
 import 'dashboard_overview.dart';
 import 'jobs_chart.dart';
 import 'jobs_per_week.dart';
@@ -13,7 +13,7 @@ class DashboardDesktop extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        CustomHeader(title: 'Dashboard'),
+        CustomAppbar(title: 'Dashboard'),
         Expanded(
           child: SingleChildScrollView(
             child: Padding(

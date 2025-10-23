@@ -4,7 +4,7 @@ import '../../common/widgets/custom_shapes/containers/rounded_container.dart';
 import '../../screens/reponsive/responsive_scaffold.dart';
 import '../../utils/constants/sizes.dart';
 import '../../utils/helpers/helper_function.dart';
-import '../reponsive/responsive_appbar.dart';
+import '../../common/widgets/appbar/appbar.dart';
 import 'widgets/notifications_mobile.dart';
 
 class NotificationsScreen extends StatefulWidget {
@@ -78,7 +78,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
   Widget build(BuildContext context) {
     final dark = HelperFunction.isDarkMode(context);
     return ResponsiveScaffold(
-              title: 'Notifications',
+      title: 'Notifications',
       mobileBody: NotificationsMobile(),
       tabletBody: NotificationsTablet(),
       desktopBody: SingleChildScrollView(
@@ -86,8 +86,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            CustomHeader(
-              title: 'Notifications',),
+            CustomAppbar(title: 'Notifications'),
 
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -100,7 +99,6 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-
                         // Notification Details Card
                         RoundedContainer(
                           radius: 8,
@@ -203,9 +201,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                             children: [
                               Text(
                                 'Recipients',
-                                style: Theme.of(
-                                  context,
-                                ).textTheme.bodyMedium,
+                                style: Theme.of(context).textTheme.bodyMedium,
                               ),
                               const SizedBox(height: Sizes.spaceBtwItems),
                               CheckboxListTile(
@@ -352,7 +348,9 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                                         child: InputDecorator(
                                           decoration: InputDecoration(
                                             labelText: 'Date',
-                                            labelStyle: Theme.of(context).textTheme.labelSmall,
+                                            labelStyle: Theme.of(
+                                              context,
+                                            ).textTheme.labelSmall,
                                             border: OutlineInputBorder(),
                                           ),
                                           child: Text(
@@ -371,7 +369,10 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                                         child: InputDecorator(
                                           decoration: InputDecoration(
                                             labelText: 'Time',
-                                            labelStyle: Theme.of(context).textTheme.labelSmall!.copyWith(color: Colors.white),
+                                            labelStyle: Theme.of(context)
+                                                .textTheme
+                                                .labelSmall!
+                                                .copyWith(color: Colors.white),
                                             border: OutlineInputBorder(),
                                           ),
                                           child: Text(
@@ -473,9 +474,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                             children: [
                               Text(
                                 'Preview',
-                                style: Theme.of(
-                                  context,
-                                ).textTheme.bodyMedium,
+                                style: Theme.of(context).textTheme.bodyMedium,
                               ),
                               const SizedBox(height: Sizes.spaceBtwItems),
 
