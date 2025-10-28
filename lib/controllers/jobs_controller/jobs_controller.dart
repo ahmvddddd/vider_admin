@@ -1,9 +1,11 @@
 import 'dart:convert';
-
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:http/http.dart' as http;
 import 'package:vider_admin/models/jobs_model/jobs_model.dart';
+
+/// Enum to track which filter is currently active
+enum JobFilter { all, pending, completed }
 
 final jobProvider = AsyncNotifierProvider<JobsController, List<JobsModel>>(
   JobsController.new,
@@ -11,35 +13,100 @@ final jobProvider = AsyncNotifierProvider<JobsController, List<JobsModel>>(
 
 String jobsURL = dotenv.env['JOBS_URL'] ?? 'https://defaulturl.com/api';
 
-
 class JobsController extends AsyncNotifier<List<JobsModel>> {
+  int _page = 1;
+  final int _limit = 20;
+  bool _isLoadingMore = false;
+  bool _hasMore = true;
+
+  /// All jobs loaded so far
+  List<JobsModel> _allJobs = [];
+
+  /// Current filter
+  JobFilter _currentFilter = JobFilter.all;
+  JobFilter get currentFilter => _currentFilter;
+
   @override
   Future<List<JobsModel>> build() async {
-    return await fetchJobs();
+    return fetchJobs(reset: true);
   }
 
-  Future<List<JobsModel>> fetchJobs() async {
-    state = const AsyncValue.loading();
+  Future<List<JobsModel>> fetchJobs({bool reset = false}) async {
+    if (reset) {
+      _page = 1;
+      _hasMore = true;
+      _allJobs = [];
+      state = const AsyncValue.loading();
+    }
+
+    if (!_hasMore) return _allJobs;
 
     try {
       final response = await http.get(
-        Uri.parse(jobsURL),
+        Uri.parse('$jobsURL?page=$_page&limit=$_limit'),
         headers: {'Content-Type': 'application/json'},
       );
 
       if (response.statusCode == 200) {
-        final List<dynamic> data = json.decode(response.body);
-        final List<JobsModel> jobs = data
-            .map((e) => JobsModel.fromJson(e))
-            .toList();
-        state = AsyncValue.data(jobs);
-        return jobs;
+        final Map<String, dynamic> decoded = json.decode(response.body);
+        final List<dynamic> data = decoded['jobs'] ?? decoded;
+        final List<JobsModel> jobs =
+            data.map((e) => JobsModel.fromJson(e)).toList();
+
+        if (jobs.isEmpty) _hasMore = false;
+
+        _allJobs.addAll(jobs);
+        _page++;
+
+        state = AsyncValue.data(filteredJobs);
+        return _allJobs;
       } else {
         throw Exception('Failed to fetch jobs');
       }
     } catch (error, stackTrace) {
       state = AsyncValue.error('Failed to load jobs', stackTrace);
-      throw Exception('Failed to load jobs');
+      rethrow;
     }
   }
+
+  /// Load additional jobs when user scrolls
+  Future<void> loadMoreJobs() async {
+    if (_isLoadingMore || !_hasMore) return;
+    _isLoadingMore = true;
+    await fetchJobs(reset: false);
+    _isLoadingMore = false;
+  }
+
+  /// Refresh jobs (pull to refresh)
+  Future<void> refreshJobs() async {
+    await fetchJobs(reset: true);
+  }
+
+  /// Set current filter and update UI
+  void setFilter(JobFilter filter) {
+    _currentFilter = filter;
+    state = AsyncValue.data(filteredJobs);
+  }
+
+  /// Return filtered jobs according to the selected filter
+  List<JobsModel> get filteredJobs {
+    switch (_currentFilter) {
+      case JobFilter.pending:
+        return _allJobs
+            .where((job) => job.status.toLowerCase() == 'pending')
+            .toList();
+      case JobFilter.completed:
+        return _allJobs
+            .where((job) => job.status.toLowerCase() == 'completed')
+            .toList();
+      case JobFilter.all:
+        return _allJobs;
+    }
+  }
+
+  /// Counts for summary cards
+  int get completedJobs =>
+      _allJobs.where((j) => j.status.toLowerCase() == 'completed').length;
+  int get pendingJobs =>
+      _allJobs.where((j) => j.status.toLowerCase() == 'pending').length;
 }

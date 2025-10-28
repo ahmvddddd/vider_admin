@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../common/widgets/custom_shapes/containers/rounded_container.dart';
+import '../../../controllers/jobs_controller/jobs_controller.dart';
 import '../../../utils/constants/custom_colors.dart';
 import '../../../utils/constants/responsive_sizes.dart';
 import '../../../utils/constants/sizes.dart';
@@ -7,73 +9,83 @@ import '../../../utils/helpers/helper_function.dart';
 import 'jobs_info_card.dart';
 import 'jobs_table.dart';
 
-class JobsTablet extends StatelessWidget {
-  const JobsTablet({
-    super.key,
-    required this.jobs,
-  });
-
-  final List<Map<String, dynamic>> jobs;
+class JobsTablet extends ConsumerWidget {
+  const JobsTablet({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final dark = HelperFunction.isDarkMode(context);
-    return SingleChildScrollView(
-      child: Column(
-        children: [
-          Padding(
-            padding: EdgeInsets.all(
-              responsiveSize(context, Sizes.spaceBtwItems),
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.all(Sizes.sm),
-                    child: JobsInfoCard(
-                      color: CustomColors.success,
-                      title: 'Completed Jobs',
-                      subtitle: '',
-                      value: '100525000',
+    final jobAsync = ref.watch(jobProvider);
+    final controller = ref.read(jobProvider.notifier);
+    return jobAsync.when(
+      data: (jobs) => SingleChildScrollView(
+        child: Column(
+          children: [
+            Padding(
+              padding: EdgeInsets.all(
+                responsiveSize(context, Sizes.spaceBtwItems),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.all(Sizes.sm),
+                      child: JobsInfoCard(
+                        color: CustomColors.primary,
+                        title: 'Completed Jobs',
+                        subtitle: '',
+                        value: '${jobs.length}',
+                      ),
                     ),
                   ),
-                ),
-    
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.all(Sizes.sm),
-                    child: JobsInfoCard(
-                      color: CustomColors.warning,
-                      title: 'Pending Jobs',
-                      subtitle: '',
-                      value: '75605230',
+
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.all(Sizes.sm),
+                      child: JobsInfoCard(
+                        color: CustomColors.success,
+                        title: 'Completed Jobs',
+                        subtitle: '',
+                        value: '${controller.completedJobs}',
+                      ),
                     ),
                   ),
-                ),
-              ],
+
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.all(Sizes.sm),
+                      child: JobsInfoCard(
+                        color: CustomColors.warning,
+                        title: 'Pending Jobs',
+                        subtitle: '',
+                        value: '${controller.pendingJobs}',
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
-          ),
-    
-          SizedBox(height: responsiveSize(context, Sizes.spaceBtwItems)),
-          Padding(
-            padding: EdgeInsets.all(
-              responsiveSize(context, Sizes.spaceBtwItems),
+
+            SizedBox(height: responsiveSize(context, Sizes.spaceBtwItems)),
+            Padding(
+              padding: EdgeInsets.all(
+                responsiveSize(context, Sizes.spaceBtwItems),
+              ),
+              child: RoundedContainer(
+                padding: const EdgeInsets.all(Sizes.sm),
+                radius: Sizes.cardRadiusSm,
+                backgroundColor: dark
+                    ? Colors.white.withValues(alpha: 0.1)
+                    : Colors.black.withValues(alpha: 0.1),
+                child: JobsTable(jobs: jobs),
+              ),
             ),
-            child: RoundedContainer(
-              padding: const EdgeInsets.all(Sizes.sm),
-              radius: Sizes.cardRadiusSm,
-              backgroundColor: dark
-                  ? Colors.white.withValues(alpha: 0.1)
-                  : Colors.black.withValues(alpha: 0.1),
-              child: JobsTable(jobs: jobs),
-            ),
-          ),
-        ],
+          ],
+        ),
       ),
+      loading: () => const Center(child: CircularProgressIndicator()),
+      error: (e, _) => Center(child: Text(e.toString())),
     );
   }
 }
-
-
-

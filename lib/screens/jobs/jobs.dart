@@ -48,9 +48,9 @@ class JobsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return ResponsiveScaffold(
       title: 'Jobs',
-      mobileBody: JobsMobile(jobs: jobs),
-      tabletBody: JobsTablet(jobs: jobs),
-      desktopBody: JobsDesktop(jobs: jobs),
+      mobileBody: JobsMobile(),
+      tabletBody: JobsTablet(),
+      desktopBody: JobsDesktop(),
     );
   }
 }
