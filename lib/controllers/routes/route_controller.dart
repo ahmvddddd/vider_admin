@@ -38,7 +38,7 @@ final routerProvider = Provider<GoRouter>((ref) {
       //   // return '/';
       //   return Routes.dashboard;
       // }
-      return Routes.jobs;
+      return Routes.dashboard;
     },
     routes: [
       GoRoute(

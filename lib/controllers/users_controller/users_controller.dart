@@ -1,111 +1,111 @@
-// import 'dart:convert';
-// import 'package:flutter_dotenv/flutter_dotenv.dart';
-// import 'package:flutter_riverpod/flutter_riverpod.dart';
-// import 'package:http/http.dart' as http;
-// import 'package:vider_admin/models/jobs_model/jobs_model.dart';
+import 'dart:convert';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:http/http.dart' as http;
+import 'package:vider_admin/models/jobs_model/jobs_model.dart';
 
-// enum UserFilter { all, provider, client }
+enum UserFilter { all, provider, client }
 
-// final jobProvider = AsyncNotifierProvider<JobsController, List<JobsModel>>(
-//   JobsController.new,
-// );
+final userProvider = AsyncNotifierProvider<UsersController, List<UsersModel>>(
+  UsersController.new,
+);
 
-// String jobsURL = dotenv.env['JOBS_URL'] ?? 'https://defaulturl.com/api';
+String usersURL = dotenv.env['USERS_URL'] ?? 'https://defaulturl.com/api';
 
-// class JobsController extends AsyncNotifier<List<JobsModel>> {
-//   int _page = 1;
-//   final int _limit = 20;
-//   bool _isLoadingMore = false;
-//   bool _hasMore = true;
+class UsersController extends AsyncNotifier<List<UsersModel>> {
+  int _page = 1;
+  final int _limit = 20;
+  bool _isLoadingMore = false;
+  bool _hasMore = true;
 
-//   /// All jobs loaded so far
-//   List<JobsModel> _allJobs = [];
+  /// All jobs loaded so far
+  List<UsersModel> _allUsers = [];
 
-//   /// Current filter
-//   UserFilter _currentFilter = UserFilter.all;
-//   UserFilter get currentFilter => _currentFilter;
+  /// Current filter
+  UserFilter _currentFilter = UserFilter.all;
+  UserFilter get currentFilter => _currentFilter;
 
-//   @override
-//   Future<List<JobsModel>> build() async {
-//     return fetchJobs(reset: true);
-//   }
+  @override
+  Future<List<UsersModel>> build() async {
+    return fetchUsers(reset: true);
+  }
 
-//   Future<List<JobsModel>> fetchJobs({bool reset = false}) async {
-//     if (reset) {
-//       _page = 1;
-//       _hasMore = true;
-//       _allJobs = [];
-//       state = const AsyncValue.loading();
-//     }
+  Future<List<UsersModel>> fetchUsers({bool reset = false}) async {
+    if (reset) {
+      _page = 1;
+      _hasMore = true;
+      _allUsers = [];
+      state = const AsyncValue.loading();
+    }
 
-//     if (!_hasMore) return _allJobs;
+    if (!_hasMore) return _allUsers;
 
-//     try {
-//       final response = await http.get(
-//         Uri.parse('$jobsURL?page=$_page&limit=$_limit'),
-//         headers: {'Content-Type': 'application/json'},
-//       );
+    try {
+      final response = await http.get(
+        Uri.parse('$usersURL?page=$_page&limit=$_limit'),
+        headers: {'Content-Type': 'application/json'},
+      );
 
-//       if (response.statusCode == 200) {
-//         final Map<String, dynamic> decoded = json.decode(response.body);
-//         final List<dynamic> data = decoded['jobs'] ?? decoded;
-//         final List<JobsModel> jobs =
-//             data.map((e) => JobsModel.fromJson(e)).toList();
+      if (response.statusCode == 200) {
+        final Map<String, dynamic> decoded = json.decode(response.body);
+        final List<dynamic> data = decoded['jobs'] ?? decoded;
+        final List<JobsModel> users =
+            data.map((e) => JobsModel.fromJson(e)).toList();
 
-//         if (jobs.isEmpty) _hasMore = false;
+        if (users.isEmpty) _hasMore = false;
 
-//         _allJobs.addAll(jobs);
-//         _page++;
+        _allUsers.addAll(users);
+        _page++;
 
-//         state = AsyncValue.data(filteredJobs);
-//         return _allJobs;
-//       } else {
-//         throw Exception('Failed to fetch jobs');
-//       }
-//     } catch (error, stackTrace) {
-//       state = AsyncValue.error('Failed to load jobs', stackTrace);
-//       rethrow;
-//     }
-//   }
+        state = AsyncValue.data(filteredUsers);
+        return _allUsers;
+      } else {
+        throw Exception('Failed to fetch jobs');
+      }
+    } catch (error, stackTrace) {
+      state = AsyncValue.error('Failed to load jobs', stackTrace);
+      rethrow;
+    }
+  }
 
-//   /// Load additional jobs when user scrolls
-//   Future<void> loadMoreJobs() async {
-//     if (_isLoadingMore || !_hasMore) return;
-//     _isLoadingMore = true;
-//     await fetchJobs(reset: false);
-//     _isLoadingMore = false;
-//   }
+  /// Load additional jobs when user scrolls
+  Future<void> loadMoreJobs() async {
+    if (_isLoadingMore || !_hasMore) return;
+    _isLoadingMore = true;
+    await fetchUsers(reset: false);
+    _isLoadingMore = false;
+  }
 
-//   /// Refresh jobs (pull to refresh)
-//   Future<void> refreshJobs() async {
-//     await fetchJobs(reset: true);
-//   }
+  /// Refresh jobs (pull to refresh)
+  Future<void> refreshJobs() async {
+    await fetchUsers(reset: true);
+  }
 
-//   /// Set current filter and update UI
-//   void setFilter(UserFilter filter) {
-//     _currentFilter = filter;
-//     state = AsyncValue.data(filteredJobs);
-//   }
+  /// Set current filter and update UI
+  void setFilter(UserFilter filter) {
+    _currentFilter = filter;
+    state = AsyncValue.data(filteredUsers);
+  }
 
-//   /// Return filtered jobs according to the selected filter
-//   List<JobsModel> get filteredJobs {
-//     switch (_currentFilter) {
-//       case UserFilter.pending:
-//         return _allJobs
-//             .where((job) => job.status.toLowerCase() == 'pending')
-//             .toList();
-//       case UserFilter.completed:
-//         return _allJobs
-//             .where((job) => job.status.toLowerCase() == 'completed')
-//             .toList();
-//       case UserFilter.all:
-//         return _allJobs;
-//     }
-//   }
+  /// Return filtered jobs according to the selected filter
+  List<UsersModel> get filteredUsers {
+    switch (_currentFilter) {
+      case UserFilter.provider:
+        return _allUsers
+            .where((job) => job.userType.toLowerCase() == 'provider')
+            .toList();
+      case UserFilter.client:
+        return _allUsers
+            .where((job) => job.userType.toLowerCase() == 'client')
+            .toList();
+      case UserFilter.all:
+        return _allUsers;
+    }
+  }
 
-//   /// Counts for summary cards
-//   int get completedJobs =>
-//       _allJobs.where((j) => j.status.toLowerCase() == 'completed').length;
-//   int get pendingJobs =>
-//       _allJobs.where((j) => j.status.toLowerCase() == 'pending').length;
-// }
+  /// Counts for summary cards
+  int get completedJobs =>
+      _allUsers.where((j) => j.userType.toLowerCase() == 'client').length;
+  int get pendingJobs =>
+      _allUsers.where((j) => j.userType.toLowerCase() == 'provider').length;
+}
