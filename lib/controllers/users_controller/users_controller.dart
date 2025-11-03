@@ -2,7 +2,8 @@ import 'dart:convert';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:http/http.dart' as http;
-import 'package:vider_admin/models/jobs_model/jobs_model.dart';
+
+import '../../models/users_model/users_model.dart';
 
 enum UserFilter { all, provider, client }
 
@@ -49,8 +50,8 @@ class UsersController extends AsyncNotifier<List<UsersModel>> {
       if (response.statusCode == 200) {
         final Map<String, dynamic> decoded = json.decode(response.body);
         final List<dynamic> data = decoded['jobs'] ?? decoded;
-        final List<JobsModel> users =
-            data.map((e) => JobsModel.fromJson(e)).toList();
+        final List<UsersModel> users =
+            data.map((e) => UsersModel.fromJson(e)).toList();
 
         if (users.isEmpty) _hasMore = false;
 
