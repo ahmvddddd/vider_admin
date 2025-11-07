@@ -7,7 +7,7 @@ import '../../models/users_model/users_model.dart';
 
 enum UserFilter { all, provider, client }
 
-final userProvider = AsyncNotifierProvider<UsersController, List<UsersModel>>(
+final usersProvider = AsyncNotifierProvider<UsersController, List<UsersModel>>(
   UsersController.new,
 );
 
@@ -105,8 +105,8 @@ class UsersController extends AsyncNotifier<List<UsersModel>> {
   }
 
   /// Counts for summary cards
-  int get completedJobs =>
+  int get clientUsers =>
       _allUsers.where((j) => j.userType.toLowerCase() == 'client').length;
-  int get pendingJobs =>
+  int get providerUsers =>
       _allUsers.where((j) => j.userType.toLowerCase() == 'provider').length;
 }

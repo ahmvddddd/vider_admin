@@ -1,100 +1,24 @@
-// import 'package:flutter/material.dart';
-// import '../../../common/widgets/custom_shapes/containers/rounded_container.dart';
-// import '../../../utils/constants/custom_colors.dart';
-// import '../../../utils/constants/sizes.dart';
-// import '../../../utils/helpers/helper_function.dart';
-// import '../../../common/widgets/appbar/appbar.dart';
-// import 'jobs_info_card.dart';
-// import 'jobs_table.dart';
-
-// class JobsDesktop extends StatelessWidget {
-//   const JobsDesktop({super.key, required this.jobs});
-
-//   final List<Map<String, dynamic>> jobs;
-
-//   @override
-//   Widget build(BuildContext context) {
-//     final dark = HelperFunction.isDarkMode(context);
-//     return Column(
-//       crossAxisAlignment: CrossAxisAlignment.start,
-//       children: [
-//         CustomAppbar(title: 'Jobs'),
-
-//         Expanded(
-//           child: SingleChildScrollView(
-//             child: Padding(
-//               padding: const EdgeInsets.all(Sizes.spaceBtwSections),
-//               child: Column(
-//                 crossAxisAlignment: CrossAxisAlignment.start,
-//                 children: [
-//                   Row(
-//                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//                     children: [
-//                       Expanded(
-//                         child: Padding(
-//                           padding: const EdgeInsets.all(Sizes.sm),
-//                           child: JobsInfoCard(
-//                             color: CustomColors.success,
-//                             title: 'Completed Jobs',
-//                             subtitle: '',
-//                             value: '100525000',
-//                           ),
-//                         ),
-//                       ),
-
-//                       Expanded(
-//                         child: Padding(
-//                           padding: const EdgeInsets.all(Sizes.sm),
-//                           child: JobsInfoCard(
-//                             color: CustomColors.warning,
-//                             title: 'Pending Jobs',
-//                             subtitle: '',
-//                             value: '75605230',
-//                           ),
-//                         ),
-//                       ),
-//                     ],
-//                   ),
-
-//                   const SizedBox(height: Sizes.spaceBtwSections),
-//                   RoundedContainer(
-//                     padding: const EdgeInsets.all(Sizes.sm),
-//                     radius: Sizes.cardRadiusSm,
-//                     backgroundColor: dark
-//                         ? Colors.white.withValues(alpha: 0.1)
-//                         : Colors.black.withValues(alpha: 0.1),
-//                     borderColor: dark ? Colors.white : Colors.black,
-//                     child: JobsTable(jobs: jobs),
-//                   ),
-//                 ],
-//               ),
-//             ),
-//           ),
-//         ),
-//       ],
-//     );
-//   }
-// }
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../common/widgets/custom_shapes/containers/rounded_container.dart';
 import '../../../controllers/jobs_controller/jobs_controller.dart';
+import '../../../controllers/users_controller/users_controller.dart';
 import '../../../utils/constants/custom_colors.dart';
 import '../../../utils/constants/sizes.dart';
 import '../../../utils/helpers/helper_function.dart';
 import '../../../common/widgets/appbar/appbar.dart';
-import 'jobs_info_card.dart';
-import 'jobs_table.dart';
+import '../../jobs/widgets/jobs_info_card.dart';
+import '../../jobs/widgets/jobs_table.dart';
+import 'users_table.dart';
 
-class JobsDesktop extends ConsumerStatefulWidget {
-  const JobsDesktop({super.key});
+class UsersDesktop extends ConsumerStatefulWidget {
+  const UsersDesktop({super.key});
 
   @override
-  ConsumerState<JobsDesktop> createState() => _JobsDesktopState();
+  ConsumerState<UsersDesktop> createState() => _UsersDesktopState();
 }
 
-class _JobsDesktopState extends ConsumerState<JobsDesktop> {
+class _UsersDesktopState extends ConsumerState<UsersDesktop> {
   final ScrollController _scrollController = ScrollController();
 
   @override
@@ -119,8 +43,8 @@ class _JobsDesktopState extends ConsumerState<JobsDesktop> {
 
   @override
   Widget build(BuildContext context) {
-    final jobsState = ref.watch(jobProvider);
-    final controller = ref.read(jobProvider.notifier);
+    final usersState = ref.watch(usersProvider);
+    final controller = ref.read(usersProvider.notifier);
     final dark = HelperFunction.isDarkMode(context);
 
     return Column(
@@ -129,8 +53,8 @@ class _JobsDesktopState extends ConsumerState<JobsDesktop> {
         CustomAppbar(title: 'Jobs'),
 
         Expanded(
-          child: jobsState.when(
-            data: (jobs) {
+          child: usersState.when(
+            data: (users) {
               return SingleChildScrollView(
                 controller: _scrollController,
                 child: Padding(
@@ -146,18 +70,18 @@ class _JobsDesktopState extends ConsumerState<JobsDesktop> {
                           Expanded(
                             child: GestureDetector(
                               onTap: () =>
-                                  controller.setFilter(JobFilter.all),
+                                  controller.setFilter(UserFilter.all),
                               child: Padding(
                                 padding: const EdgeInsets.all(Sizes.sm),
                                 child: JobsInfoCard(
                                   color:
                                       controller.currentFilter ==
-                                          JobFilter.all
+                                          UserFilter.all
                                       ? CustomColors.primary
                                       : Colors.grey,
-                                  title: 'All Jobs',
+                                  title: 'All Users',
                                   subtitle: '',
-                                  value: '${jobs.length}',
+                                  value: '${users.length}',
                                 ),
                               ),
                             ),
@@ -167,18 +91,18 @@ class _JobsDesktopState extends ConsumerState<JobsDesktop> {
                           Expanded(
                             child: GestureDetector(
                               onTap: () =>
-                                  controller.setFilter(JobFilter.completed),
+                                  controller.setFilter(UserFilter.client),
                               child: Padding(
                                 padding: const EdgeInsets.all(Sizes.sm),
                                 child: JobsInfoCard(
                                   color:
                                       controller.currentFilter ==
-                                          JobFilter.completed
+                                          UserFilter.client
                                       ? CustomColors.success
                                       : Colors.grey,
-                                  title: 'Completed Jobs',
+                                  title: 'Clients',
                                   subtitle: '',
-                                  value: '${controller.completedJobs}',
+                                  value: '${controller.clientUsers}',
                                 ),
                               ),
                             ),
@@ -188,18 +112,18 @@ class _JobsDesktopState extends ConsumerState<JobsDesktop> {
                           Expanded(
                             child: GestureDetector(
                               onTap: () =>
-                                  controller.setFilter(JobFilter.pending),
+                                  controller.setFilter(UserFilter.provider),
                               child: Padding(
                                 padding: const EdgeInsets.all(Sizes.sm),
                                 child: JobsInfoCard(
                                   color:
                                       controller.currentFilter ==
-                                          JobFilter.pending
+                                          UserFilter.provider
                                       ? CustomColors.warning
                                       : Colors.grey,
-                                  title: 'Pending Jobs',
+                                  title: 'Providers',
                                   subtitle: '',
-                                  value: '${controller.pendingJobs}',
+                                  value: '${controller.providerUsers}',
                                 ),
                               ),
                             ),
@@ -217,11 +141,11 @@ class _JobsDesktopState extends ConsumerState<JobsDesktop> {
                             ? Colors.white.withValues(alpha: 0.1)
                             : Colors.black.withValues(alpha: 0.1),
                         borderColor: dark ? Colors.white : Colors.black,
-                        child: JobsTable(jobs: jobs),
+                        child: UsersTable(users: users),
                       ),
 
                       const SizedBox(height: Sizes.spaceBtwItems),
-                      if (jobsState.isLoading)
+                      if (usersState.isLoading)
                         const Padding(
                           padding: EdgeInsets.all(16.0),
                           child: Center(child: CircularProgressIndicator()),
